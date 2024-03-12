@@ -1,0 +1,1 @@
+welcomeMessage.innerHTML = "Saya lagi belajar coding JavasScript";
