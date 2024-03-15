@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan : Coding Subuh 2024</title>
+  </head>
+  <script>
+    const totalBelanja = prompt("Input total belanja");
+    alert("Hore, anda mendapatkan diskon 25%");
+
+    const diskonPersentase = 25 / 100;
+
+    const diskonAmount = totalBelanja * diskonPersentase;
+
+    const totalBayar = totalBelanja - diskonAmount;
+
+    const outputTemplate = `
+    <h1>Ringkasan Transaksi Belanja Anda</h1>
+    <p>Total Belanja: ${totalBelanja}</p>
+    <p>Diskon: <span style="color:green">-${diskonAmount} (${diskonPersentase}%)</span></p>
+    <p>Total Bayar: <b>${totalBayar}</b></p>
+    `;
+
+    document.write(outputTemplate);
+  </script>
+  <body></body>
+</html>

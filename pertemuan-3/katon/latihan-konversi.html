@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width-devicewidth, initial-scale=1.0">
+  <title>Latihan Konversi</title>
+</head>
+
+<body>
+  <h1>Input Jumlah Buah</h1>
+  <form id="formPenjumlahan">
+    <label for="apel">Apel: </label><br>
+    <input id="apel" name="apel"><br>
+    <label for="jeruk">Jeruk: </label><br>
+    <input id="jeruk" name="jeruk"><br>
+    <button type="button" onclick="hitungJumlah()">Hitung</button>
+  </form>
+  <p id="result">Total</p>
+
+  <script>
+    function hitungJumlah() {
+      var apel = parseInt(document.getElementById("apel").value);
+      var jeruk = parseInt(document.getElementById("jeruk").value);
+      var resultElement = document.getElementById("result");
+      if (!isNaN(apel) && !isNaN(jeruk)) {
+        var total = apel + jeruk;
+        resultElement.innerHTML = "Total: " + total;
+      } else {
+        resultElement.innerHTML = "Mohon masukan angka";
+      }
+    }
+  </script>
+</body>
+
+</html>

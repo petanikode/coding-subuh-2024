@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hitung buah</title>
+
+</head>
+<body>
+    <h2>INPUT JUMLAH BUAH</h2>
+    <label>Apel :</label>
+    <input id="apel"><br>
+    <label>Jeruk :</label>
+    <input id="jeruk"><br>
+
+    <button onclick="hitung()">Hitung</button><br>
+
+    <p> Total : <b id="total">0</b></p>
+  <script>
+     function hitung(){
+        var apel = parseInt(document.getElementById("apel").value);
+        var jeruk = parseInt(document.getElementById("jeruk").value);
+        var total = apel + jeruk;
+        document.getElementById("total").innerText = total;
+     };
+  </script>
+</body>
+</html>

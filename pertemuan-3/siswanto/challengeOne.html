@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coding Subuh Challenge</title>
+    <!-- CDN CSS bootstrap v5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-5 bg-secondary-subtle m-auto p-3 mt-5 rounded-3">
+            <h1 class="text-center mb-5 text-primary">Input Jumlah Buah</h1>
+
+            <div>
+                <!-- Form input dengan id inputApel -->
+                <div class="mb-3 row">
+                    <label for="inputApel" class="col-sm-2 col-form-label">Apel</label>
+                    <div class="col-sm-10">
+                        <input type="number" min="0" class="form-control" id="inputApel">
+                    </div>
+                </div>
+                <!-- Form input dengan id inputJeruk -->
+                <div class="mb-3 row">
+                    <label for="inputJeruk" class="col-sm-2 col-form-label">Jeruk</label>
+                    <div class="col-sm-10">
+                        <input type="number" min="0" class="form-control" id="inputJeruk">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tombol yang berfungsi untuk memanggil fungsi myFuctCount dengan bantuan onclick -->
+            <div class="d-grid col-3 mx-auto">
+                <button class="btn btn-primary" onclick="myFuctCount()" type="button">Hitung</button>
+            </div>
+
+
+            <div class="mt-3">
+                <h4 class="text-center">Hasil:</h4>
+                <!-- HTML yang digunakan untuk menampilkan output dari fungsi myFuctCount -->
+                <h1 class="text-center text-primary" id="outputCount"></h1>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    //Fungsi untuk menghitung menghitung jumlah apel dan jeruk
+    function myFuctCount() {
+        //Mengambil value dari form input dengan id inputApel
+        var apel = document.getElementById("inputApel").value;
+        //Mengambil value dari form input dengan id inputJeruk
+        var jeruk = document.getElementById("inputJeruk").value;
+
+        //Menghitung jumlah apel dan jeruk dengan bantuan Number() dan menampilkan hasil pada html dengan id outputCount
+        document.getElementById("outputCount").innerHTML = Number(apel) + Number(jeruk);
+    }
+</script>
+
+<!-- CDN JavaScript bootstrap v5.3.3 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+</html>

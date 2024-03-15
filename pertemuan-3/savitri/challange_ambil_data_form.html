@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savitri Challange ambil data dari form</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+  .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+      background-color: #0056b3;
+  }
+
+  label, input[type="number"], input[type="submit"] {
+    margin-bottom: 10px;
+}
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <form id="fruitForm" method="post">
+      <label for="apples">Jumlah Buah Apel:</label><br>
+      <input type="number" id="apples" name="apples" value="10"><br>
+      <label for="oranges">Jumlah Buah Jeruk:</label><br>
+      <input type="number" id="oranges" name="oranges" value="15"><br>
+      <input type="submit" value="Hitung Total">
+    </form>
+    <div id="total"></div>
+  </div>
+
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('fruitForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        let apples = parseInt(document.getElementById('apples').value);
+        let oranges = parseInt(document.getElementById('oranges').value);
+        let total = apples + oranges;
+        document.getElementById('total').innerHTML = 'Total buah: ' + total;
+    });
+});
+
+
+  </script>
+</body>
+</html>

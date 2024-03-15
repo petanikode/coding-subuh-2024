@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 3 - Latihan Konversi Tipe Data</title>
+</head>
+<body>
+    <div style="width: 100%;text-align: center;">
+        <div style="width: 100%;">
+            <label id="apel">Mohon untuk mengisi jumlah apel : </label>
+            <input type="number" id="inputApel" name="inputApel" value="">
+        </div>
+        <div style="width: 100%;">
+            <label id="jeruk">Mohon untuk mengisi jumlah jeruk : </label>
+            <input type="number" id="inputJeruk" name="inputJeruk" value="">
+        </div>
+        <div style="width: 100%;">
+            <input id="calculate" type="submit">
+        </div>
+    </div>
+    <div style="width: 100%;text-align: center;">
+        <p style="font-weight: bold;">Total Buah : <span id="hasil"></span></p>
+    </div>
+
+    <script>
+        calculate.addEventListener("click",function(){
+            total = parseInt(inputApel.value) + parseInt(inputJeruk.value);
+            hasil.textContent = total;
+        })
+    </script>
+</body>
+</html>

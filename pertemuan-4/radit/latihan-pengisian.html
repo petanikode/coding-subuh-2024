@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Operator Pengisian</title>
+ 
+</head>
+
+<body>
+  <p>Saldo :</p>
+  <h1 id="outputHasil">0</h1>
+
+  <button onclick="nambah()">Tambah Saldo</button>
+  <button onclick="ambil()">Ambil Saldo</button>
+
+  <script>
+    var saldoAwal = 0;
+
+    // TODO: gunakan operasi pengisian
+    function nambah() {
+      const jumlahTambah = Number(prompt("Mau Nabung Berapa Bos??"));
+      saldoAwal += jumlahTambah;
+      outputHasil.textContent = saldoAwal.toLocaleString("ID", {style:"currency", currency: "IDR"});
+    }
+
+    function ambil() {
+      const jumlahKurang = Number(prompt("Mau ambil berapa bos??"));
+      saldoAwal -= jumlahKurang;
+      outputHasil.textContent = saldoAwal.toLocaleString("ID", {style:"currency", currency: "IDR"})
+    }
+
+  </script>
+</body>
+
+</html>

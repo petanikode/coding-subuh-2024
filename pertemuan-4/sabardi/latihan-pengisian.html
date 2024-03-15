@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Operator pengisian</title>
+  <script>
+    
+    var balance = 0;
+
+    function TopUp() {
+      const jumlahTopUp = Number(prompt("Masukan Jumlah Top up"));
+      // hitung penjumlahan
+        balance += jumlahTopUp;
+      // tampilkan hasil
+        outputBalance.textContent = balance.toLocaleString("ID", {style: "currency", currency: "IDR"});
+    }
+
+    function Withdraw() {
+      const jumlahWithdraw = Number(prompt("Masukan Jumlah Withdraw"))
+
+      balance -= jumlahWithdraw
+      outputBalance.textContent = balance.toLocaleString("ID", {style: "currency", currency: "IDR"})
+
+    }
+  </script>
+</head>
+<body>
+  <h1>Akun anda</h1>
+  <hr>
+  <p>Saldo</p>
+  <h1 id="outputBalance">0</h1>
+
+  <button onclick="TopUp()">Tambah Saldo</button>
+  <button onclick="Withdraw()">Witdraw</button>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Operasi Pengisian</title>
+
+  <script>
+    var balance = 0;
+
+    function topUp() {
+      const jumlahTopup = prompt("Masukan jumlah topup :");
+      balance += parseInt(jumlahTopup);
+      outputBalance.textContent = balance.toLocaleString("ID", {
+        style: "currency", currency: "IDR"
+      });
+    }
+
+    function withdraw() {
+      const jumlahWithDraw = prompt("Masukan jumlah withdraw :");
+      balance -= parseInt(jumlahWithDraw);
+      outputBalance.textContent = balance.toLocaleString("ID", {
+        style: "currency", currency: "IDR"
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <p>Saldo: </p>
+  <h1 id="outputBalance">0</h1>
+
+  <button onclick="topUp()"> Top up (+) </button>
+  <button onclick="withdraw()"> Withdraw (-) </button>
+</body>
+</html>

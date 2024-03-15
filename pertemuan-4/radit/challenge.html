@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Diskon</title>
+
+  <script>
+    const totalBelanja = prompt("Input total belanja");
+    alert("Hore, Anda mendapatkan diskon 25% 😍");
+
+    // Challenge!
+    // persentase diskon
+    const discountPercentage = 25/100;
+
+    // Total diskon yang didapatkan
+    const discountAmount = totalBelanja * discountPercentage;
+
+    // Total yang harus dibayar setelah diskon
+    const totalBayar = totalBelanja - discountAmount;
+
+    const outputTemplate = `
+            <h1>Ringkasan Transaksi Belanja anda</h1>
+            <p>Total Belanja: ${totalBelanja}</p>
+            <p>Diskon: <span style="color:green">-${discountAmount} (${discountPercentage}%)</span></p>
+            <p>Total bayar: <b>${totalBayar}</b></p>
+        `;
+
+    document.write(outputTemplate);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

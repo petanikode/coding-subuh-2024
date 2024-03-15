@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challange</title>
+  </head>
+  <body>
+    <h1>Input Jumlah Buah:</h1>
+    <label for="inputApel">Apel: </label>
+    <input type="text" name="apel" id="inputApel" />
+
+    <label for="inputJeruk">Jeruk: </label>
+    <input type="text" name="jeruk" id="inputJeruk" />
+    <button onclick="hitung()">Hitung</button>
+
+    <p>Hasil nya: <b id="output"></b></p>
+    <script>
+      const inputApel = document.getElementById("inputApel");
+      const inputJeruk = document.getElementById("inputJeruk");
+      const output = document.getElementById("output");
+
+      const hitung = () => {
+        const jmlApel = parseInt(inputApel.value);
+        const jmlJeruk = parseInt(inputJeruk.value);
+        const result = jmlApel + jmlJeruk;
+        output.textContent = result;
+      };
+    </script>
+  </body>
+</html>
