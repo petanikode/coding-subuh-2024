@@ -16,10 +16,10 @@
     const discountPercentage = 25;
 
     // Total diskon yang didapatkan
-    const discountAmount = (Number(discountPercentage) / 100) * Number(totalBelanja);
+    const discountAmount = (discountPercentage / 100) * totalBelanja;
 
     // Total yang harus dibayar setelah diskon
-    const totalBayar = Number(totalBelanja) - Number(discountAmount);
+    const totalBayar = totalBelanja - discountAmount;
 
     // Function untuk merubah menjadi nominal rupiah
     function rupiah(number) {

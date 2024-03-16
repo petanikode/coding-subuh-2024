@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,48 @@
 
   <script>
 
-    let username = 'petanikode';
-    let message = 'Hello ' + username + ', mohon verifikasi email anda!';
+    // let username = 'petanikode';
+    // let message = 'Hello ' + username + ', mohon verifikasi email anda!';
 
+    // const a = true;
+    // const b = false;
+    // const c = true;
+
+    // const hasil = (a && b || b && c) || ((c && a) || a);
+
+    // console.log(hasil);
+
+    // const skorTest = Number(prompt("Inputkan nilai"));
+    // const minimumLulus = 75;
+    // const status = skorTest >= minimumLulus ? "Lulus" : "Belum Lulus";
+    // document.write("Anda ", status);
   </script>
 </head>
+
 <body>
-  
+  <div id="app"></div>
+
+  <script>
+    const username = prompt("Masukan username", "petanikode");
+    const password = prompt("Masukan password");
+
+    const validUsername = username === "petanikode";
+    const validPassword = password === "123";
+
+    const loginSuccess = validUsername && validPassword;
+
+    const dashboardTemplate = `
+      <h1>Hello, ${username}</h1>
+      <p>Selamat datang di dashboard</p>
+    `;
+
+    const loginFailedTemplate = `
+      <p>Login Gagal, silahkan coba lagi</p>
+      <button onclick="location.reload()">Login</button>
+    `;
+
+    app.innerHTML = loginSuccess ? dashboardTemplate : loginFailedTemplate;
+  </script>
 </body>
+
 </html>

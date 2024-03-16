@@ -12,21 +12,20 @@
 
     // Challenge!
     // persentase diskon
-    const discountPercentage = "??????";
+    const discountPercentage = 25;
 
     // Total diskon yang didapatkan
-    const discountAmount = "????";
+    const discountAmount = totalBelanja * (discountPercentage / 100);
 
     // Total yang harus dibayar setelah diskon
-    const totalBayar = "?????";
+    const totalBayar = totalBelanja - discountAmount;
 
     const outputTemplate = `
             <h1>Ringkasan Transaksi Belanja anda</h1>
             <p>Total Belanja: ${totalBelanja}</p>
-            <p>Disokn: <span style="color:green">-${discountAmount} (${discountPercentage}%)</span></p>
+            <p>Diskon: <span style="color:green">-${discountAmount} (${discountPercentage}%)</span></p>
             <p>Total bayar: <b>${totalBayar}</b></p>
         `;
-
 
     document.write(outputTemplate);
   </script>

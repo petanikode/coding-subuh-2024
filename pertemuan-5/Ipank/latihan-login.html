@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operasi Login</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  
+<script>
+  const username = prompt("Masukan username", "ipankhambali");
+  const password = propmt("Masukan password");
+
+  const usernameBenar = username ==="ipankhambali";
+  const passwordBenar = password === "123";
+
+  const loginSuccess = usernameBenar && passwordBenar;
+
+  const dasboardTemplate = `
+    <h1>Hello, ${username}</h1>
+    <p>Selamat datang di dasboard</p>
+  `;
+
+  const loginFailedTemplate = `
+    <p>login gagal, silahkan coba lagi</p>
+    <button onclick="location.reload()">Login</button>
+  `;
+
+  const app = document.getElementById("app");
+  app.innerHTML = loginSuccess ? dasboardTemplate : loginFailedTemplate;
+</script>  
+</body>
+</html>

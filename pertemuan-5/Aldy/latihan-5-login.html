@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const username = prompt("Masukkan username","petani_kode");
+        const password = prompt("Masukkan password");
+
+        const username_validation = username === "petani_kode";
+        const password_validation = password === "123456";
+
+        const loginSuccess = username_validation && password_validation;
+
+        const dashboardTemplate = `
+            <h1>Hello, ${username}</h1>
+            <p>Selamat datang di dashboard</p>
+        `;
+
+        const loginFailed = `
+            <p>Login gagal, silahkan coba lagi</p>
+            <button onclick="location.reaload()"">Login</button>
+        `
+
+        const app = document.getElementById("app");
+        app.innerHTML = loginSuccess ? dashboardTemplate : loginFailed;
+    </script>
+</body>
+</html>

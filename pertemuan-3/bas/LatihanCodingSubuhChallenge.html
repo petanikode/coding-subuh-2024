@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tugas 1</title>
+  <title>latihan</title>
 </head>
+
 <body>
-  
+
+  <h2> Input Jumlah Buah</h2>
+  <form id="inputForm">
+    <label for="apel">Apel : </label>
+    <input type="number" name="apel" id="apel">
+    <label for="apel"> Jeruk : </label>
+    <input type="number" name="jeruk" id="jeruk">
+    <button type="button" onclick="hitungTotal()">hitung</button>
+
+  </form>
+
+  <p><b id="total"></b></p>
+
   <script>
-    <h1>Input Jumlah Buah</h1>
-    
-    Total = parseInt() + parseInt();
-    document.write("Total", Total);
+    function hitungTotal() {
+      const apel = parseInt(document.getElementById("apel").value);
+      const jeruk = parseInt(document.getElementById("jeruk").value);
+
+      const total = apel + jeruk;
+
+      document.getElementById("total").innerText = "total : " + total;
+    };
   </script>
-    
-  
 </body>
+
 </html>

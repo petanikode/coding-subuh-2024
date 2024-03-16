@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oprasi Logika</title>
+</head>
+<body>
+    <div id="loginForm">
+        <div style="display: flex; justify-content: center"><h1>Log in</h1></div>
+        <hr />
+        <h3>Username : <input type="text" id="inputUser" /></h3>
+        <h3>Password : <input type="password" id="inputPass" /></h3>
+        <button onclick="login()">Login</button>
+    </div>
+    <div id="welcomeMessage" style="display: none;">
+        <h1>Selamat Datang <span id="loggedInUser"></span></h1>
+    </div>
+    <script>
+        const username = "rifki123";
+        const password = "123";
+
+        function login() {
+            const inputUser = document.getElementById("inputUser").value;
+            const inputPass = document.getElementById("inputPass").value;
+
+            const usernameBenar = username === inputUser;
+            const passwordBenar = password === inputPass;
+
+            const loginSukses = usernameBenar && passwordBenar;
+
+            if (loginSukses) {
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("welcomeMessage").style.display = "block";
+                document.getElementById("loggedInUser").innerText = inputUser;
+            } else {
+                alert("Username atau Password Salah!!!");
+            }
+        }
+    </script>
+</body>
+</html>

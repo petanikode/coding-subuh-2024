@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Login</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      // input username dan password
+      const username = prompt("Masukan username", "petanikode");
+      const password = prompt("Masukan password");
+
+      // pengecekan kebenaran username dan password dengan opearasi perbandingan ===
+      const usernameBenar = username === "petanikode";
+      const passwordBenar = password === "123";
+
+      // pengecekan login dengan operasi logika AND (Jadi username dan password harus benar keduanya)
+      const loginSuccess = usernameBenar && passwordBenar;
+
+      // template untuk login sukses
+      const dashboardTemplate = `
+        <h1>Hello, ${username}</h1>
+        <p>Selamat datang di dashboard</p>
+      `;
+  
+      // template untuk login gagal
+      const loginFailedTemplate = `
+        <p>Login gagal, silahkan coba lagi</p>
+        <button onclick="location.reload()">Login</button>
+      `;
+
+      // const app = document.getElementById("app");
+      // app.innerHTML = loginSuccess ? dashboardTemplate : loginFailedTemplate;
+
+      // redirect user ke halaman latihan-perbandingan.html jika login berhasil
+      if (loginSuccess) {
+        window.location = "laithan-perbandingan.html";
+      }
+    </script>
+  </body>
+</html>
