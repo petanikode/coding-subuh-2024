@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Literal</title>
+
+    <script>
+      // let username = 'petanikode';
+      // let message = 'Hello ' + username + ', mohon verifikasi email anda!';
+
+      // const a = true;
+      // const b = false;
+      // const c = true;
+
+      // const hasil = (a && b || b && c) || ((c && a) || a);
+
+      // console.log(hasil);
+
+      // const skorTest = Number(prompt("Inputkan nilai"));
+      // const minimumLulus = 75;
+      // const status = skorTest >= minimumLulus ? "Lulus" : "Belum Lulus";
+      // document.write("Anda ", status);
+    </script>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" id="nilaiA" />
+      <input type="text" id="nilaiB" />
+      <button onclick="lakukanOperasiBitwise()">Operasi Bitwise</button>
+
+      <p id="hasilOutput"></p>
+    </div>
+
+    <script>
+      function lakukanOperasiBitwise() {
+        // ambil nilai dari input field
+        let nilaiA = Number(document.getElementById("nilaiA").value);
+        let nilaiB = Number(document.getElementById("nilaiB").value);
+
+        // operasi bitwise
+        const hasilBitAnd = nilaiA & nilaiB;
+        const hasilBitOr = nilaiA | nilaiB;
+        const hasilXor = nilaiA ^ nilaiB;
+        const hasilNot = ~nilaiA;
+
+        // konversi nilai ke biner
+        let binerNilaiA = nilaiA.toString(2);
+        let binerNilaiB = nilaiB.toString(2);
+        let binerHasilBitAnd = hasilBitAnd.toString(2);
+        let binerHasilBitOr = hasilBitOr.toString(2);
+        let binerHasilXor = hasilXor.toString(2);
+        let binerHasilNot = hasilNot.toString(2);
+
+        const templateOutput = `
+          <h3>Hasil</h3>
+          <h2>${nilaiA} & ${nilaiB} = ${hasilBitAnd}</h2>
+          <pre>${binerNilaiA} & ${binerNilaiB} = ${binerHasilBitAnd}</pre>
+
+          <hr>
+
+          <h2>${nilaiA} | ${nilaiB} = ${hasilBitAnd}</h2>
+          <pre>${binerNilaiA} | ${binerNilaiB} = ${binerHasilBitOr}</pre>
+
+          <hr>
+
+          <h2>${nilaiA} ^ ${nilaiB} = ${hasilXor}</h2>
+          <pre>${binerNilaiA} | ${binerNilaiB} = ${binerHasilXor}</pre>
+
+          <hr>
+          
+          <h2>~${nilaiA} = ${hasilNot}</h2>
+          <pre>${binerNilaiA} = ${binerHasilNot}</pre>
+        `;
+
+        document.getElementById("hasilOutput").innerHTML = templateOutput;
+      }
+    </script>
+  </body>
+</html>

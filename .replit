@@ -4,3 +4,12 @@ modules = ["nodejs-20:v8-20230920-bd784b9", "web:v2-20230623-0b7a606"]
 [deployment]
 publicDir = "/"
 deploymentTarget = "static"
+
+[rules]
+
+[rules.formatter]
+
+[rules.formatter.fileExtensions]
+
+[rules.formatter.fileExtensions.".html"]
+id = "module:web:v7-20240209-9e3a339/languageServer:html"

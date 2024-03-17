@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>latihan Permission dengan bitwise</title>
+  </head>
+  <body>
+    <textarea readonly rows="5" cols="50" id="inputMessage">
+yuhuu ha el ad bb q g dst?</textarea
+    >
+    <br />
+    <button disabled id="postButton">Post!</button>
+    <button disabled id="editButton">Edit</button>
+    <button disabled id="draftButton">Draft</button>
+
+    <!-- declare access permission -->
+    <script>
+      const WRITE = 1;
+      const POST = 2;
+      const EDIT = 4; //
+      const DRAFT = 8;
+
+      var userPermission = 0;
+
+      // write and edit userPermission
+      userPermission = WRITE | EDIT;
+
+      // userPermission check
+      const isWrite = (userPermission & WRITE) === WRITE;
+      const isPost = (userPermission & POST) === POST;
+      const isEdit = (userPermission & EDIT) === EDIT;
+      const isDraft = (userPermission & DRAFT) === DRAFT;
+
+      // set button status
+      document.getElementById("postButton").disabled = !isPost;
+      document.getElementById("editButton").disabled = !isEdit;
+      document.getElementById("draftButton").disabled = !isDraft;
+      document.getElementById("inputMessage").readOnly = !isWrite;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Enkripsi</title>
+</head>
+
+<body>
+
+  <textarea id="inputMessage" rows="5" cols="50" placeholder="pesan untuk dienkrip">aaa</textarea>
+  <div>
+    <lable for="inputSecretKey">Kode rahasia</lable>
+    <input type="text" id="inputSecretKey" name="inputSecretKey" placeholder="kunci rahasia" value="12345" />
+    <button onclick="encryptDecrypt()">Enkrip/Dekrip</button>
+  </div>
+  <textarea id="hasilOutput" rows="5" cols="50" readonly></textarea>
+
+  <script>
+    function xorEncryptDecrypt(inputString, key) {
+      let output = [];
+      for (let i = 0; i < inputString.length; i++) {
+        // Mengubah karakter menjadi kode ASCII dan melakukan XOR dengan kunci
+        let charCode = inputString.charCodeAt(i) ^ key;
+        // Mengubah kembali kode ASCII yang telah di-XOR menjadi karakter
+        output.push(String.fromCharCode(charCode));
+      }
+      // Menggabungkan array karakter menjadi string dan mengembalikannya
+      return output.join("");
+    }
+
+    function encryptDecrypt() {
+      let inputMessage = document.getElementById("inputMessage").value;
+      let secretKey = Number(document.getElementById("inputSecretKey").value);
+      const hasil = xorEncryptDecrypt(inputMessage, secretKey);
+      
+      document.getElementById("hasilOutput").value = hasil;
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitwise</title>
+</head>
+<body>
+
+  <div id="app">
+    <input type="number" name="" id="nilaiA">
+    <input type="number" name="" id="nilaiB">
+    <br><br>
+    <button onclick="lakukanOperasiBitwise()">Operasi Bitwise</button><br><br>
+  </div>
+
+  <script>
+    function lakukanOperasiBitwise(){
+      let nilaiA = document.getElementById("nilaiA").value;
+      let nilaiB = document.getElementById("nilaiB").value;
+
+      let hasilBitwiseAnd = nilaiA & nilaiB;
+      let hasilBitwiseOr = nilaiA | nilaiB;
+      let hasilBitwiseXor = nilaiA ^ nilaiB;
+      let hasilBitwiseNotA = ~nilaiA;
+      let hasilBitwiseNotB = ~nilaiB;
+
+
+      document.write("<h2>Hasil Operasi Bitwise:</h2>");
+      document.write("<p>Nilai A: " + nilaiA + ", dan Nilai B: "+ nilaiB + "</p>");
+      document.write("<p>Bitwise AND (&): " + hasilBitwiseAnd + "</p>");
+      document.write("<p>Bitwise OR (|): " + hasilBitwiseOr + "</p>");
+      document.write("<p>Bitwise XOR (^): " + hasilBitwiseXor + "</p>");
+      document.write("<p>Bitwise NOT (~) A: " + hasilBitwiseNotA + "</p>");
+      document.write("<p>Bitwise NOT (~) B: " + hasilBitwiseNotB + "</p>");
+    }
+  </script>
+</body>
+</html>
