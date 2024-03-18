@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Switch Case</title>
+</head>
+<body>
+
+    <p>Pilih bahasa:</p>
+    <select name="language" id="languageOptions" onchange="changeLanguage()">
+        <option value="id">Indonesia</option>
+        <option value="us">Inggris (US)</option>
+        <option value="gb">Inggirs (UK)</option>
+        <option value="jp">Jepang</option>
+        <option value="cn">China</option>
+    </select>
+
+    <div>
+        <p id="outputSelectedLang"></p>
+        <img src="https://flagcdn.com/id.svg" alt="" id="langFlag" height="200" style="border:1px solid silver">
+    </div>
+
+    <script>
+        function changeLanguage(){
+            let selectedLang = document.getElementById('languageOptions').value;
+            var languageName;
+
+            switch(selectedLang){
+                case 'id':
+                    languageName = "Bahasa Indonesia";
+                    break;
+                case 'us':
+                    languageName = "English (United State)";
+                    break;
+                case 'gb':
+                    languageName = "English (United Kingdom)";
+                    break;
+                case 'jp':
+                    languageName = "Japanese";
+                    break;
+                case 'jp':
+                    languageName = "Chinese";
+                    break;
+                default:
+                    languageName = "Bahasa Indonesia";
+            }
+
+            // set flag URL based on lang code
+            const flagImageUrl = `https://flagcdn.com/${selectedLang}.svg`
+
+            document.getElementById('outputSelectedLang').textContent = languageName;
+            document.getElementById('langFlag').src = flagImageUrl;
+        }
+    </script>
+
+</body>
+</html>

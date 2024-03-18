@@ -43,4 +43,55 @@ if(user.role === isAdmin){
 console.log("login sebagai member");
 
 
+var statusPesanan = "BELUM_BAYAR";
+var color = "gray";
 
+switch (statusPesanan) {
+  case "BELUM_BAYAR":
+    color = "red";
+    break;
+  case "DIPROSES":
+    color = "yellow";
+    break;
+  case "PENGIRIMAN":
+    color = "blue";
+    break;
+  case "SAMPAI_TUJUAN":
+    color = "green";
+    break;
+  default:
+    color = "gray";
+}
+
+
+switch(true){
+  case suhu > 80:
+    console.log("Mendidih");
+    break;
+  case suhu > 60:
+    console.log("Enak buat ngopi");
+  case suhu > 30:
+    console.log("Hangat");
+  default:
+    console.log("Airnya dingin");
+}
+
+
+
+
+for(let hitungan = 0; hitungan < 10; hitungan++){
+  document.write(`<p>Perulangan ke-${hitungan}</p>`);
+}
+
+
+// tampilkan teks "Coding subuh" sebanyak 10x
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
+document.write("Coding Subuh");
