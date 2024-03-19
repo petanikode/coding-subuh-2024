@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hamzanee_checkout</title>
+</head>
+<body>
+  <label>Total Belanja</label>
+  <input type="number" id="totalBelanja"><br><br>
+
+  <fieldset>
+    <legend>Metode Pembayaran</legend>
+    <label>
+      <input type="radio"  name="metode" value="TFbank">Transfer Bank
+    </label>
+    <label>
+      <input type="radio"  name="metode" value=E-Wallet>E-Wallet
+    </label>
+    <label>
+      <input type="radio" name="metode" value="PayLater">Paylater(cashback:10%)
+    </label>
+    <label>
+      <input type="radio" name="metode" value="Outlet">Outlet(Alfamart, Indomart)
+    </label>
+  </fieldset>
+
+  <p>Kode: codingsubuh</p>
+
+  <a href="#" onclick="inputVoucher()">Punya Kode Voucher?</a><br><br>
+
+  <button onclick="proses()">Proses</button><hr>
+
+  <p id="Hasil">
+    
+  <script>
+    var voucher;
+    function inputVoucher(){
+      var kodeVoucher = prompt("Masukkan kode voucher");
+      if(kodeVoucher === "codingsubuh"){
+        alert("Kode Voucher Valid");
+        return voucher = true;
+      }
+      else{
+        alert("Kode Voucher Invalid");
+        return voucher = false;
+      }
+    }
+
+    function proses(){
+      var totalBelanja = Number(document.getElementById("totalBelanja").value);
+      var metode = document.querySelector('input[name="metode"]:checked').value;
+      var totalBayar = totalBelanja, diskon = 0, cashback = 0;
+      const maxCashback = 50000;
+      
+      if(metode == 'PayLater'){
+        if(totalBelanja * (10/100) > maxCashback){
+            cashback = maxCashback;
+        } else {
+            cashback = totalBelanja * 0.1;
+        }
+      }
+      
+      if(voucher == true){
+        diskon = totalBelanja * 0.5;
+        totalBayar = totalBelanja - diskon;
+      }
+
+      const textContent = `
+        <h1>Ringkasan Transaksi</h1>
+        <p>Total Belanja: ${totalBelanja}</p>
+        <p>Cashback: ${cashback}</p>
+        <p>Diskon: ${diskon}</p>
+        <p>Metode: ${metode}</p>
+        <p>Total Bayar: <b style='color:green'>${totalBayar}</b></p>
+      `
+      document.getElementById("Hasil").innerHTML = textContent;
+    }
+  
+  </script>
+</body>
+</html>

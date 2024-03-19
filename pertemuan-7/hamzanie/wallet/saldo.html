@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Operator Pengisian</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        var dompet = 0;
+
+        // TODO: gunakan operasi pengisian
+
+        function topUp(){
+            const isi = Number(prompt("Mau top up berapa?"));
+            
+            if (isi > 0) {
+              dompet += isi;
+              outputdompet.textContent = dompet.toLocaleString("ID", { style: "currency", currency: "IDR" });
+            } else{
+              alert("Invalid Number");
+            }
+        }
+
+        function withdraw(){
+            const tarik = Number(prompt("Mau tarik berapa?"));
+            if (tarik > 0 && tarik < dompet) {
+              dompet -= tarik;
+              outputdompet.textContent = dompet.toLocaleString("ID", { style: "currency", currency: "IDR" });
+            } else{
+              alert("Invalid Number");
+            }
+            
+        }
+    </script>
+</head>
+<body>
+
+    <p>Saldo Anda :</p>
+    <h1 id="outputdompet">0</h1>
+
+    <button onclick="topUp()">💰 Top up (+)</button>
+    <button onclick="withdraw()">💸 Withdraw (-)</button>
+
+</body>
+</html>  

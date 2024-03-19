@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Switch Case</title>
+  </head>
+  <body>
+    <h3>Pilih Bahasa Anda</h3>
+    <select name="" id="pilihBahasa" onchange="gantiBahasa()">
+      <option value="id">Indonesia</option>
+      <option value="sa">Arab</option>
+      <option value="us">Inggris (US)</option>
+      <option value="gb">Inggris (UK)</option>
+      <option value="au">Inggris (AU)</option>
+      <option value="jp">Jepang</option>
+      <option value="cn">Cina</option>
+    </select>
+
+    <div>
+      <p id="outputFlag"></p>
+      <img
+        id="flag"
+        src="https://flagcdn.com/id.svg"
+        width="200"
+        style="border: 1px solid silver"
+      />
+    </div>
+
+    <script>
+      function gantiBahasa() {
+        let bahasa = document.getElementById("pilihBahasa").value;
+        var namaBahasa = "";
+
+        switch (bahasa) {
+          case "id":
+            namaBahasa = "Indonesia";
+            break;
+          case "sa":
+            namaBahasa = "Arab";
+            break;
+          case "us":
+            namaBahasa = "Inggris (US)";
+            break;
+          case "gb":
+            namaBahasa = "Inggris (UK)";
+            break;
+          case "au":
+            namaBahasa = "Inggris (AU)";
+            break;
+          case "jp":
+            namaBahasa = "Jepang";
+            break;
+          case "cn":
+            namaBahasa = "Cina";
+            break;
+        }
+
+        document.getElementById("outputFlag").textContent = namaBahasa;
+        document.getElementById("flag").src =
+          `https://flagcdn.com/${bahasa}.svg`;
+      }
+    </script>
+  </body>
+</html>

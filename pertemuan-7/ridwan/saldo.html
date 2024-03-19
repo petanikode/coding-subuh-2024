@@ -12,17 +12,31 @@
 
     function topUp() {
       const jumlahTopUp = Number(prompt("Masukan jumlah topup:"));
-      // operasi pengisian
-      balance += jumlahTopUp;
-      outputBalance.textContent = balance.toLocaleString("ID", {
-        style: "currency", 
-        currency: "IDR"
-      });
-    }
+      if(jumlahTopUp === 0)
+        return;
+      if (jumlahTopUp > 0){
+
+         // operasi pengisian
+        balance += jumlahTopUp;
+          outputBalance.textContent = balance.toLocaleString("ID", {
+            style: "currency", 
+            currency: "IDR"
+          });
+        } else {
+        alert("Inputan salah")
+        }
+      }
+     
+     
 
     function withdraw() {
       const jumlahWithdraw = Number(prompt("Masukan jumlah yang mau ditarik:"));
 
+      if(jumlahWithdraw == 0){
+        return;
+      }
+      if(jumlahWithdraw < balance && jumlahWithdraw > 0){
+        
       // operasi pengisian
       balance -= jumlahWithdraw;
 
@@ -31,6 +45,9 @@
         style: "currency", 
         currency: "IDR"
       });
+      } else {
+        alert("Saldo tidak mencukupi")
+      }
     }
   </script>
 </head>

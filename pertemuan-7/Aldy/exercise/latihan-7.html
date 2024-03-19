@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Check-out</title>
+</head>
+<body>
+    <label>Total Belanja</label>
+    <input type="number" id="inputBelanja"/>
+    <fieldset>
+        <legend>Pilih metode pembayaran</legend>
+        <div>
+            <input type="radio" id="radio_transfer" name="payment_radio" value="transfer_bank" onclick="checkRadio()">
+            <label for="radio_transfer">Tranfer Bank</label>
+            <input type="radio" id="radio_ewallet" name="payment_radio" value="ewallet" onclick="checkRadio()">
+            <label for="radio_ewallet">E-Wallet</label>
+            <input type="radio" id="radio_paylater" name="payment_radio" value="paylater" onclick="checkRadio()">
+            <label for="radio_paylater">Paylater (cashback: 10%)</label>
+            <input type="radio" id="radio_outlet" name="payment_radio" value="outlet" onclick="checkRadio()">
+            <label for="radio_outlet">Outlet (Alfamart, Indomart)</label>
+        </div>
+    </fieldset>
+    
+    <p id="coupon_message" style="color: green;"></p>
+    <p id="add_coupon" onclick="add_coupon()" style="text-decoration: underline;color: blue;cursor: pointer;">Punya kode voucher?</p>
+    <button id="submitBtn" onclick="transaction()">Proses Transaksi</button>
+    <hr>
+    <div id="transaction_list" style="display: none;">
+        <h1>Ringkasan Transaksi</h1>
+        <p>Total Belanja : <span id="total_belanja"></span></p>
+        <p>Cashback : <span id="cashback"></span></p>
+        <p>Diskon : <span id="diskon"></span></p>
+        <p>Total Bayar : <span id="total_bayar" style="color: green;font-weight: bold;"></span></p>
+    </div>
+    <script>
+        var cashback = 0;
+        function checkRadio(){
+            if(document.getElementById("radio_transfer").checked){
+                console.log("radio transfer");
+            }else if(document.getElementById("radio_ewallet").checked){
+                console.log("e-wallet");
+            }else if(document.getElementById("radio_paylater").checked){
+                console.log("paylater");
+                cashback = 0.1;
+            }else if(document.getElementById("radio_outlet").checked){
+                console.log("outlet");
+            }
+        }
+
+        var diskon = 0;
+        function add_coupon(){
+            var coupon = prompt("Masukkan kode coupon Anda : ");
+            if(coupon != null){
+                if(coupon == "coding_subuh"){
+                    document.getElementById("coupon_message").innerText = coupon;
+                    document.getElementById("diskon").innerText = "30%";
+                    diskon = 0.3;
+                }else{
+                    alert("Coupon tidak ditemukan");
+                }
+            }else{
+                document.getElementById("coupon_message").innerText = "";
+            }
+        }
+
+        function transaction(){
+            var total_belanja = document.getElementById("inputBelanja").value;
+            if(total_belanja > 0){
+                document.getElementById("total_belanja").innerText = total_belanja.toLocaleString("ID");
+
+                if(diskon != null && !isNaN(diskon)){
+                    document.getElementById("diskon").innerText = diskon*100+"%";
+                    var temp_diskon = diskon * total_belanja;
+                }else{
+                    document.getElementById("diskon").innerText = " - ";   
+                }
+
+                if(cashback != null && !isNaN(cashback)){
+                    document.getElementById("cashback").innerText = cashback*100+"%";
+                    var temp_cashback = cashback * total_belanja;
+                }else{
+                    document.getElementById("cashback").innerText = " - ";   
+                }
+
+                var total_bayar = total_belanja - temp_diskon - temp_cashback;
+
+                document.getElementById("total_bayar").innerText = total_bayar.toLocaleString("ID");
+
+                document.getElementById("transaction_list").style.display = "block";
+            }else{
+                alert("Mohon untuk input total belanja Anda.")
+            }            
+        }
+
+    </script>
+</body>
+</html>

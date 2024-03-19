@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Checkout</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <label for="inputBelanja">Total Belanja</label>
+  <input id="inputBelanja" name="inputBelanja" type="number" />
+
+  <p>Pilih Metode Pembayaran:</p>
+  <div class="container">
+    <input type="radio" name="option" value="Transfer" id="option1" class="option" />
+    <label for="option1">Transfer Bank</label>
+
+    <input type="radio" name="option" value="E-Wallet" id="option2" class="option" />
+    <label for="option2">E-Wallet</label><br />
+
+    <input type="radio" name="option" value="Paylater" id="option3" class="option" />
+    <label for="option3">Paylater (Cashback 10%)</label><br />
+
+    <input type="radio" name="option" value="Outlet" id="option4" class="option" />
+    <label for="option4">Outlet (Alfamart, Indomaret)</label><br />
+  </div>
+
+  <a href="#" id="voucherLink">Punya Kode Voucher</a><br />
+  <button type="button" onclick="prosesBtn()" style="margin-top: 10px;">Proses Transaksi</button>
+  <div style="width: 20%; height: 2px; background-color: black; margin-top: 10px;"></div>
+
+  <div id="output"></div>
+
+  <script>
+    let kodeVoucher = null; 
+
+    document.getElementById("voucherLink").addEventListener("click", function (event) {
+      event.preventDefault();
+      kodeVoucher = prompt("Masukkan kode voucher:");
+      if (kodeVoucher === "codingsubuh") {
+        alert("Kode voucher valid! Anda mendapatkan diskon 30%.");
+      } else {
+        alert("Kode voucher tidak valid atau tidak diinput.");
+      }
+    });
+
+    function prosesBtn() {
+      const totalBelanja = parseFloat(document.getElementById("inputBelanja").value);
+      const radios = document.getElementsByName('option');
+      let selectedOption;
+
+      for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          selectedOption = radios[i].value;
+          break;
+        }
+      }
+
+      let potongan = 0;
+
+      switch (selectedOption) {
+        case "E-Wallet": 
+          potongan = totalBelanja * 0.05;
+          break;
+        case "Paylater": 
+          potongan = Math.min(totalBelanja * 0.1, 50000);
+          break;
+        case "Outlet": 
+          potongan = totalBelanja * 0.03;
+          break;
+        default:
+          break;
+      }
+
+      if (kodeVoucher === "codingsubuh") {
+        potongan += totalBelanja * 0.3; 
+      }
+
+      const totalSetelahPotongan = totalBelanja - potongan;
+
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = `
+        <p>Metode Pembayaran: ${selectedOption}</p>
+        <p>Total Belanja: ${totalBelanja}</p>
+        <p>Potongan: ${potongan}</p>
+        <p>Total Setelah Potongan: ${totalSetelahPotongan}</p>
+      `;
+    }
+  </script>
+</body>
+
+</html>

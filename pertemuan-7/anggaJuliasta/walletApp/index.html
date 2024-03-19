@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>control flow</title>
+  </head>
+  <body>
+    <h1>JS-Wallet</h1>
+    <label for="pinInput">Enter PIN:</label><br />
+    <input
+      type="number"
+      id="pinInput"
+      placeholder="inputkan PIN anda"
+    /><br /><br />
+    <button onclick="checkPin()">Submit</button>
+
+    <script>
+      const VALID_PIN = 123456;
+      function checkPin() {
+        const userPinInput = parseInt(
+          document.getElementById("pinInput").value,
+        );
+        console.log(userPinInput);
+        if (userPinInput === VALID_PIN) {
+          console.log("PIN benar");
+          window.location.href = "saldo.html";
+        } else {
+          console.log("PIN salah");
+          alert("PIN salah");
+        }
+      }
+    </script>
+  </body>
+</html>

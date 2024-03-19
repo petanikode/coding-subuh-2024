@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Switch</title>
+</head>
+<body>
+  <p>Pilih Bahasa</p>
+  <select id="langguageOption" onchange="changeLangguage()">
+    <option value="id">Indonesia</option> 
+    <option value="us">Inggris (US)</option> 
+    <option value="gb">Inggris (UK)</option>
+    <option value="ua">Inggris (AU)</option>  
+    <option value="jp">Japanese</option>
+    <option value="kr">Korean</option>
+    <option value="cn">Chinese</option>
+
+    <div>
+      <p id="outputSelectedLan"></p>
+      <img src="https://flagcdn.com./ua.svg" width="200" style="border:1px solid silver">
+    </div>
+
+    <script>
+      function changeLanguange(){
+        let selectedLang = document.getelementById('languangeOption').value;
+        var languangeName = "";
+
+        switch(selectedLang){
+          case "id":
+            languangeName = "Bahasa Indonesia";
+            break;
+          case "us":
+            languangeName = "English (United State)";
+            break;
+          case "gb":
+            languangeName = "English (United Kingdom)";
+            break;
+          case "au":
+            languangeName = "English (AU)";
+            break;
+          case "jp":
+            languangeName = "Japanes";
+            break;
+          case "kr":
+            languangeName = "Korean";
+            break;
+          case "cn":
+            languangeName = "Chinese";
+            break;
+          default:
+            languangeName = "Bahasa Indonesia";
+            
+        }
+        document.getelementById('outputSelectedLang').textContent = languangeName;
+        document.getelementById('')
+      }
+    </script>
+    
+  
+</body>
+</html>

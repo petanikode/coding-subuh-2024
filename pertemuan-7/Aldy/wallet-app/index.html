@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>JS-Pay</h1>
+  <p>Javascript Wallet</p>
+  <p id="message" style="color: red;"></p>
+  <input type="number" id="inputPIN" placeholder="Mohon untuk mengisi PIN Anda">
+</body>
+<button id="loginBtn" onclick="checkPIN()">Log-in</button>
+<script>
+  //if else direkomendasikan sampai 3 depth nest
+  const valid_pin = 123456;
+  function checkPIN() {
+    const pin = Number(document.getElementById("inputPIN").value)
+    if (pin === valid_pin) {
+      window.location = "./saldo.html";
+    } else {
+      document.getElementById("message").textContent = "PIN Salah";
+    }
+  }
+</script>
+</body>
+
+</html>

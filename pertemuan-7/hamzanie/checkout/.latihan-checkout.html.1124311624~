@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hamzanee_checkout</title>
+</head>
+<body>
+  <label>Total Belanja</label>
+  <input type="number" id="totalBelanja"><br><br>
+
+  <fieldset>
+    <legend>Metode Pembayaran</legend>
+    <label>
+      <input type="radio" name="metode" value="TFbank">Transfer Bank
+    </label>
+    <label>
+      <input type="radio" name="metode" value=E-Wallet">E-Wallet
+    </label>
+    <label>
+      <input type="radio"name="metode" value="PayLater">Paylater(cashback:10%)
+    </label>
+    <label>
+      <input type="radio"name="metode" value="Outlet">Outlet(Alfamart, Indomart)
+    </label>
+  </fieldset>
+
+  <p>Kode: codingsubuh</p>
+
+  <p onclick="inputVoucher()">Punya Kode Voucher?</p><br><br>
+
+  <button onclick="proses()">Proses</button><hr>
+
+  <p id="Hasil">
+    
+  <script>
+    const totalBelanja = Number(document.getElementById("totalBelanja").value);
+    const maxCashback = 50000;
+    const totalBayar = 0,diskon = 0,cashback = 0;
+    var metode = document.querySelector('input[name="metode"]:checked').value;
+    
+    function inputVoucher(){
+      const kodeVoucher = prompt("Masukkan kode voucher");
+      if(kodeVoucher === "codingsubuh"){
+        alert("Kode Voucher Valid");
+        return diskon = totalBelanja * 0.30;
+      }
+      else{
+        alert("Kode Voucher Invalid");
+        return false;
+      }
+    }
+
+    function proses(){
+      if(metode === "Paylater"){
+        cashback = totalBelanja * 0.10;
+      }
+
+      document.
+    }
+  </script>
+</body>
+</html>
