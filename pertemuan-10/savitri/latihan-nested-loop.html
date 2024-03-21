@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nested loop</title>
+
+  <style>
+    #outputSeat button {
+      height: 3em;
+      width: 3em;
+      margin: 0.2em;
+      border-radius: 0.5em;
+      background-color: #f78ca0;
+      background-image: linear-gradient(to right, #f78ca0, #f9748f);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #outputSeat button:hover {
+      background-color: #f9748f;
+      transform: scale(1.1);
+      cursor: pointer;
+      color: #ffd7ee;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .selected {
+      background-color: #ff7eb9;
+    }
+
+    h3 {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.5em;
+      text-align: center;
+      color: #333; 
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outputSeat"></div>
+
+  <h3>Kursi yang dipilih: <span id="outputSelectedSeat"></span></h3>
+  <h3>Total Harga: Rp.<span id="outputPrice"></span></h3>
+
+  <script>
+    const outputSeat = document.getElementById('outputSeat');
+    const columnNameChar = "_ABCDEFG";
+    let selectedSeats = [];
+
+    for (let kolom = 7; kolom >= 1; kolom--) {
+      for (let baris = 12; baris >= 1; baris--) {
+        let seatToHide = ((baris == 6 || baris == 5) && kolom != 1) || (baris == 1 && kolom > 4);
+        if (seatToHide) {
+          outputSeat.innerHTML += `<button class="hidden" disabled>X</button>`;
+        } else {
+          const columnName = columnNameChar.charAt(kolom);
+          outputSeat.innerHTML += `<button onclick="onSelectedSeat(event)">${columnName}${baris}</button>`;
+        }
+      }
+      outputSeat.innerHTML += "<br>";
+    }
+
+    function onSelectedSeat(event) {
+      let seatName = event.target.textContent;
+      event.target.classList.toggle("selected");
+
+      if (selectedSeats.includes(seatName)) {
+        selectedSeats = selectedSeats.filter((seat) => seat !== seatName);
+      } else {
+        selectedSeats.push(seatName);
+      }
+      outputSelectedSeat.textContent = selectedSeats.join(', ');
+      calculateTicketPrice();
+    }
+
+    function calculateTicketPrice() {
+      let ticketPrice = 50000;
+      outputPrice.textContent = selectedSeats.length * ticketPrice;
+    }
+
+  </script>
+</body>
+
+</html>

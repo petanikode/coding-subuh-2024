@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan While</title>
+</head>
+<body>
+  <script>
+    let counter = 5;
+
+    while (counter >= 1) {
+      document.write(`Perulangan ke - ${counter} <br>`);
+      counter -= 2;
+    }
+
+    let ulangi = confirm("Mau mengulang?");
+    let hitung = 0;
+
+    do {
+      hitung++;
+      ulangi = confirm("Ngulang Lagi???")
+    } while (ulangi);
+
+    document.write(`Total Ulang : ${hitung} `);
+  </script>
+</body>
+</html>

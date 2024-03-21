@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Nested Loop</title>
+
+  <style>
+    #outputSeat button {
+      width: 6em; 
+      height: 3em;
+      margin: 0.5em;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .selected {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1> Pilih Kursi Bioskop Pilihan anda</h1>
+
+  <div id="outputSeat"></div>
+
+  <div>
+    <button onclick="showSelectedSeats()">Pesan</button>
+  </div>
+
+  <div id="tampilkan"></div>
+
+  <script>
+    const outputSeat = document.getElementById("outputSeat");
+    const columnNameChar = "_ABCDEFG";
+    let selectedSeats = [];
+
+    function toggleSeat(button) {
+      const seat = button.innerHTML;
+      const index = selectedSeats.indexOf(seat);
+
+      if (index !== -1) {
+        
+        selectedSeats.splice(index, 1);
+        button.classList.remove("selected");
+      } else {
+        
+        selectedSeats.push(seat);
+        button.classList.add("selected");
+      }
+    }
+
+    function showSelectedSeats() {
+      if (selectedSeats.length === 0) {
+        alert("Anda belum memilih kursi!");
+        return;
+      }
+
+      const tampilkan = document.getElementById("tampilkan");
+      tampilkan.innerHTML = "<h2>Pilihan Anda:</h2>";
+
+      let totalHarga = selectedSeats.length * 35000; 
+      tampilkan.innerHTML += `<div>Total Harga: Rp ${totalHarga.toLocaleString()}</div>`;
+
+      selectedSeats.forEach(seat => {
+        tampilkan.innerHTML += `<div>Kursi: ${seat}</div>`;
+      });
+    }
+
+    
+    for (let kolom = 7; kolom >= 1; kolom--) {
+     
+      for (let baris = 12; baris >= 1; baris--) {
+        let seatToHide = ((baris == 6 || baris == 5) && kolom != 1) || (baris == 1 && kolom > 4);
+        if (seatToHide) {
+          
+          outputSeat.innerHTML += `<button disabled class="hidden">X</button>`;
+        } else {
+         
+          const columnName = columnNameChar.charAt(kolom);
+          outputSeat.innerHTML += `<button onclick="toggleSeat(this)">${columnName}${baris}</button>`;
+        }
+      }
+      outputSeat.innerHTML += "<br>";
+    }
+  </script>
+</body>
+
+</html>

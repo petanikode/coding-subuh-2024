@@ -8,56 +8,54 @@
 </head>
 <body>
   <p>Pilih Bahasa</p>
-  <select id="langguageOption" onchange="changeLangguage()">
+  <select id="languageOption" onchange="changeLanguage()">
     <option value="id">Indonesia</option> 
     <option value="us">Inggris (US)</option> 
     <option value="gb">Inggris (UK)</option>
-    <option value="ua">Inggris (AU)</option>  
+    <option value="au">Inggris (AU)</option>  
     <option value="jp">Japanese</option>
     <option value="kr">Korean</option>
     <option value="cn">Chinese</option>
+  </select>
 
-    <div>
-      <p id="outputSelectedLan"></p>
-      <img src="https://flagcdn.com./ua.svg" width="200" style="border:1px solid silver">
-    </div>
+  <div>
+    <p id="outputSelectedLang"></p>
+    <img id="gambarBendera" src="https://flagcdn.com/ua.svg" width="200" style="border:1px solid silver">
+  </div>
 
-    <script>
-      function changeLanguange(){
-        let selectedLang = document.getelementById('languangeOption').value;
-        var languangeName = "";
+  <script>
+    function changeLanguage(){
+      let selectedLang = document.getElementById('languageOption').value;
+      var languageName = "";
 
-        switch(selectedLang){
-          case "id":
-            languangeName = "Bahasa Indonesia";
-            break;
-          case "us":
-            languangeName = "English (United State)";
-            break;
-          case "gb":
-            languangeName = "English (United Kingdom)";
-            break;
-          case "au":
-            languangeName = "English (AU)";
-            break;
-          case "jp":
-            languangeName = "Japanes";
-            break;
-          case "kr":
-            languangeName = "Korean";
-            break;
-          case "cn":
-            languangeName = "Chinese";
-            break;
-          default:
-            languangeName = "Bahasa Indonesia";
-            
-        }
-        document.getelementById('outputSelectedLang').textContent = languangeName;
-        document.getelementById('')
+      switch(selectedLang){
+        case "id":
+          languageName = "Bahasa Indonesia";
+          break;
+        case "us":
+          languageName = "English (United States)";
+          break;
+        case "gb":
+          languageName = "English (United Kingdom)";
+          break;
+        case "au":
+          languageName = "English (Australia)";
+          break;
+        case "jp":
+          languageName = "Japanese";
+          break;
+        case "kr":
+          languageName = "Korean";
+          break;
+        case "cn":
+          languageName = "Chinese";
+          break;
+        default:
+          languageName = "Bahasa Indonesia";
       }
-    </script>
-    
-  
+      document.getElementById('outputSelectedLang').textContent = languageName;
+      document.getElementById('gambarBendera').src = `https://flagcdn.com/${selectedLang}.svg`;
+    }
+  </script>
 </body>
 </html>

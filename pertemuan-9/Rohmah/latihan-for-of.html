@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>latihan-for-of</title>
+</head>
+
+<body>
+
+  <script>
+    var playlist = [
+      "How You Like That - Blackpink",
+      "Shut Down - Blackpink",
+      "As If It's Your Last - Blackpink",
+      "Pink Venom - Blackpink",
+      "Kill This Love - Blackpink",
+      "Typa Girl - Blackpink",
+    ];;
+
+    var album = {
+      title: "Born Pink",
+      artist: "Blackpink",
+      releasedate: "September 16, 2022",
+      genre: "Pop",
+      cover: "https://media.suara.com/pictures/653x366/2022/09/16/20226-blackpink.jpg"
+    };
+  </script>
+
+  <h1>Playlist:</h1>
+  <ol id="outputPlaylist"></ol>
+
+  <h2>Related Album</h2>
+  <div id="outputAlbum"></div>
+
+
+  <script>
+    const outputPlaylist = document.getElementById('outputPlaylist');
+    const outputAlbum = document.getElementById('outputAlbum');
+
+    for (music of playlist) {
+      outputPlaylist.innerHTML += `<li>${music}</li>`;
+    }
+
+    for (key in album) {
+      if (key === "cover") {
+        outputAlbum.innerHTML += `<img src="${album[key]}" />`
+      } else {
+        outputAlbum.innerHTML += `${key}: ${album[key]} <br>`;
+      }
+    }
+  </script>
+</body>
+
+</html>

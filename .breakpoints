@@ -19,9 +19,23 @@
     "pertemuan-8/ridwan/latihanSwitch.html": [
       {
         "id": "cb1cde67-9d33-403b-8d1a-c96b5ee965a7",
-        "line": 3,
-        "version": 1069,
-        "index": 33
+        "line": 1,
+        "version": 1180,
+        "index": 0
+      }
+    ],
+    "pertemuan-9/ridwan/challenge.html": [
+      {
+        "id": "4fe7cbb2-c4ed-47fe-84ea-958eb7d540f0",
+        "line": 34,
+        "version": 304,
+        "index": 759
+      },
+      {
+        "id": "35e9d262-e3e1-41c7-b57d-b93638aaa816",
+        "line": 41,
+        "version": 304,
+        "index": 1006
       }
     ]
   }
