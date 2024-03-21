@@ -1,5 +1,13 @@
 {
   "files": {
+    "pertemuan-10/ridwan/latihanWhile.html": [
+      {
+        "id": "28fff26c-2195-44ee-8098-11f16ac0e14e",
+        "line": 6,
+        "version": 20,
+        "index": 121
+      }
+    ],
     "pertemuan-6/_dian/latihan-permission.html": [
       {
         "id": "a348d565-30dc-4ece-8608-4011aba64841",
@@ -27,15 +35,15 @@
     "pertemuan-9/ridwan/challenge.html": [
       {
         "id": "4fe7cbb2-c4ed-47fe-84ea-958eb7d540f0",
-        "line": 34,
-        "version": 304,
-        "index": 759
+        "line": 1,
+        "version": 1554,
+        "index": 0
       },
       {
         "id": "35e9d262-e3e1-41c7-b57d-b93638aaa816",
-        "line": 41,
-        "version": 304,
-        "index": 1006
+        "line": 1,
+        "version": 1554,
+        "index": 0
       }
     ]
   }

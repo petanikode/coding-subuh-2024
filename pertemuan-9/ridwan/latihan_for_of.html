@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan For Of dan For In</title>
+  <script>
+    //Membuat array playlist
+
+    var playlist = [
+      "Ed Sheeran - Shape of You",
+      "Adele - Someone Like You",
+      "Queen - Bohemian Rhapsody",
+      "Bruno Mars - Uptown Funk"
+    ];
+
+    //membuat objek album
+    var album = {
+      title: "Shape of You",
+      artist: "Ed Sheeran",
+      releasedate: "6 Januari 2017",
+      genre: "Pop",
+      cover: "https://m.media-amazon.com/images/M/MV5BNWU3N2ZkODAtMTQ0MS00ODA3LWE4MWQtOWJiNjllZWU1NzdhXkEyXkFqcGdeQXVyNDQ5MDYzMTk@._V1_.jpg"
+    };
+    
+  </script>
+</head>
+<body>
+
+  <h1>Playlist:</h1>
+  <ol id="outputPlaylist"></ol>
+
+  <h2>Related Album</h2>
+  <div id="outputAlbum"></div>
+
+  <script>
+     const outputPlaylist = document.getElementById('outputPlaylist');
+      const outputAlbum = document.getElementById('outputAlbum');
+
+    for (music of playlist){
+      outputPlaylist.innerHTML += `<li>${music}</li>`;
+    }
+
+    for (key in album){
+      if(key === "cover"){
+        outputAlbum.innerHTML += `<img src="${album[key]}"/>`;
+      } else {
+        outputAlbum.innerHTML += `${key}: ${album[key]} <br>`;
+      }
+    }
+  </script>
+
+  
+</body>
+</html>

@@ -15,8 +15,8 @@
     // perulangan 1-10
     function perulangan1Ke10(){
       for(let hitung = 1; hitung < 10; hitung++){
+         document.write(`<p>perulangan ke-${hitung}</p>`);
       }
-      document.write(`<p>perulangan ke-${hitung}</p>`);
     }
     function perulangan10Ke1(){
       for(let Hitung = 10; Hitung > 1; Hitung--){
@@ -29,13 +29,33 @@
       }
     }
     function ganjilGenap(){
-      for(let itung = 1; hitungs <= 10; itung ++){
+      for(let itung = 1; itung <= 10; itung ++){
         if(itung % 2 === 0){
-          document.write(`<b>perulangan ke-${itung} style=""`);
-          
+          document.write(`<b style="color:green">Perulangan ke-${itung}<br>`);
+        } else {
+          document.write(`<b style="color:blue">Perulangan ke-${itung}<br>`);
         }
-        document.write(`<p>perulangan ke${itung}</p>`);
       }
+    }
+
+    document.write("<hr>");
+    document.write("<h3>Perulangan dari 1 sampai 10 (break di 5)</h3>");
+    for (let hitungan = 1; hitungan <= 10; hitungan++) {
+      document.write(`Perulangan ke-${hitungan}<br>`);
+
+      if (hitungan === 5) {
+        break;
+      }
+    }
+    
+
+    document.write("<hr>");
+    document.write("<h3>Perulangan 1 sampai 10 (Countinue di 5)</h3>");
+    for(let hitungan = 1 ; hitungan <= 10; hitungan++){
+      if(hitungan === 5){
+        continue;
+      }
+      document.write(`Perulangan ke-${hitungan}<br>`);
     }
     
    
