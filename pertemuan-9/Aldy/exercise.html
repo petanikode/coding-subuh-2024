@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exercise</title>
+</head>
+<body>
+<h1>Tiket Bioskop</h1>
+
+<div id="seating_wrapper">
+
+</div>
+<hr>
+<br>
+
+<button id="resetBtn" onclick="reset()">Reset</button>
+<button id="bookBtn" onclick="book_seat()">Book</button>
+
+<style type="text/css">
+  .seat_button{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 10px;
+    background: green;
+    color: white;
+    cursor: pointer;
+  }
+
+  .seat_button:hover{
+    background:white;
+    color: green;
+  }
+
+  .button_hidden{
+    visibility: hidden;
+  }
+</style>
+
+<script>
+  var wrapper = document.getElementById("seating_wrapper");
+	var seats = ["G","F","E","D","C","B","A"];
+  var book = [];
+  var book_for_reset = [];
+
+  
+
+  for(const seat of seats){
+  	for(let number = 12;number>=1;number--){
+      if(number == 6 || number == 5){
+        // ['G', 'F', 'E', 'D', 'C', 'B'].includes(seat)
+        if(seat == "G" || seat == "F" || seat == "E" || seat == "D" || seat == "C" || seat == "B"){
+          wrapper.innerHTML += `<button class="seat_button button_hidden" id="${seat}${number}">${seat}${number}</button>`;
+        }else{
+          wrapper.innerHTML += `<button class="seat_button" id="${seat}${number}" onclick="select_seat(this.id)">${seat}${number}</button>`;
+        }
+      }else if(number == 1){
+        if(seat == "G"){
+          wrapper.innerHTML += `<button class="seat_button button_hidden" id="${seat}${number}">${seat}${number}</button>`;
+        }else{
+          wrapper.innerHTML += `<button class="seat_button" id="${seat}${number}" onclick="select_seat(this.id)">${seat}${number}</button>`;
+        }
+      }else{
+        wrapper.innerHTML += `<button class="seat_button" id="${seat}${number}" onclick="select_seat(this.id)">${seat}${number}</button>`;
+      }
+    }
+    wrapper.innerHTML += `<br>`;
+  }
+
+  function reset(){
+    for(ticket of book_for_reset){
+      document.getElementById(ticket).style.backgroundColor = "green";
+    }
+    book = [];
+    book_for_reset = [];
+  }
+
+  function book_seat(){
+    if(book.length === 0){
+      alert("Mohon untuk memilih kursi terlebih dahulu");
+    }else{
+      for(ticket of book){
+        document.getElementById(ticket).style.backgroundColor = "red";
+      }
+      let temp_book = book.toString();
+      alert(`Kursi sudah berhasil dibooking : ${temp_book}`);
+      book = [];
+    }
+  }
+
+  function select_seat(id){
+    let check_seat = document.getElementById(id).style.backgroundColor;
+    if(check_seat !== "red"){
+      if(book.includes(id)){
+        document.getElementById(id).style.backgroundColor = "green";
+        var check = book.indexOf(id);
+        if (check !== -1) {
+          book.splice(check, 1);
+        }
+      }else{
+        document.getElementById(id).style.backgroundColor = "orange";
+        book.push(id);
+        book_for_reset.push(id); // push data untuk reset secara keseluruhan
+      }
+      console.log(book);
+    }else{
+      book = [];
+      alert("Kursi ini sudah dibeli. Mohon untuk pilih kursi yang lain");
+    }
+  }
+
+</script>
+
+</body>
+</html>

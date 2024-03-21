@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Checkout</title>
+  </head>
+  <body>
+    <label>Total Belanja:</label>
+    <input type="number" step="10000" id="inputBelanja" />
+
+    <br />
+    <br />
+    <form action="">
+      <fieldset>
+        <legend>Pilih Metode Pembayaran *</legend>
+        <input type="radio" id="tf" name="method_pay" value="0" />Transfer bank
+        <input type="radio" id="e_wall" name="method_pay" />e-wallet
+        <input
+          type="radio"
+          id="pilihCashback"
+          name="method_pay"
+        />Paylater(cashback:10%)
+        <input type="radio" id="outlet" name="method_pay" />Outlet(Alfamart,
+        Indomart)
+      </fieldset>
+    </form>
+    <p id="namaVoucher"></p>
+    <button onclick="voucher()">Punya Kode Voucher</button>
+    <br /><br />
+    <button onclick="prosesBayar()">Proses Transaksi</button>
+
+    <hr />
+    <h1>Ringkasan Transaksi</h1>
+    <p>Total Belanja : <span id="outputTotalBelanja"></span></p>
+    <p>Cashback : <span id="outputCashback"></span></p>
+
+    <script>
+      const VALID_VOUCHER = "codingsubuh";
+
+      function voucher() {
+        const userInputVoucher = prompt("masukkan kode voucher");
+        if (userInputVoucher === "codingsubuh") {
+          document.getElementById("namaVoucher").innerHTML = "codingsubuh";
+        }
+      }
+
+      function prosesBayar() {
+        var 
+      }
+
+
+
+
+
+      // function prosesBayar() {
+      //   if (
+      //     document.getElementById("tf").checked
+      //   ) {
+      //     let inBelanja = Number(document.getElementById("inputBelanja").value);
+      //     outputTotalBelanja.textContent = inBelanja.toLocaleString("ID", {
+      //       style: "currency",
+      //       currency: "IDR",
+      //     });
+      //     outputCashback.textContent = Number(document.getElementById("tf").value);
+      //     // document.getElementById("outputCashback").innerHTML=document.getElementById("tf").value;}
+      
+    </script>
+  </body>
+</html>

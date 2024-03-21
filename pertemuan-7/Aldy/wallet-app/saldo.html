@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 4 - Operator</title>
+</head>
+<body>
+    <h1>Saldo Anda : <span id="outputSaldo"></span></h1>
+    <div>
+        <button id="topup" onclick="topup()">💰 Top-up</button>
+        <button id="withdraw" onclick="withdraw()">💸 withdraw</button>
+    </div>
+    <script>
+        var saldo = 0;
+        outputSaldo.innerText = saldo.toLocaleString("ID",{style:"currency",currency:"IDR"});
+
+        function topup(){
+            let temp_saldo = prompt("Berapa yang ingin di top-up?");
+            if(temp_saldo != null){
+              saldo = parseInt(saldo) + parseInt(temp_saldo);
+              outputSaldo.innerText = saldo.toLocaleString("ID",{style:"currency",currency:"IDR"});
+            }else if(temp_saldo < 0){
+              alert("Saldo menjadi negatif");
+              saldo = 0;
+            }else if(isNaN(temp_saldo)){
+              alert("Mohon untuk mengisi dengan angka");
+            }else{
+              saldo = 0;
+            }
+        }
+
+        function withdraw(){
+            let temp_saldo = prompt("Berapa yang ingin ditarik?");
+            saldo = parseInt(saldo) - parseInt(temp_saldo);
+            if(temp_saldo > 0){
+              saldo = parseInt(saldo) - parseInt(temp_saldo);
+              outputSaldo.innerText = saldo.toLocaleString("ID",{style:"currency",currency:"IDR"});
+            }
+            else if(temp_saldo < 0){
+              alert("Tidak bisa negatif");
+            }else{
+              alert("Saldo tidak cukup");
+            }
+        }
+    </script>
+</body>
+</html>

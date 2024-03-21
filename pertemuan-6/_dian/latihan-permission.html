@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Izin Akses dengan Operator Bitwise</title>
+  </head>
+  <body>
+
+    <textarea readonly rows="5" cols="30" id="inputMessage" onkeyup="countTextLength()">Tulis idemu</textarea>
+    <br>
+    <button disabled id="postButton">Post an Idea</button>
+    <button disabled id="editButton">Edit</button>
+    <button disabled id="deleteButton">Delete</button>
+
+    <span id="textCounter"></span>
+
+
+    <script>
+      // definisikan hak akses dengan konstanta
+      const WRITE = 1;  // 0001
+      const EDIT = 2;   // 0010
+      const POST = 4;   // 0100
+      const DELETE = 8; // 1000
+
+      // set default izin user ke 0 (belum kasi izin apapun)
+      var izinUser = 0; // 0000
+
+      // tambahkan izin untuk menulis dan mengedit
+      izinUser = WRITE | EDIT | DELETE; // 0011
+
+      // cek izin akses
+      const bolehNulis = (izinUser & WRITE) === WRITE;
+      const bolehPosting = (izinUser & POST) === POST;
+      const bolehEdit = (izinUser & EDIT) === EDIT;
+      const bolehHapus = (izinUser & DELETE) === DELETE;
+
+      // apply izin
+      document.getElementById("inputMessage").readOnly = !bolehNulis;
+      document.getElementById("postButton").disabled = !bolehPosting;
+      document.getElementById("editButton").disabled = !bolehEdit;
+      document.getElementById("deleteButton").disabled = !bolehHapus;
+
+      function countTextLength() {
+        let textLength = document.getElementById("inputMessage").value.length;
+        document.getElementById("textCounter").textContent = textLength;
+      }
+      
+    </script>
+  </body>
+</html>

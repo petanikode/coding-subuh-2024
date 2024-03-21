@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan for..of dan for..in</title>
+
+  <script>
+    // membuat array playlist
+    var playlist = [
+      "Imagine Dragons - Radioactive",
+      "Imagine Dragons - Believer",
+      "Alan Walker - Faded",
+      "Ed Sheeran - Bad Habits",
+      "Coldplay - Paradise"
+    ];
+
+    // membuat object album
+    var album = {
+      title: "Radioactive",
+      artist: "Imagine Dragons",
+      releaseDate: "2012.10.29",
+      genre: "Pop",
+      cover: "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Imagine_Dragons_Thunder.jpg/220px-Imagine_Dragons_Thunder.jpg"
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <h1>Playlist:</h1>
+  <ol id="outputPlaylist"></ol>
+
+  <h2>Related Album</h2>
+  <div id="outputAlbum"></div>
+
+
+  <script>
+    const outputPlaylist = document.getElementById('outputPlaylist');
+    const outputAlbum = document.getElementById('outputAlbum');
+
+    for (music of playlist) {
+      outputPlaylist.innerHTML += `<li>${music}</li>`;
+    }
+
+    for (key in album) {
+      if (key === "cover") {
+        outputAlbum.innerHTML += `<img src="${album[key]}" />`
+      } else {
+        outputAlbum.innerHTML += `${key}: ${album[key]} <br>`;
+      }
+    }
+  </script>
+</body>
+
+</html>

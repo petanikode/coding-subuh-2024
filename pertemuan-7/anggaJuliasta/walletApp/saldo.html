@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Operator Pengisian</title>
+
+    <script>
+      var balance = 0;
+
+      function topUp() {
+          const jumlahTopUp = Number(prompt("Enter top-up amount:"));
+          if (jumlahTopUp === null || jumlahTopUp === "") {
+            alert("Top-up cancelled.");
+            return;
+          }
+        
+          if (!isNaN(jumlahTopUp) && jumlahTopUp > 0) {
+            balance += jumlahTopUp;
+            outputBalance.textContent = "Balance: Rp. " + balance;
+          } else {
+            alert("Please enter a valid top-up amount.");
+          }
+        }
+
+        function withdraw() {
+          const jumlahWithdraw = Number(prompt("Enter withdrawal amount:"));
+          if (!isNaN(jumlahWithdraw) && jumlahWithdraw > 0) {
+            if (balance >= jumlahWithdraw) {
+              balance -= jumlahWithdraw;
+              outputBalance.textContent = "Balance: Rp. " + balance;
+            } else {
+              alert("Insufficient balance. Cannot withdraw.");
+            }
+          } else {
+            alert("Please enter a valid withdrawal amount.");
+          }
+        }
+      </script>
+    </script>
+  </head>
+
+  <body>
+    <p>Saldo:</p>
+    <h1 id="outputBalance">Rp. 0</h1>
+
+    <button onclick="topUp()">💰 Top up (+)</button>
+    <button onclick="withdraw()">💸 Withdraw (-)</button>
+  </body>
+</html>

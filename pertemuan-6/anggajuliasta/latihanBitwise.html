@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Bitwise</title>
+  </head>
+  <body>
+    <h1>Latihan Bitwise</h1>
+    <div>
+      <label>Input Nilai A</label>
+      <input type="number" id="inputA" />
+      <br />
+      <label>Input Nilai B</label>
+      <input type="number" id="inputB" />
+    </div>
+    <button onclick="calculateBit()">Hitung!</button>
+    <div id="resultContainer">
+      <p id="and"></p>
+      <p id="or"></p>
+      <p id="xor"></p>
+      <p id="not"></p>
+      <p id="left"></p>
+      <p id="right"></p>
+    </div>
+    <script>
+      function calculateBit() {
+        let nilaiA = parseInt(document.getElementById("inputA").value);
+        let nilaiB = parseInt(document.getElementById("inputB").value);
+
+        document.getElementById("and").textContent =
+          "Hasil AND: " + (nilaiA & nilaiB);
+        document.getElementById("or").textContent =
+          "Hasil OR: " + (nilaiA | nilaiB);
+        document.getElementById("xor").textContent =
+          "Hasil XOR: " + (nilaiA ^ nilaiB);
+        document.getElementById("not").textContent =
+          "Hasil NOT Nilai A: " + ~nilaiA;
+        document.getElementById("left").textContent =
+          "Hasil Left Shift Nilai A: " + (nilaiA << nilaiB);
+        document.getElementById("right").textContent =
+          "Hasil Right Shift Nilai A: " + (nilaiA >> nilaiB);
+      }
+
+      function decimalToBinary(number) {
+        return number.toString(2);
+      }
+    </script>
+  </body>
+</html>

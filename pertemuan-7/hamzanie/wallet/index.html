@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>latihan_wallet</title>
+</head>
+<body>
+  <h1>JS-Pay</h1>
+  <p>Javascript Dompet</p>
+
+  <!-- Input elemen -->
+  <input type="number" id="inputPin" placeholder="Masukkan Pin">
+  <button onclick="cekPin()">Buka Dompet</button>
+
+  <!-- pesan elemen -->
+  <p id="pesan"></p>
+
+  <!-- kode js -->
+  <script>
+    // deklarasi variabel pin
+    const pin = 123456;
+
+    function cekPin() {
+      //ambil input pin
+      const inputPin = Number(document.getElementById("inputPin").value);
+      //if kondisi terpenuhi
+      // if (inputPin === pin) {
+      //   //maka
+      //   console.log("Berhasil Masuk");
+      //   window.location = "saldo.html";
+      // }
+      // //dan jika salah
+      // else{
+      //   //maka
+      //   document.getElementById("pesan").innerHTML = "Pin Salah";
+      // }
+      // jika pin salah
+      if (inputPin !== pin) {
+        document.getElementById("pesan").innerHTML = "Pin Salah";
+        return;
+      }
+
+      console.log("Berhasil Masuk");
+      window.location = "./saldo.html";
+      
+    }
+  </script>
+</body>
+</html>

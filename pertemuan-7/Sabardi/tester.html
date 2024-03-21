@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS-Pay-wallet</title>
+</head>
+<body>
+  <h1>Js-Pay APP</h1>
+  <p>Javascript wallet app</p>
+  <!-- Elemen buat input -->
+  <input type="number" id="inputPin" placeholder="masukan PIN anda">
+  <button onclick="checkPin()">Buka Wallet</button>
+  <!-- Elemen buat nampilin pesan kalau gagal login -->
+  <p id="idMessage"></p>
+
+  <script>
+    let validPin = 12345;
+    function checkPin(){
+      const userInputPin = Number(document.getElementById('inputPin').value);
+      
+      // cek apakah PIN benar atau salah,
+      // - Kalau benar, buka halaman saldo
+      // - Kalau salah, tampilkan pesan gagal login
+
+      if(userInputPin === validPin){
+        // consol.log("login Berhasil");
+        window.location = "./saldo.html";
+      }else{
+        const invalidMessage = "PIN yang anda masukan salah, silahkan coba lagi!";
+        document.getElementById('idMessage').textContent = invalidMessage;
+      }
+    }
+  </script>
+</body>
+</html>

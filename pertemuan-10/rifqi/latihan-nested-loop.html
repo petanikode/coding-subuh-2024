@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Nested Loop</title>
+  
+</head>
+<body>
+
+  <div id="outputSeat"></div>
+  <h3>Kursi yang dipilih: <span id="outputSelectedSeat"></span></h3>
+  <h3>Total Harga: <span id="outputPrice"></span></h3>
+
+<script>
+  const outputSeat = document.getElementById("outputSeat");
+  const outputSelectedSeat = document.getElementById("outputSelectedSeat");
+  document.getElementById("outputPrice");
+  const coumnNameChar = "_ABCDEFG";
+  var selectedSeats = [];
+
+  // pengulangan kolom kursi
+  for (let kolom = 7; kolom >= 1; kolom--) {
+
+    // pengulangan baris kursi
+    for (let baris = 12; baris >= 1; baris--) {
+      let seatToHide = ((baris == 6 || baris == 5) && kolom != 1) || (baris == 1 && kolom > 4);
+      if (seatToHide) {
+        // sembunyikan kursi
+        outputSeat.innerHTML += `<button disabled class="hidden">X</button>`;
+      } else {
+        // tampilkan kursi
+        const columnName = columnNameChar.charAt(kolom);
+        outputSeat.innerHTML += `<button onclick="onSelectedSeat(event)">${columnName}${baris}</button>`;
+      }
+
+    }
+
+    outputSeat.innerHTML += "<br>";
+  }
+</script>
+</body>
+</html>

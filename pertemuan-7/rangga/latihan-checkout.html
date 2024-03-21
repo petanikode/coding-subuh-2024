@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Checkout</title>
+</head>
+
+<body>
+  <div>
+    <label>Total Belanja</label>
+    <input type="number" id="inputBelanja" placeholder="nominal belanja" required>
+  </div><br><br>
+
+  <div>
+    <fieldset>
+      <legend>Pilih Metode Pembayaran*</legend>
+      <div>
+        <input type="radio" id="transferBank" name="transferBank" value="transferBank" />
+        <label>Transfer Bank</label>
+
+        <input type="radio" id="Ewallet" name="Ewallet" value="Ewallet" />
+        <label>E-Wallet</label>
+
+        <input type="radio" id="payLater" name="payLater" value="payLater" />
+        <label>Paylater(cashback:10%)</label>
+
+        <input type="radio" id="outlet" name="outlet" value="outlet" />
+        <label>Outlet(Alfamart, Indomart)</label>
+      </div>
+    </fieldset>
+  </div>
+  <p>codingsubuh</p>
+  <a href="#" prompt('masukkan kode voucher')>Punya Kode Voucher</a>
+
+  <p>
+    <button>Proses Transaksi</button>
+  </p>
+  <hr>
+</body>
+<script>
+  const inputBelanja = document.getElementById("inputBelanja");
+  const transferBank = document.getElementById("transferBank");
+  const Ewallet = document.getElementById("Ewallet");
+  const payLater = document.getElementById("payLater");
+  const outlet = document.getElementById("outlet");
+
+</script>
+
+</html>

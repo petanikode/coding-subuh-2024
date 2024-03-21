@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Permission</title>
+  </head>
+  <body>
+    <textarea readonly rows="5" cols="30" id="inputMessage">
+Tulis idemu</textarea
+    >
+    <br />
+    <button disabled id="postButton">Post an Idea</button>
+    <button disabled id="editButton">Edit</button>
+    <button disabled id="deleteButton">Delete</button>
+
+    <script>
+      const WRITE = 1; // 0001
+      const EDIT = 2; // 0010
+      const POST = 4; // 0100
+      const DELETE = 8; // 1000
+
+      var izinUser = 0; // 0000
+
+      izinUser = WRITE | EDIT | DELETE | POST; // 0011
+
+      const accessNulis = (izinUser & WRITE) === WRITE;
+      const accessPosting = (izinUser & POST) === POST;
+      const accessEdit = (izinUser & EDIT) === EDIT;
+      const accessHapus = (izinUser & DELETE) === DELETE;
+
+      document.getElementById("inputMessage").readOnly = !accessNulis;
+      document.getElementById("postButton").disabled = !accessPosting;
+      document.getElementById("editButton").disabled = !accessEdit;
+      document.getElementById("deleteButton").disabled = !accessHapus;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 9 : Coding Subuh 2024</title>
+  <script>
+    // Perulangan 1 sampai 10
+    document.write("<h1>Perulangan 1 sampai 10</h1>");
+
+    for (let i = 1; i <= 10; i++) {
+      document.write(`<p>Perulangan ke-${i}</p>`);
+    }
+
+    // Perulangan 10 sampai 1
+    document.write("<h1>Perulangan 10 sampai 1</h1>");
+
+    for (let i = 10; i >= 1; i--) {
+      document.write(`<p>Perulangan ke-${i}</p>`);
+    }
+
+    // Perulangan genap
+    document.write("<h1>Perulangan Genap</h1>");
+
+    for (let i = 1; i <= 10; i += 2) {
+      document.write(`<p>Perulangan ke-${i}</p>`);
+    }
+
+    // Perulangan Ganjil dan Genap
+    document.write("<h1>Perulangan Ganjil dan Genap</h1>");
+    for (let i = 0; i <= 10; i++) {
+      if (i % 2 == 0) {
+        document.write(`<p style="color:blue;">${i} adalah bilangan genap</p>`);
+      } else {
+        document.write(`<p style="color:green;">${i} adalah bilangan ganjil</p>`);
+      }
+    }
+
+    // Perulangan 1 sampai 10 (break di 5)
+    document.write("<h1>Perulangan 1 sampai 10 (break di 5)</h1>");
+    for (let i = 1; i <= 10; i++) {
+      if (i == 5) {
+        break;
+      } else {
+        document.write(`<p>Perulangan ke-${i}</p>`);
+      }
+    }
+
+    // Perulangan 1 sampai 10 (continue)
+    document.write("<h1>Perulangan 1 sampai 10 (continue)</h1>");
+    for (let i = 1; i <= 10; i++) {
+      if (i % 2 == 0) {
+        continue;
+      } else {
+        document.write(`<p>Perulangan ke-${i}</p>`);
+      }
+    }
+
+    // Perulangan for...of
+    document.write("<h1>Perulangan for of</h1>");
+    var warna = ['Merah', 'Biru', 'Kuning', 'Hijau', 'Jingga'];
+    for (let i in warna) {
+      document.write(`<p>Ini adalah warna ${warna[i]}</p>`);
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

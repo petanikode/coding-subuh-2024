@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Izin Akses dengan Operator Bitwise</title>
+</head>
+<body>
+    <textarea readonly rows="5" cols="50" id="inputMessage"> Tulis Idemu</textarea>
+    <br>
+    <button disabled id="postButton">Post an Idea</button> 
+    <button disabled id="editButton">Edit</button> 
+    <button disabled id="deleteButton">Delete</button> 
+
+    <script>
+      //definisikan hak akses dengan konstanta
+      const WRITE =1; //001
+      const EDIT =2; //010
+      const POST =4; //0100
+      const DELETE =8; //1000
+
+      //set default izin user ke 0 (belum kasih izin apapun)
+      var izinUser = 0; //0000
+
+      //Tambahkan  Izin untuk Menulis dan Mengedit
+      izinUser |= WRITE | EDIT | POST | DELETE; //0011
+
+      //cek izin akses
+      const bolehNulis = (izinUser & WRITE) === WRITE;
+      const bolehPosting = (izinUser & POST) === POST;
+      const bolehEdit = (izinUser & EDIT) === EDIT;
+      const bolehDelete = (izinUser & DELETE) === DELETE;
+
+      //apply Izin
+      document.getElementById("inputMessage").readOnly = !bolehNulis;
+      document.getElementById("postButton").disabled = !bolehPosting;
+      document.getElementById("editButton").disabled = !bolehEdit;
+      document.getElementById("deleteButton").disabled = !bolehDelete;
+
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="number" id="nilaiA" />
+    <input type="number" id="nilaiB" />
+    <button onclick="lakukanOperasiBitwise()">operasi Bitwise</button>
+  </div>
+  <script>
+    function lakukanOperasiBitwise(){
+      //ambil nilai dari input
+      let nilaiA = document.getElementById("nilaiA").value;
+      let nilaiB = document.getElementById("nilaiA").value;
+      //operasi bitwise
+      let hasilBitand =nilaiA & nilaiB;
+      let hasilBitOr =nilaiA | nilaiB;
+      let hasilBiXOr =nilaiA ^ nilaiB;
+      let hasilNotA =~nilaiA;
+
+      //konvrensi nilai ke biner
+      let binerNilaiA =nilaiA.toString(2);
+      let binerNilaiB =nilaiB.toString(2);
+      let binerHasilBitAnd =hasilBitAnd.toString(2);
+      let binerHasilBitOr =hasilBitOr.toString(2);
+      let binerHasilBitXOr =hasilBitXOr.toString(2);
+      let binerHasilNotA =hasilBitNotA.toString(2);
+
+      const templateOutput = 
+        <h3>Hasil</h3>
+        <h2>${nilaiA} & ${nilaiB} = ${hasilBitAnd}</h2>
+        <pre>${binerNilaiA} & ${binerNilaiB} = ${binerHasilBitAnd}</pre>
+
+        <hr>
+
+        <h2>${nilaiA} | ${nilaiB} = ${hasilBitAnd}</h2>
+        <pre>${binerNilaiA} | ${binerNilaiB} = ${binerHasilBitOr}</pre>
+
+        <hr>
+
+        <h2>${nilaiA} ^ ${nilaiB} = ${hasilXor}</h2>
+        <pre>${binerNilaiA} | ${binerNilaiB} = ${binerHasilXor}</pre>
+
+        <hr>
+
+        <h2>~${nilaiA} = ${hasilNotA}</h2>
+        <pre>${binerNilaiA} = ${binerHasilNotA}</pre>
+
+
+    }  
+</body>
+</html>

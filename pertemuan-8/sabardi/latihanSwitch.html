@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Pilih Bahasa</p>
+  <select id="languageOption" onchange="changeLanguage()">
+    <option value="id">indonesia</option>
+    <option value="us">Inggris (US)</option>
+    <option value="gb">Inggris (UK))</option>           
+    <option value="au">Inggris (AU)</option>
+    <option value="jp">japan</option>
+    <option value="cn">Chinese</option>
+  </select>
+  <!-- output -->
+  <div>
+    <p id="outputSelectedLang"></p>
+    <img id="gambarBendera" src="https://flagcdn.com/id.svg" width="200" style="border:1px solid silver"/>
+  </div>
+
+  <script>
+    function changeLanguage(){
+      
+    let selectedleng = document.getElementById(`languageOption`).value;
+    var languageName = "";
+
+    switch(selectedleng){
+      case "id":
+      languageName = "Bahasa Indonesia";
+      break;
+      
+      case "us":
+      languageName = "Inggris (US)";
+      break
+      
+      case "gb":
+      languageName = "Inggris (UK)";
+      break
+      
+      case "au":
+      languageName = "Inggris (AU)";
+      break
+      
+      case "jp":
+      languageName = "japan";
+      break
+
+      case "cn":
+      languageName = "China";
+      break
+    }
+      
+    document.getElementById('outputSelectedLang').textContent = languageName;
+      document.getElementById('gambarBendera').src = `https://flagcdn.com/${selectedleng}.svg`;
+  }
+  </script>
+</body>
+</html>

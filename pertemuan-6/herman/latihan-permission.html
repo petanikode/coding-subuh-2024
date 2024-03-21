@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Izin Akses dengan Operator Bitwise</title>
+</head>
+
+<body>
+  <textarea readonly rows="5" cols="30" id="inputMessage">Tulis idemu</textarea>
+  <br>
+  <button disabled id="postButton">Post an Idea</button>
+  <button disabled id="editButton">Edit</button>
+  <button disabled id="editButton">Edit</button>
+  <button disabled id="deleteButton">Delete</button>
+
+  <script>
+    const WRITE = 1;
+    const EDIT = 2;
+    const POST = 4;
+    const DELETE = 8;
+
+    let izinUser = 0;
+
+    izinUser = WRITE | EDIT | DELETE;
+
+    const bolehNulis = (izinUser & WRITE) === WRITE;
+    const bolehPosting = (izinUser & POST) === POST;
+    const bolehEdit = (izinUser & EDIT) == EDIT;
+    const bolehHapus = (izinUser & DELETE) == DELETE;
+
+    //aplly izin
+    document.getElementById("inputMessage").readOnly = !bolehNulis;
+    document.getElementById("postButton").disabled = !bolehPosting;
+    document.getElementById("editButton").disabled = !bolehEdit;
+    document.getElementById("deleteButton").disabled = !bolehHapus;
+
+
+  </script>
+</body>
+
+</html>

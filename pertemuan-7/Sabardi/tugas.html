@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashback</title>
+</head>
+<body>
+    <label for="">Total Belanja</label>
+    <br>
+    <input type="number" name="" id="totalBelanja" placeholder="Masukan Jumlah Belanja">
+    <fieldset id="metodeBayar">
+        <legend>*Pilih metode pembayaran*</legend>
+
+        <input type="radio" name="metodePembayaran" id="transferBank">
+        <label for="">Transfer Bank</label>
+
+        <input type="radio" name="metodePembayaran" id="eWalet">
+        <label for="">E-wallet</label>
+        <br>
+
+        <input type="radio" name="metodePembayaran" id="cashback">
+        <label for="">Paylater (Cashback: 10)</label>
+
+        <br>
+        <input type="radio" name="metodePembayaran" id="outlate">
+        <label for="">Outlate (alfamart, Indomaret)</label>
+    </fieldset>
+
+    <p style="text-decoration: underline; color: brown;" onclick="kode()" >Punya Kupon</p>
+    <p id="kode"></p>
+    <button onclick="prosesTransaksi()">Proses Transaksi</button>
+    <hr>
+    <p id="hasil"></p>
+
+    <script>
+        function kode(){
+            let inputKode = prompt("masukan kode vicher nya")
+            // inputKode = prompt("masukan kode vocher nya");
+            document.getElementById("kode").innerText =inputKode            
+        }
+        function prosesTransaksi(){
+            let JumlahTransaksi = Number(document.getElementById("totalBelanja").value);
+            let metodePembayaran = document.querySelector('input[name="metodePembayaran"]:checked').id;
+            // let metodePembayaran = document.getElementById('metodeBayar[name="metodePembayaran').id
+            let cashback = 0;
+            let diskon = 0;
+            let kode = "hallo"
+
+            if (metodePembayaran === "transferBank") {
+                JumlahTransaksi
+                if(kode === "hallo"){
+                    diskon = JumlahTransaksi * 0.3
+                }
+            }else if(metodePembayaran === "eWalet"){
+                JumlahTransaksi 
+                if(kode === "hallo"){
+                    diskon = JumlahTransaksi * 0.3
+                }
+            }else if(metodePembayaran === "cashback"){
+                cashback = JumlahTransaksi * 0.1;
+            }else if(metodePembayaran === "outlate"){
+                JumlahTransaksi
+                if(kode === "hallo"){
+                    diskon = JumlahTransaksi * 0.3
+                }
+            }
+
+            let detailTransaksi = `Ringkasan Transaksi
+                Total Belanja : ${JumlahTransaksi}
+                Cashback : ${cashback}
+                Diskon : ${diskon}
+                Total Bayar : ${JumlahTransaksi - cashback - diskon}`;
+
+            document.getElementById("hasil").innerText = detailTransaksi;
+        }
+    </script>
+</body>
+</html>

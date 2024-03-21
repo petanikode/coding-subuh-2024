@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan switch</title>
+</head>
+<body>
+  <p>Pilih Bahasa:</p>
+  <select id="bahasa" onchange="changeLanguage()" >  
+    <option value="id">Indonesia</option>
+    <option value="us">Inggris (US)</option>
+    <option value="gb">Inggris (UK)</option>
+    <option value="au">Inggris (AU)</option>
+    <option value="jp">Japanese</option>
+    <option value="kr">Korean</option>
+    <option value="cn">Chinese</option>
+    <option value="af">Afghanistan</option>
+    <option value="kw">Kuwait</option>
+    <option value="sa">Arabic</option>  
+  </select>
+  <div>
+    <p id="outputSelectedLang"></p>
+    <img id="gambarBendera" src="https://flagcdn.com/id.svg" width="200" style="border:1px solid black"/>
+  </div>
+
+  <script>
+    function changeLanguage(){
+      let selectedLang = document.getElementById("bahasa").value;
+      var languageName = "";
+      switch(selectedLang){
+          case "id":
+          languageName = "Bahasa Indonesia";
+          break;
+          case "us":
+          languageName = "English (United State)";
+          break;
+          case "au":
+          languageName = "English (AU)";
+          break;
+          case "gb":
+          languageName = "English (UK)";
+          break;
+          case "jp":
+          languageName = "Japanese";
+          break;
+          case "kr":
+          languageName = "Korean";
+          break;
+          case "cn":
+          languageName = "Chineese";
+          break;
+          case "kw":
+          languageName = "Kuwait";
+          break;
+          case "af":
+          languageName = "Afganistan";
+          break;
+          case "sa":
+          languageName = "Arabic";
+          break;
+        default:
+          languageName = "Bahasa Indonesia";
+      }
+
+  document.getElementById("outputSelectedLang").textContent = languageName;
+  document.getElementById("gambarBendera").src = `https://flagcdn.com/${selectedLang}.svg`;
+
+    }
+      
+      
+  </script>
+  
+</body>
+</html>

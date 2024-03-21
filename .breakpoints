@@ -1,0 +1,42 @@
+{
+  "files": {
+    "pertemuan-6/_dian/latihan-permission.html": [
+      {
+        "id": "a348d565-30dc-4ece-8608-4011aba64841",
+        "line": 4,
+        "version": 1188,
+        "index": 42
+      }
+    ],
+    "pertemuan-6/bagas/latihan-bitwise.html": [
+      {
+        "id": "70ff2d8a-fd6b-4c7f-9617-2919c6f0e330",
+        "line": 1,
+        "version": 828,
+        "index": 0
+      }
+    ],
+    "pertemuan-8/ridwan/latihanSwitch.html": [
+      {
+        "id": "cb1cde67-9d33-403b-8d1a-c96b5ee965a7",
+        "line": 1,
+        "version": 1180,
+        "index": 0
+      }
+    ],
+    "pertemuan-9/ridwan/challenge.html": [
+      {
+        "id": "4fe7cbb2-c4ed-47fe-84ea-958eb7d540f0",
+        "line": 34,
+        "version": 304,
+        "index": 759
+      },
+      {
+        "id": "35e9d262-e3e1-41c7-b57d-b93638aaa816",
+        "line": 41,
+        "version": 304,
+        "index": 1006
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XOR Encryption and Decryption</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #output {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+  <script src="encrypt.js"> </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>XOR Encryption and Decryption</h1>
+    <label for="textInput">Enter Text:</label><br>
+    <textarea id="textInput" rows="4" cols="50"></textarea><br><br>
+    <label for="secretKey">Enter Secret Key:</label><br>
+    <input type="text" id="secretKey"><br><br>
+    <button onclick="encrypt()">Encrypt/Decrypt</button><br><br>
+    <!-- <button onclick="decrypt()">Decrypt</button><br><br> -->
+    <label for="output">Result:</label><br>
+    <textarea id="output" rows="4" cols="50"></textarea>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Percabangan</title>
+  </head>
+  <body>
+    <h1>Js-Wallet</h1>
+    <p>Javascript E-Wallet</p>
+
+    <input type="number" id="inputPin" />
+    <button onclick="checkPin()">Masuk</button>
+    
+    <br>
+    <div id="message"></div>
+
+    <script>
+      const VALID_PIN = 00000;
+
+      function checkPin() {
+        const userPin = Number(document.getElementById("inputPin").value);
+
+        if (userPin === VALID_PIN) {
+          window.location = "welcome.html";
+        } else {
+          let invalidMessage =
+            "Pin yang anda masukkan salah!!! Silahkan coba lagi !!!";
+          document.getElementById("message").textContent = invalidMessage;
+        }
+      }
+    </script>
+  </body>
+</html>

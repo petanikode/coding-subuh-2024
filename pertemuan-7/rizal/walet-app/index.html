@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js App</title>
+</head>
+<body>
+    <h1> Js App </h1>
+    <p>payment simple javascript</p>
+
+    <input type="number" name="inputPin" id="inputPin" placeholder="masukkan Pin">
+    <button type="button" onclick="cekPin()">Masuk</button>
+
+    <p id="message"></p>
+
+    <script>
+        const validPin = 12345;
+
+        function cekPin() {
+            const input = parseInt(document.getElementById("inputPin").value);
+
+            if (input === validPin) {
+                console.log("login berhasil");
+                window.location.href = "./Saldo.html";
+            } else {
+                const inValid = "Pin yang anda masukkan salah";
+                document.getElementById("message").textContent = inValid;
+            }
+        }
+    </script>
+
+</body>
+</html>

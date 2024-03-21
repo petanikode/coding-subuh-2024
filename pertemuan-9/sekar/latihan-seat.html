@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenge Nested Loop</title>
+  <style>
+    .seat button {
+      height: 3em;
+      width: 3em;
+      margin: 0.2em;
+      border-radius: 1em;
+      border: 0;
+      background-color: blue;
+      color: white;
+    }
+
+    .seat button:hover {
+      background-color: gainsboro;
+      color: black;
+    }
+
+    .seat button.booked {
+      background-color: greenyellow;
+      color: black;
+    }
+
+    /* gunakan class .invisible pada <button> buat sembunyikan */
+    button.invisible {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Element buat nampilin kursi -->
+  <h1>Silahkan Pilih Kursi yang Tersedia</h1>
+  <div id="outputSeat" class="seat"></div>
+
+  <p>Anda memilih : <b id="hasilOutput"></b></p>
+  <button onclick="reset()">Reset</button>
+  <button onclick="setInput()">Booking</button>
+
+  <script>
+    // object elemen outputSeat
+    const outputSeat = document.getElementById("outputSeat");
+    // mapping karakter untuk nama kolom, diisi _ di awal karena perulangan sampai 1 bukan sampai 0
+    var char = "_ABCDEFG";
+    var kursiTerpilih = []; // menampung kursi yang akan dipilih oleh user
+
+    // Nested loop untuk menampilkan layout kursi
+    for (let kolom = 7; kolom >= 1; kolom--) {
+      for (let baris = 12; baris >= 1; baris--) {
+        if (
+          (char.charAt(kolom) >= "B" && baris == 6) ||
+          (char.charAt(kolom) >= "B" && baris == 5) ||
+          (char.charAt(kolom) > "D" && baris == 1)
+        ) {
+          outputSeat.innerHTML += `
+            <button class="invisible">${char.charAt(kolom)}${baris}</button>
+          `;
+        } else {
+          outputSeat.innerHTML += `
+            <button onclick="pilihKursi(this, '${char.charAt(
+            kolom
+          )}${baris}')">${char.charAt(kolom)}${baris}</button>
+        `;
+        }
+      }
+      outputSeat.innerHTML += `<br>`;
+    }
+
+    //   Fungsi untuk memilih kursi bioskop yang tersedia
+    function pilihKursi(button, seat) {
+      const index = kursiTerpilih.indexOf(seat);
+      if (index === -1) {
+        kursiTerpilih.push(seat);
+        button.classList.add("booked");
+      } else {
+        kursiTerpilih.splice(index, 1);
+        button.classList.remove("booked");
+      }
+      tampilkanPilihKursi();
+    }
+    // Fungsi menampilkan kursi yang sudah dibooking
+    function tampilkanPilihKursi() {
+      document.getElementById("hasilOutput").textContent =
+        kursiTerpilih.join(", ");
+    }
+
+    //   Fungsi untuk memesan kursi yang telah diinputkan sebelumnya
+    function setInput() {
+      if (kursiTerpilih.length > 0) {
+        alert("Anda telah memesan kursi: " + kursiTerpilih.join(", "));
+      } else {
+        alert("Anda belum memilih kursi");
+      }
+    }
+
+    //   Fungsi mereset pilihan
+    function reset() {
+      kursiTerpilih = [];
+      tampilkanPilihKursi();
+      const reset = document.querySelectorAll(".seat button");
+      reset.forEach((button) => {
+        button.classList.remove("booked");
+      });
+    }
+  </script>
+</body>
+
+</html>

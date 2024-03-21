@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Checkout</title>
+  <style></style>
+</head>
+
+<body>
+  <label for="inputBelanja">Total Belanja</label>
+  <input id="inputBelanja" name="inputBelanja" type="number" />
+
+  <p>Pilih Metode Pembayaran:</p>
+  <div class="container">
+    <input type="radio" name="option" value="option1" id="option1" class="option1" />
+    <label for="option1">Transfer Bank</label>
+
+    <input type="radio" name="option" value="option2" id="option2" class="option2" />
+    <label for="option2">E-Wallet</label><br />
+
+    <input type="radio" name="option" value="option3" id="option3" class="option3" />
+    <label for="option3">Paylater (Cashback 10%)</label><br />
+
+    <input type="radio" name="option" value="option4" id="option4" class="option4" />
+    <label for="option4">Outlet (Alfamart, Indomaret)</label><br />
+  </div>
+
+  <a style="cursor: pointer; text-decoration: underline; color: blue" onclick="voucherPrompt()">Punya Kode
+    Voucher</a><br />
+  <button type="button" onclick="prosesBtn()" style="margin-top: 10px; cursor: pointer">
+    Proses Transaksi
+  </button>
+  <div style="width: 20%; height: 2px; background-color: black; margin-top: 10px"></div>
+
+  <div id="output"></div>
+
+  <script>
+    let cashback = 0;
+    let diskon = 0;
+    let paymentOptions = false;
+
+    const inputBelanja = document.getElementById("inputBelanja");
+    const radioBtns = document.querySelectorAll(
+      '.container input[type="radio"]'
+    );
+
+    radioBtns.forEach((btn) => {
+      btn.addEventListener("change", () => {
+        if (btn.className == "option3") {
+          cashback = 0.1;
+          paymentOptions = true;
+        } else {
+          cashback = 0;
+          paymentOptions = true;
+        }
+      });
+    });
+
+    const voucherPrompt = () => {
+      const voucher = prompt("Masukkan Voucher: ");
+
+      // check dulu, kalau voucher === null, maka return biar
+      // kode di bawah ini nggak dikerjakan
+      
+      if (voucher === "codingsubuh") {
+        diskon = 0.3;
+        // tambahkan output kode voucher supaya user bisa tau kode voucher yang lagi dipakai
+      } else {
+        alert("Kode Voucher Salah!");
+      }
+    };
+
+    const prosesBtn = () => {
+      const inputBelanjaValue = Number(inputBelanja.value);
+      const totalCashback = inputBelanjaValue * cashback;
+      // 👆 batasi cashback max 50.000
+      const totalDiskon = inputBelanjaValue * diskon;
+      const totalBayar = inputBelanjaValue - totalDiskon;
+
+      if (inputBelanjaValue == 0 && paymentOptions == false) {
+        alert("Mohon Masukkan Total Belanja dan Metode Pembayaran");
+      } else if (inputBelanjaValue == 0) {
+        alert("Mohon Masukkan Total Belanja");
+      } else if (paymentOptions == false) {
+        alert("Mohon Pilih Metode Pembayaran");
+      } else {
+        const templateOutput = `
+            <h1>Ringkasan Transaksi</h1>
+            <h3>Total belanja: ${inputBelanjaValue.toLocaleString("ID", {
+          style: "currency",
+          currency: "IDR",
+        })}</h3>
+            <h3>Cashback: ${totalCashback.toLocaleString("ID", {
+          style: "currency",
+          currency: "IDR",
+        })}</h3>
+            <h3>Diskon: ${totalDiskon.toLocaleString("ID", {
+          style: "currency",
+          currency: "IDR",
+        })}</h3>
+            <h3>Total Bayar: ${totalBayar.toLocaleString("ID", {
+          style: "currency",
+          currency: "IDR",
+        })}</h3>
+          `;
+
+        // biar nggak ngulang2 formatting rupiah, buat dia jadi fungsi
+        // 
+        // contoh: (number) => number.toLocaleString({....})
+        // 
+        
+        document.getElementById("output").innerHTML = templateOutput;
+      }
+    };
+  </script>
+</body>
+
+</html>

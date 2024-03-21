@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan While</title>
+</head>
+<body>
+  <h1>Latihan While</h1>
+  <script>
+    let hitungan = 10;
+    while (hitungan >= 1) {
+      document.write(`Perulangan ke-${hitungan}<br>`);
+      hitungan -= 2;
+    }
+
+    let ulangi = confirm("apakah anda mau ngulang");
+    let hitungan = 0
+
+    do {
+      hitungan++;
+      ulangi = confirm("apakah anda mau ngulang");
+    } while(ulangi) 
+    document.write(`<h2>Total pengulangan: ${hitungan} kali</h2>`);
+  </script>
+</body>
+</html>

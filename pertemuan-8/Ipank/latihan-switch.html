@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Switch</title>
+</head>
+<body>
+  
+  <p>pilih bahasa</p>
+  <select id="languageOption" onchange="changelanguage()">
+    <option value="id">Indonesia</option>
+    <option value="en">English</option>
+    <option value="jp">Japan</option>
+    <option value="kr">Korean</option>
+    <option value="cn">Chinese</option>
+  </select>
+
+  <!-- output -->
+  <div>
+    <p id="outputSelectedLang"></p>
+    <img src="https://flagcdn.com/id.svg" width="200" style="border:1px solid silver" />  
+  </div>
+
+  <script>
+    function changeLanguage(){
+      let selectedLang = document.getElementById('languageOption').value;
+      var languageName = "";
+
+      switch(slectedLang){
+        case "id":
+          languageName = "Bahasa Indonesia";
+          break;
+        case "en":
+          languageName = "English";
+          break;
+        case "jp":
+          languageName = "Japan";
+          break;
+        case "kr":
+          languageName = "Korean";
+          break;
+        case "cn":
+          languageName = "Chinese";
+          break;
+        default:
+          languageName = "English";
+      }
+
+
+      document.getElementById('outputSelectedLang').textcontent = languageName;
+      document.getElementById('gambar bendera').src =
+    `https://flagcdn.com/${selectedLang}.svg`;
+
+      
+    }
+  </script>
+    
+</body>
+</html>

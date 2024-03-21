@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan for of dan for in</title>
+
+  <script>
+    var playlist = [
+      "Bob Marley - No Woman No Cry",
+      "BB King - The O'Clock Blues",
+      "Utada Hikaru - First Love",
+      "Radja - Cinderela",
+      "Yoasobi - Idol",
+    ];
+    
+
+    var album ={
+      title: "idol",
+      artist: "Yoasobi",
+      releaseDate: "2024.04.12",
+      genre: "J-pop",
+      cover:"https://upload.wikimedia.org/wikipedia/en/b/b0/Yoasobi_-_Idol.png"
+    }
+  </script>
+</head>
+<body>
+  <h1>Playlist:</h1>
+  <ol id="outputPlaylist"></ol>
+
+  <h2>Related Album</h2>
+  <div id="outputAlbum"></div>
+
+  <script>
+    const outputPlaylist = document.getElementById('outputPlaylist');
+    const outputAlbum = document.getElementById('outputAlbum');
+
+    for(music of playlist){
+      outputPlaylist.innerHTML += `<li>${music}</li>`;
+    }
+
+    for(key in album){
+      outputAlbum.innerHTML += `<p>${key}: ${album[key]}</p>`;
+    }
+  </script>
+</body>
+</html>
