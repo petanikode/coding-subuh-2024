@@ -95,3 +95,46 @@ document.write("Coding Subuh");
 document.write("Coding Subuh");
 document.write("Coding Subuh");
 document.write("Coding Subuh");
+
+
+
+let i = 0;
+
+do {
+  i++;
+  console.log("Kode ini diulang");
+} while (i < 10);
+
+while(i < 10){
+  console.log("Kode ini diulang");
+  i++;
+}
+
+
+let products = [];
+
+
+
+var fruits = ["🍎", "🍇", "🍓"];
+
+
+
+const fruits = [
+  "🍎", 
+  "🍇", 
+  "🍓"
+];
+
+
+var fruits = new Array("🍎","🍎","🍎");
+
+
+
+
+fruits[0] = "🌽";
+fruits[1] = "🍅";
+fruits[2] = "🥦";
+
+console.log(fruits[0]);
+console.log(fruits[1]);
+console.log(fruits[2]);

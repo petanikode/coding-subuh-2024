@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan For Loop</title>
+
+    <script>
+        document.write("<h1>Perulangan 1 sampai 10</h1>");
+        for(let hitungan = 0; hitungan < 10; hitungan++){
+            document.write(`Perulangan ke-${hitungan}<br>`);
+        }
+
+        document.write("<hr>");
+        document.write("<h1>Perulangan 10 sampai 1</h1>");
+
+        for(let hitungan = 10; hitungan > 0; hitungan--){
+            document.write(`Perulangan ${hitungan}<br>`);
+        }
+
+        document.write("<hr>");
+        document.write("<h1>Perulangan 1 sampai 10 (2 step)</h1>");
+
+        for(let hitungan = 1; hitungan < 10; hitungan += 2){
+            document.write(`Perulangan ${hitungan}<br>`);
+        }
+
+        document.write("<hr>");
+        document.write("<h1>Perulangan 1 sampai 10 (ganjil genap)</h1>");
+
+        for(let hitungan = 1; hitungan <= 10; hitungan++){
+            if(hitungan % 2 == 0){
+                document.write(`<span style="color:green">Perulangan ${hitungan}</span><br>`);
+            } else {
+                document.write(`Perulangan ${hitungan}<br>`);
+            }
+        }
+
+        document.write("<hr>");
+        document.write("<h1>Perulangan 1 sampai 10 (break di 5)</h1>");
+
+        for(let hitungan = 1; hitungan <= 10; hitungan++){
+            document.write(`Perulangan ${hitungan}<br>`);
+            
+            if(hitungan == 5){
+                break;
+            }
+        }
+
+
+        document.write("<hr>");
+        document.write("<h1>Perulangan 1 sampai 10 (continue di 5)</h1>");
+
+        for(let hitungan = 1; hitungan <= 10; hitungan++){
+            if(hitungan == 5){
+                continue;
+            }
+            document.write(`Perulangan ${hitungan}<br>`);
+        }
+    </script>
+
+</head>
+<body>
+    
+    
+
+</body>
+</html>
