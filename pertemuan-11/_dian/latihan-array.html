@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Array</title>
+
+    <script>
+      const articles = [
+        "Belajar Javascript untuk Pemula",
+        "Pengalaman pertama coding Javascript",
+        "Javascript tidak sama dengan Java",
+        "Javascript adalah bahasa favoritku",
+        "Semua bisa coding Javascript",
+        "Contoh Aplikasi yang dibuat dengan Javascript",
+      ];
+
+      const tags = ["Coding", "Programming", "Javascript"];
+
+      // tambahkan data pada index ke-6
+      articles[6] = "Code Editor untuk memprogram Javascript";
+
+      // melihat isi array pada index ke-4
+      console.log(articles[6]);
+
+      // menampilkan data array dengan perulangan
+      articles.forEach((article) => {
+        document.write(`<h1>${article}</h1>`);
+        for (tag of tags) {
+          document.write(`<i>#${tag}</i> `);
+        }
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

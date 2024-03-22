@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 11 : Coding Subuh 2024</title>
+  <script>
+    const makanan = [
+      "Nasi Goreng",
+      "Ayam Goreng",
+      "Mie Ayam",
+      "Gado - Gado",
+      "Soto Ayam",
+      "Sate Ayam"
+    ];
+
+    const tags = ["Kuliner", "Makanan", "Masak"];
+
+    // Tambahkan data pada indeks ke-6
+    makanan[6] = "Seblak";
+
+    // Menampilkan isi array pada indeks ke-6
+    console.log(makanan[6]);
+
+    // Menampilkan data array dengan cara perulangan
+    makanan.forEach(makan => {
+      document.write(`<h2>${makan}</h2>`);
+      for(tag of tags){
+        document.write(`<i>#${tag}</i>`);
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

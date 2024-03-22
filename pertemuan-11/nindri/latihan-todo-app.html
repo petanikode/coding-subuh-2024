@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo List App</title>
+</head>
+<body>
+  <h1>Todo List App</h1>
+
+  <div id="outputTask"></div>
+  <script>
+    // array untuk menyimpan daftar tugas
+    var tasks = [];
+
+    // element buat output
+    const outputTask = document.getElementById("outputTask");
+
+    showTask();
+
+    function showTask(){
+      if(tasks.length == 0){
+        outputTask.innerHTML = `
+        <p>Tidak ada tugas</p>
+        <button onclick="addTask()">Tambah Tugas</button>
+        `;
+      } else {
+        const ul = document.createElement("ul");
+        for(let i = 0; i < tasks.length; i++){
+          const li = document.createElement("li");
+          const btnEditDelete = `
+            <button onclick="editTask(${i})">Edit</button>
+            <button onclick="deleteTask(${i})">Delete</button>
+          `;
+           li.innerHTML = `${tasks[i]} - ${btnEditDelete}`;
+          ul.appendChild(li);
+        }
+        // tampilkan list task
+        outputTask.replaceChildren(ul);
+        outputTask.innerHTML += `
+        <button onclick="addTask()">Tambah Tugas</button>
+        <button onclick="clearTask()">Bersihkan</button>
+        `
+      }
+    }
+    function addTask(){
+      const newTask = prompt("Masukan tugas baru");
+      if(newTask){
+        // tambahkan data baru ke array
+        tasks.push(newTask);
+        showTask();
+      }
+    }
+    function clearTask(){
+      tasks= [];
+      showTask();
+    }
+    function editTask(i){
+      const oldTask = tasks[i];
+      const newTask = prompt("Masukan tugas baru", oldTask);
+      if(newTask){
+        tasks[i]= newTask;
+        showTask();
+      }
+    }
+
+    function deleteTask(i){
+      const confirmToDelete = confirm("Apakah anda yakin ingin menghapus tugas ini?");
+      if(confirmToDelete){
+        tasks.splice(i, 1); //cuma hapus satu data pada id yang dipilih
+        showTask();
+      }
+    }
+
+  </script>
+  
+</body>
+</html>

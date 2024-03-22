@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do App </title>
+</head>
+<body>
+  <h1>To List App</h1>
+
+  <div id="outputTask"></div>
+
+  <script>
+    var tasks = [];
+
+    const outputTask = document.getElementById("outputTask");
+
+    function showTask(){
+      if(tasks.length <= 0){}
+      outputTask.innetHTML = `
+      <p>Belum ada tugas</p>
+      <button onclick="addTask()">Tambah Tugas</button>`;
+    }
+  </script>
+</body>
+</html>
