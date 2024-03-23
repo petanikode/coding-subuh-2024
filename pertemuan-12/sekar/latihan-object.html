@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Object</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    var chargingInterval;
+    var dischargingInterval;
+
+    var phone = {
+      name: "Samsung Galaxy A31",
+      wifiOn: false,
+      cellularDataOn: false,
+      blueToothOn: false,
+      battery: 80,
+      toggleWifi: function () {
+        this.wifiOn = !this.wifiOn;
+      },
+      toggleCellularData: function () {
+        this.cellularDataOn = !this.cellularDataOn;
+      },
+      toggleBlueTooth: function () {
+        this.blueToothOn = !this.blueToothOn;
+      },
+      charging: function () {
+        if (this.battery >= 100) {
+          alert(`${this.battery}% Full Charged`);
+          clearInterval(chargingInterval);
+          return;
+        }
+        this.battery++;
+      },
+      discharging: function(){
+        if(this.battery < 1){
+          alert("Baterai kosong akan mati!");
+          clearInterval(dischargingInterval);
+          return;
+        }
+        this.battery--;
+      }
+    }
+
+    phone.name = "Samsung Galaxy XXX";
+
+    phone.toggleWifi();
+
+    showPhone();
+
+    dischargingInterval = setInterval(function(){
+      phone.discharging();
+      showPhone();
+    },1000);
+
+    function showPhone() {
+      // destructuring object
+      let {name, wifiOn, cellularDataOn, battery, blueToothOn} = phone;
+
+      const displayTemplate = `
+      <h1>Name : ${name}</h1>
+      <p>Battery: <progress min="0" max="100" value="${battery}"></progress>${battery}%</p>
+      <p>WIFI : ${wifiOn ? "on" : "off"}</p>
+      <p>Data : ${cellularDataOn ? "on" : "off"}</p>
+      <p>Bluetooth : ${blueToothOn ? "on" : "off"}</p>
+
+
+      <hr>
+      <button onclick="toggleWifi()">Toggle Wifi</button>
+      <button onclick="toggleData()">Toggle Data</button>
+      <button onclick="startCharging()">Charging</button>
+      <button onclick="toggleBlueTooth()">Toggle Bluetooth</button>
+
+
+      `;
+
+      document.getElementById("app").innerHTML = displayTemplate;
+    }
+
+    function toggleWifi() {
+      phone.toggleWifi();
+      showPhone();
+    }
+
+    function toggleData() {
+      phone.toggleCellularData();
+      showPhone();
+    }
+
+    function startCharging() {
+      chargingInterval = setInterval(function () {
+        phone.charging();
+        showPhone();
+      }, 1000);
+    }
+
+    function toggleBlueTooth() {
+      phone.toggleBlueTooth();
+      showPhone();
+    }
+  </script>
+</body>
+
+</html>

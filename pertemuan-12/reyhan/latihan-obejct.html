@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Object</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // variabel interval
+        var chargingInterval;
+        var dischargingInterval;
+
+        // membuat object phone
+        var phone = {
+            name: "Xiaomi",
+            wifiOn: false,
+            cellularDataOn: false,
+            cellularHotspotOn: false,
+            battery: 75,
+            toggleWifi: function () {
+                this.wifiOn = !this.wifiOn;
+            },
+            toggleCellularData: function () {
+                this.cellularDataOn = ~this.cellularDataOn;
+            },
+            toggleCellularHotspot: function () {
+                this.cellularHotspotOn = ~this.cellularHotspotOn;
+            },
+            charging: function () {
+                if (this.battery >= 100) {
+                    alert(`${this.battery}$ Fully Charged`);
+
+                    // clear interval setelah full charge
+                    clearInterval(chargingInterval);
+                    return;
+                }
+                this.battery++;
+            },
+            discharging: function () {
+                if (this.battery <= 1) {
+                    alert("Baterai Lemah");
+
+                    // stop interval discharge
+                    clearInterval(dischargingInterval);
+                }
+                this.battery--;
+            }
+        };
+
+        // mengubah nama phone
+        phone.name = "Redmi Note 13 Pro Max"
+
+        // Menyalakan wifi dengan fungsi toggle dari object phone
+
+        // tampilkan hp
+        showPhone();
+
+        dischargingInterval = setInterval(function() {
+            phone.discharging();
+            showPhone();
+        }, 5000);
+
+        function showPhone() {
+            // destruct object
+            let {name, wifiOn, cellularDataOn, cellularHotspotOn, battery} = phone;
+
+            const displayTemplate = `
+                <h1>${name}</h1>
+
+                <p>
+                    Battery: <progress min="0" max="100" value="${battery}"></progress> ${battery}%    
+                </p>
+                <p>WiFi: ${wifiOn ? "On" : "Off"}</p>
+                <p>Data: ${cellularDataOn ? "On" : "Off" }</p>
+                <p>Hotspot: ${cellularHotspotOn ? "On" : "Off" }</p>
+
+                <hr>
+                <button onclick="toggleWifi()">Toggle WiFi</button>
+                <button onclick="toggleData()">Toggle Data</button>
+                <button onclick="toggleHotspot()">Toggle Hotspot</button>
+                <button onclick="startCharging()">⚡️ Charging</button>
+            `;
+
+            document.getElementById('app').innerHTML = displayTemplate;
+        }
+
+        function toggleWifi() {
+            phone.toggleWifi();
+            showPhone();
+        }
+
+        function toggleData() {
+            phone.toggleCellularData();
+            showPhone();
+        }
+
+        function toggleHotspot() {
+            phone.toggleCellularHotspot();
+            showPhone();
+        }
+
+        function startCharging() {
+            chargingInterval = setInterval(function () {
+                phone.charging();
+                showPhone();
+            }, 500);
+        }
+
+    </script>
+
+</body>
+</html>

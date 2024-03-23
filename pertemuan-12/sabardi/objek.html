@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Object</title>
+</head>
+<body>
+  <div id="app"> </div>
+  <script>
+    // var charging = 0;
+    var phone = {
+      name: "Realme",
+      wifiOn: false,
+      celulerDataOn : false,
+      batray: 60,
+      
+      toggleWifi: function(){
+        this.wifiOn = !this.wifiOn;
+      },
+      togleCelulerData: function(){
+        this.celulerDataOn = !this.celulerDataOn;
+      },
+      charging: function(){
+        if(this.batray >=100){
+          alert(`${this.batray}% fullycharge`);
+          return;
+        }
+        this.batray++;
+      },
+    };
+    // baca nama phon
+    phone.name = "redmi not";
+    
+    // menyalakan wifi dengan fungsi toggle dari object phone
+    phone.toggleWifi();
+
+    // tampilkan hp
+    showPhone();
+
+    function showPhone(){
+      let { name, wifiOn, celulerDataOn, batray} = phone;
+
+      const displayTemplet = `
+      <h1> ${name} </h1>
+      <p>
+          batray : <progress min="0" max="100" value="${batray}"></progress>${batray}% </p>
+      <p>WIFI : ${wifiOn ? "On" : "Off"}</p>
+      
+      <p>
+        Data: ${celulerDataOn ? "on" : "of"}
+      </p>
+
+      <hr>
+
+      <button onclick="toggleWifi()">WIFI</button>
+      <button onclick="toggleData()">toggle Data</button>
+      <button onclick="startCharging()">⚡️ Charging</button>
+      
+      `;
+
+      document.getElementById('app').innerHTML = displayTemplet;  
+    }
+
+    function toggleWifi(){
+      phone.toggleWifi();
+      showPhone();
+    }
+
+    function toggleData(){
+      phone.togleCelulerData();
+      showPhone()
+    }    
+
+    function startCharging(){
+      phone.charging();
+      showPhone();
+    }
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Object</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        var phone = {
+            name: "Samsung",
+            wifiOn: false,
+            cellulerDataOn: false,
+            battery: 60,
+
+            toggleWifi: function () {
+                this.wifiOn = !this.wifiOn;
+            },
+            toggleCellularData: function () {
+                this.cellulerDataOn = !this.cellulerDataOn;
+            },
+            charging: function () {
+                if (this.battery >= 100) {
+                    alert(`${this.name} is fully charged at ${this.battery}%`);
+                    return;
+                }
+
+                this.battery++;
+            },
+            checkBattery: function () {
+                alert(`Battery level: ${this.battery}%`);
+            },
+            lowBatteryWarning: function () {
+                if (this.battery < 20) {
+                    alert(`Low battery! Please charge your ${this.name}.`);
+                }
+            },
+            powerSavingMode: function (mode) {
+                if (mode === "on") {
+                    alert("Power Saving Mode is ON. Conserving battery.");
+                } else if (mode === "off") {
+                    alert("Power Saving Mode is OFF. Normal operation.");
+                } else {
+                    alert("Invalid mode. Please use 'on' or 'off'.");
+                }
+            }
+        }
+
+        phone.name = "Redmi note X";
+        phone.toggleWifi();
+
+        showPhone();
+
+        function showPhone() {
+            let { name, wifiOn, cellulerDataOn, battery } = phone;
+
+            const displayTemplate = `
+                <h1>${name}</h1>
+                <p>Battery: <progress min="0" max="100" value="${battery}"></progress> ${battery}%</p>
+                <p>Wifi: ${wifiOn ? "On" : "Off"}</p>
+                <p>Cellular Data: ${cellulerDataOn ? "On" : "Off"}</p>
+
+                <hr>
+                <button onclick="toggleWifi()">Toggle WIFI</button>
+                <button onclick="toggleData()">Toggle Data</button>
+                <button onclick="startCharging()">⚡️ Charging</button>
+                <button onclick="checkBattery()">Check Battery</button>
+                <button onclick="powerSaving()">Power Saving Mode</button>
+            `;
+
+            document.getElementById("app").innerHTML = displayTemplate;
+        }
+
+        function toggleWifi() {
+            phone.toggleWifi();
+            showPhone();
+        }
+
+        function toggleData() {
+            phone.toggleCellularData();
+            showPhone();
+        }
+
+        function startCharging() {
+            phone.charging();
+            phone.lowBatteryWarning();
+            showPhone();
+        }
+
+        function checkBattery() {
+            phone.checkBattery();
+        }
+
+        function powerSaving() {
+            let mode = prompt("Enter mode (on/off):");
+            phone.powerSavingMode(mode.toLowerCase());
+        }
+    </script>
+</body>
+</html>

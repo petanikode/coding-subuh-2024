@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Objek</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // Membuat objek phone
+    var phone = {
+      nama: "Redmi",
+      wifiOn: false,
+      cellularDataOn: false,
+      battrey: 60,
+      toggleWifi: function(){
+        this.wifiOn = !this.wifiOn;
+      },
+      toggleCellularData: function(){
+        this.cellularDataOn = !this.cellularDataOn;
+      },
+      charging: function(){
+        if(this.battrey >= 100){
+          alert(`${this.battrey}% Sudah Terisi Penuh`);
+          return;
+        }
+        this.battrey++;
+      }
+    }
+
+    // Mengubah nama phone
+    phone.nama = "Iphone";
+
+    // Menyalakan wifi dengan fungsi toggle dari objek phone
+    phone.toggleWifi();
+
+    // Tampilkan hp 
+    showPhone();
+
+    function showPhone(){
+      let {nama, wifiOn, cellularDataOn, battrey} = phone;
+      const displayTemplate = ` 
+      <h1>${nama}</h1>
+      <p>
+      Baterai: <progress min="0" max="100" value="${battrey}"></progress> ${battrey}%
+      </p>
+      <p>Wifi: ${wifiOn ? "Hidup": "Mati"}</p>
+      <p>Data: ${cellularDataOn ? "Hidup": "Mati"}</p>
+
+      <hr>
+      <button onclick="toggleWifi()">Toggle Wifi</button>
+      <button onclick="toggleData()">Toggle Data</button>
+      <button onclick="startCharging()">Mengisi Baterai</button>
+      `;
+      document.getElementById('app').innerHTML= displayTemplate;
+    }
+
+    function toggleWifi(){
+      phone.toggleWifi();
+      showPhone();
+    }
+
+    function toggleData(){
+      phone.toggleCellularData();
+      showPhone();
+    }
+
+    function startCharging(){
+      phone.charging();
+      showPhone();
+    }
+  </script>
+  
+</body>
+</html>

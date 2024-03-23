@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Object</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+        //variabel internal
+        var chargingInterval;
+        var usageInterval;
+
+        // membuat object phone
+        var phone = {
+            name: "Realme",
+            wifiOn: false,
+            cellularDataOn: false,
+            battery: 60,
+            toggleWifi: function(){
+                this.wifiOn = !this.wifiOn;
+            },
+            toggleCellularData: function(){
+                this.cellularDataOn = !this.cellularDataOn;
+            },
+            charging: function(){
+                clearInterval(usageInterval);
+                if(this.battery >= 100){
+                    clearInterval(chargingInterval);
+                    alert(`${this.battery}% Fully Charged`);
+                    return;
+                }
+                if(document.getElementById("wifi").disabled == true){
+                    document.getElementById("wifi").disabled = false;
+                    document.getElementById("cellularData").disabled = false;
+                }
+                this.battery++;
+            },
+            batteryUsage: function(){
+                if(this.battery == 20){
+                    alert(`${this.battery}%, please charge your phone`);
+                }else if(this.battery == 0){
+                    clearInterval(usageInterval);
+                    alert("Phone is off");
+                    this.wifiOn = false;
+                    this.cellularDataOn = false;
+
+                    return;
+                }
+                this.battery--;
+            },
+        };
+
+        // mengubah nama phone
+        phone.name = "Redmi Note XX";
+
+        // menyalakan wifi dengan fungsi toggle dari object phone
+        phone.toggleWifi();
+
+        showPhone();
+
+        function showPhone(){
+            //destructuring object
+            let {name,wifiOn,cellularDataOn,battery} = phone;
+
+            const displayTemplate = `
+                <h1>${name}</h1>
+                <p>Battery: <progress min="0" max="100" value="${battery}"></progress> ${battery}%</p>
+                <p>WIFI: ${wifiOn ? "On" : "Off"}</p>
+                <p>Data: ${cellularDataOn ? "On" : "Off"}</p>
+                <hr>
+                <button id="wifi" onclick="toggleWifi()">Toggle Wifi</button>
+                <button id="cellularData" onclick="toggleCellular()">Toggle Cellular Data</button>
+                <button onclick="startCharging()">Charging</button>
+            `;
+
+            document.getElementById("app").innerHTML = displayTemplate;
+
+            if(battery == 0){
+                document.getElementById("wifi").disabled = true;
+                document.getElementById("cellularData").disabled = true;
+            }else if(battery >= 1){
+                document.getElementById("wifi").disabled = false;
+                document.getElementById("cellularData").disabled = false;
+            }
+        }
+
+        function toggleWifi(){
+            phone.toggleWifi();
+            showPhone();
+        }
+
+        function toggleCellular(){
+            phone.toggleCellularData();
+            showPhone();
+        }
+
+        function startCharging(){
+            chargingInterval = setInterval(function(){
+                phone.charging();
+                showPhone();
+            },1000);
+        }
+
+        usageInterval = setInterval(function(){
+            phone.batteryUsage();
+            showPhone();
+        },100);
+    </script>
+  </body>
+</html>
