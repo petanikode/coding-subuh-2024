@@ -22,6 +22,8 @@
       wifiOn: false,
       cellularDataOn: false,
       battery: 7,
+      chargingInterval: null,
+      dischargingInterval: null,
       toggleWifi: function () {
         this.wifiOn = !this.wifiOn;
       },
@@ -29,23 +31,45 @@
         this.cellularDataOn = !this.cellularDataOn;
       },
       charging: function () {
-        if (this.battery >= 100) {
-          alert(`${this.battery}% Fully Charged`);
-          // clear interval setelah full charging
-          clearInterval(chargingInterval);
-          startDischarging();
-          return;
-        }
-        this.battery++;
+        clearInterval(this.dischargingInterval);
+        this.chargingInterval = setInterval(() => {
+          if (this.battery >= 100) {
+            alert(`${this.battery}% Fully Charged`);
+            // clear interval setelah full charging
+            clearInterval(this.chargingInterval);
+            startDischarging();
+            return;
+          }
+
+          this.battery++;
+        }, 100);
+
       },
-      discharging: function() {
-        if(this.battery < 1){
+      discharging: function () {
+        if (this.battery < 1) {
           alert("Batery kosong, HP akan mati!");
           // stop interval discharing setelah battery habis
           clearInterval(dischargingInterval);
           return;
         }
         this.battery--;
+      },
+      showPhone: function() {
+        const displayTemplate = `
+            <h1>${this.name}</h1>
+            <p> 
+              Battery: <progress min="0" max="100" value="${this.battery}"></progress> ${this.battery}%
+            </p>
+            <p>WIFI: ${this.wifiOn ? "On" : "Off"}</p>
+            <p>Data: ${this.cellularDataOn ? "On" : "Off"}</p>
+
+            <hr>
+            <button onclick="toggleWifi()">Toggle WIFI</button>
+            <button onclick="toggleData()">Toggle Data</button>
+            <button onclick="startCharging()">⚡️ Charging</button>
+        `;
+
+        document.getElementById('app').innerHTML = displayTemplate;
       }
     };
 
@@ -56,29 +80,8 @@
     phone.toggleWifi();
 
     // tampilkan hp
-    showPhone();
-    startDischarging();
-
-    function showPhone() {
-      // destructuring object
-      let {name, wifiOn, cellularDataOn, battery} = phone;
-
-      const displayTemplate = `
-          <h1>${name}</h1>
-          <p> 
-            Battery: <progress min="0" max="100" value="${battery}"></progress> ${battery}%
-          </p>
-          <p>WIFI: ${wifiOn ? "On" : "Off"}</p>
-          <p>Data: ${cellularDataOn ? "On" : "Off"}</p>
-
-          <hr>
-          <button onclick="toggleWifi()">Toggle WIFI</button>
-          <button onclick="toggleData()">Toggle Data</button>
-          <button onclick="startCharging()">⚡️ Charging</button>
-        `;
-
-      document.getElementById('app').innerHTML = displayTemplate;
-    }
+    phone.showPhone();
+    phone.startDischarging();
 
 
     function toggleWifi() {
@@ -92,15 +95,11 @@
     }
 
     function startCharging() {
-      clearInterval(dischargingInterval);
-      chargingInterval = setInterval(function () {
-        phone.charging();
-        showPhone();
-      }, 100);
+      phone.charging();
     }
 
-    function startDischarging(){    
-      dischargingInterval = setInterval(function(){
+    function startDischarging() {
+      dischargingInterval = setInterval(function () {
         phone.discharging();
         showPhone();
       }, 1000); // 1000 = 1 detik

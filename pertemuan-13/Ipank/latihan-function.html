@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Function</title>
+ <style>
+
+   * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+   }
+
+    .app {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1em;
+   }
+    .navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+    background-color: lightblue;
+    }
+
+     profile img {
+     border-radius: 50%;
+     width: 2em;
+     height: 2em;     
+   }
+ </style>
+  
+</head>
+<body>
+
+  <div class="app">
+  
+   <nav class="navbar">
+     <a href="#">App Logo</a>a>
+
+     <div class="profile">
+       <span id="userName">User Name</span>
+       <img src="https://ui-avatars.com/api/?background=random" id="userAvatar" />
+     </div>
+   </nav>
+
+    <!-- Element input -->
+    <div class="tweetcompose">
+      <textarea id="inputTweetMessage" placeholder="What happening?" cols="30" row="5">
+</textarea>
+      <button onclick="postTweet()">Post</button>
+    </div>
+
+    <!-- Element output -->
+    <h1>feed</h1>
+    <div id="feed" class="feed"></div>
+  </div>
+
+   <script>
+     // berisi object dari tweets message
+     var posts = [];
+
+     // object user yang lagi login
+     var user = {
+       name: "Hambali",
+       username: "@hambali",
+       getAvatar: function(){
+         return `https://ui-avatars.com/api/?background=random&name=${this.name}`;
+       }
+     };
+
+     function showUserprofile() {
+       // tampilkan object ke navbar
+       document.getElementById("userName").innerHTML = user.name;
+       document.getElementById("userAvatar").src = user.getAvatar();
+     }
+
+     function postTweet(){
+     // ambil input dari textarea
+     const messageInput = document.getElementById('inputTweetMessage').value;
+
+     // cek apakah input kosong
+     if(messageInput.length <= 0 && messageInput === ""){
+       alert("Pesan tidak boleh kosong");
+       return;
+     }
+
+     // buat object tweet
+     const tweet = {
+       message: messageInput,
+       author: {...user},
+       date: new Date()
+     };
+
+     // event setelah dokument HTML selesai di load
+     document.addEventListener("DOMContentLoaded", function(){
+       // panggil fungsi show user profile
+       showUserprofile();
+     });
+   </script>
+ </body>
+</html>

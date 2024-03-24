@@ -10,12 +10,16 @@
   <div id="app"></div>
 
   <script>
+
+    var chargingInterval;
+    var dischargingInterval;
+
     // Membuat objek phone
     var phone = {
       nama: "Redmi",
       wifiOn: false,
       cellularDataOn: false,
-      battrey: 60,
+      battrey: 10,
       toggleWifi: function(){
         this.wifiOn = !this.wifiOn;
       },
@@ -25,9 +29,19 @@
       charging: function(){
         if(this.battrey >= 100){
           alert(`${this.battrey}% Sudah Terisi Penuh`);
+          // menghentikan interval setelah baterai penuh
+          clearInterval(chargingInterval);
           return;
         }
         this.battrey++;
+      },
+      discharging: function(){
+        if(this.battrey < 1){
+            alert("Baterai kosong, HP akan mati!!");
+            clearInterval(dischargingInterval);
+            return;
+        }
+        this.battrey--;
       }
     }
 
@@ -37,10 +51,11 @@
     // Menyalakan wifi dengan fungsi toggle dari objek phone
     phone.toggleWifi();
 
-    // Tampilkan hp 
+    // Menampilkan hp 
     showPhone();
 
     function showPhone(){
+      //destructuring objek
       let {nama, wifiOn, cellularDataOn, battrey} = phone;
       const displayTemplate = ` 
       <h1>${nama}</h1>
@@ -51,9 +66,10 @@
       <p>Data: ${cellularDataOn ? "Hidup": "Mati"}</p>
 
       <hr>
-      <button onclick="toggleWifi()">Toggle Wifi</button>
+      <button onclick="toggleWifi()">Toggle Wifi 🤓</button>
       <button onclick="toggleData()">Toggle Data</button>
-      <button onclick="startCharging()">Mengisi Baterai</button>
+      <button onclick="startCharging()"> ⚡️Mengisi Baterai</button>
+      <button onclick="startDischarging()"> 🔋Mengosongkan Baterai </button>
       `;
       document.getElementById('app').innerHTML= displayTemplate;
     }
@@ -69,9 +85,19 @@
     }
 
     function startCharging(){
-      phone.charging();
-      showPhone();
+        chargingInterval = setInterval(function(){
+            phone.charging();
+            showPhone();
+        }, 500);
     }
+
+    function startDischarging(){
+        dischargingInterval = setInterval(function(){
+            phone.discharging();
+            showPhone();
+        }, 1000);
+    }
+    
   </script>
   
 </body>

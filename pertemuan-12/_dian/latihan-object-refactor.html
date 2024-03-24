@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Object</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    // membuat object phone
+    var phone = {
+      name: "Realme",
+      wifiOn: false,
+      cellularDataOn: false,
+      battery: 7,
+      chargingInterval: null,
+      dischargingInterval: null,
+      toggleWifi: function () {
+        this.wifiOn = !this.wifiOn;
+        this.showPhone();
+      },
+      toggleCellularData: function () {
+        this.cellularDataOn = !this.cellularDataOn;
+        this.showPhone();
+      },
+      charging: function () {
+        clearInterval(this.dischargingInterval);
+        this.chargingInterval = setInterval(() => {
+          if (this.battery >= 100) {
+            alert(`${this.battery}% Fully Charged`);
+            // clear interval setelah full charging
+            clearInterval(this.chargingInterval);
+            startDischarging();
+            return;
+          }
+
+          this.battery++;
+          this.showPhone();
+        }, 100);
+
+      },
+      discharging: function () {
+        clearInterval(this.chargingInterval);
+        this.dischargingInterval = setInterval(() => {
+          if (this.battery < 1) {
+            alert("Batery kosong, HP akan mati!");
+            // stop interval discharing setelah battery habis
+            clearInterval(this.dischargingInterval);
+            return;
+          }
+          
+          this.battery--;
+          this.showPhone();
+        }, 1000);
+      },
+      showPhone: function() {
+        const displayTemplate = `
+            <h1>${this.name}</h1>
+            <p> 
+              Battery: <progress min="0" max="100" value="${this.battery}"></progress> ${this.battery}%
+            </p>
+            <p>WIFI: ${this.wifiOn ? "On" : "Off"}</p>
+            <p>Data: ${this.cellularDataOn ? "On" : "Off"}</p>
+
+            <hr>
+            <button onclick="toggleWifi()">Toggle WIFI</button>
+            <button onclick="toggleData()">Toggle Data</button>
+            <button onclick="startCharging()">⚡️ Charging</button>
+        `;
+
+        document.getElementById('app').innerHTML = displayTemplate;
+      }
+    };
+
+    // mengubah nama phone
+    phone.name = "Redmi Note XX";
+
+    // menyalakan wifi dengan fungsi toggle dari object phone
+    phone.toggleWifi();
+
+    // tampilkan hp
+    phone.showPhone();
+    phone.discharging();
+
+
+    function toggleWifi() {
+      phone.toggleWifi();
+    }
+
+    function toggleData() {
+      phone.toggleCellularData();
+    }
+
+    function startCharging() {
+      phone.charging();
+    }
+
+    function startDischarging() {
+      phone.discharging();
+    }
+  </script>
+</body>
+
+</html>
