@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toko Hp</title>
+
+  <script src="product.js"></script>
+  <script src="cart.js"></script>
+  <script src="wallet.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- 
+      tempat cari ikon: https://icons.getbootstrap.com/
+    -->
+  <nav>
+    <button class="cart" onclick="openCart()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+      </svg>
+
+      <span id="cartCount">0</span>
+    </button>
+
+    <div class="wallet">
+      <button onclick="topUpWallet()">Top up</button>
+    </div>
+  </nav>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
