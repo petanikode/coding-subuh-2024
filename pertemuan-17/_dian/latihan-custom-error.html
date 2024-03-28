@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Custom Error</title>
+</head>
+<body>
+
+  <script>
+    // membuat custom class yang diturunkan dari class Error
+    class BalanceError extends Error {
+      constructor(message){
+        super(message);
+        this.name = "BalanceError";
+      }
+    }
+
+    // membuat class wallet yang akan menggunakan custom class error
+    class Wallet {
+      constructor(initialBalance){
+        this.balance = initialBalance;
+      }
+
+      topUp(amount){
+        if(amount < 0 || isNaN(amount)){
+          throw new BalanceError("Ups! Jumlah topup salah.");
+        }
+
+        this.balance += amount;
+      }
+
+      withdraw(amount){
+        if(amount < 0 || isNaN(amount) || amount > this.balance){
+          throw new BalanceError("Ups, jumlah saldo yang mau ditarik salah.");
+        }
+
+        this.balance -= amount;
+      }
+    }
+
+
+    // membuat object wallet
+    const dompet = new Wallet(10000);
+
+    // handle error
+    try {
+      dompet.topUp("abc");
+    } catch (error) {
+      if(error instanceof BalanceError){
+        alert("Waduh, ini error karena saldo salah");
+      } else {
+        console.log("ERORR: ", error.message);
+      }
+    }
+  </script>
+</body>
+</html>

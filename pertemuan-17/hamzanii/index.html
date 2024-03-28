@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Error Handling</title>
+  </head>
+  <body>
+    <!-- Form Pembagian -->
+    <form>
+      <label for="num1">Num1</label>
+      <input
+        type="number"
+        id="num1"
+        name="num1"
+        placeholder="Masukkan angka pertama"
+      /><br />
+      <label for="num2">Num2</label>
+      <input
+        type="number"
+        id="num2"
+        name="num2"
+        placeholder="Masukkan angka kedua"
+      /><br />
+      <button type="submit" id="btn-bagi">Bagi</button><br />
+      <label for="result">Hasil</label>
+      <input id="result" name="result" readonly />
+    </form>
+    <!-- End Form -->
+    <script>
+      const btnHitungBagi = document.querySelector("#btn-bagi");
+      btnHitungBagi.addEventListener("click", handleHitungBagi());
+      //buat func bagi
+      function bagi(a, b) {
+        if (isNaN(a) || isNaN(b)) {
+          throw new Error("Tipe data harus berupa angka");
+        }
+        if (b == 0) {
+          throw new Error("Masukkan selain angka NOL (0)");
+        }
+        return a / b;
+      }
+
+      function handleHitungBagi() {
+        const nilaiA = document.querySelector("#num1").value;
+        const nilaiB = document.querySelector("#num2").value;
+
+        try {
+          const hasil = bagi(nilaiA, nilaiB);
+          document.querySelector("#result").value = hasil;
+        } catch (error) {
+          console.log(error.message);
+          alert("Ow terjadi Error");
+        }
+      }
+    </script>
+  </body>
+</html>

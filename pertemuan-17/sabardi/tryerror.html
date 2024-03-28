@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan-17</title>
+</head>
+<body>
+    <script>
+        // membuat costem class yg diturunkan dari kelass error
+        class BalanceError extends Error {
+            constructor (message){
+                super (message);
+                this.name = "BalanceError";
+            }
+        }
+
+        // membuat class wallet yang akan menggunakan costem class error 
+        class wallet {
+            constructor(initialBalance){
+                this.balance = initialBalance;
+            }
+
+            topUp(amount){
+                if(amount < 0 || isNaN(amount)){
+                    throw new BalanceError("ups! jumlah topup salah")
+                }
+                this.balance+=amount
+            }
+
+            withdraw(amount){
+                if(amount < 0 || isNaN(amount) || amount > this.balance){
+                    throw new BalanceError("Ups, Jumlah saldo yang mau ditarik salah.");
+                }
+                this.balance -= amount
+            }
+        }
+
+        // membuat objek wallet 
+        const dompet = new wallet (10000);
+
+        // handle error
+        try {
+            dompet.topUp("abc");
+        } catch (error) {
+            if (error instanceof BalanceError) {
+                alert("waduh, ini error karena saldo salah");
+            }else{
+                console.log("ERROR: ", error.message);
+            }
+        }
+    </script>
+</body>
+</html>

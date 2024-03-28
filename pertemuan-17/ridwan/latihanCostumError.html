@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    class balanceError extends Error {
+      construtor(message){
+        super(message);
+        this.name = "balanceError";
+      }
+    }
+
+    class wallet {
+      constructor(initialBalance){
+        this.balance = initialBalance;
+      }
+
+      topUp(amount){
+        if(amount < 0 || isNaN(amount)){
+          throw new balanceError("Ups Jumlah topup slah.");
+        }
+        this.balance += amount;
+      }
+
+      withdraw(amount){
+        if{amount < 0 || isNaN(amount) || amount > this.balance){
+          throw new balanceError("Ups, Jumlah saldo yang mau ditarik salah");
+        }
+           this.balance -= amount;
+      }
+    }
+  </script>
+  
+</body>
+</html>
