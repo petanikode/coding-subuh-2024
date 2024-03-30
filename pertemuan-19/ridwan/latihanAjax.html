@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Ajax</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin: 20px;
+      }
+
+      #produk-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .produk {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+      }
+
+      .produk img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      .produk h3 {
+        font-size: 1.2em;
+        margin-top: 10px;
+      }
+
+      .produk p.price {
+        font-weight: bold;
+        color: #007bff;
+        margin: 10px 0;
+      }
+
+      progress {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header"></header>
+    <button onclick="loadHeader()">Load Header</button>
+    <div id="produk-list">
+      <progress></progress>
+    </div>
+
+    <script>
+      function loadHeader() {
+        const xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("load", function () {
+          document.querySelector("#header").innerHTML = xhr.responseText;
+        });
+
+        xhr.open("GET", "headerContent.html", true);
+        xhr.send();
+      }
+
+      function loadProduk() {
+        const url = "https://fakestoreapi.com/products";
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("load", function () {
+          const produk = JSON.parse(xhr.responseText);
+          showProduk(produk);
+        });
+
+        xhr.open("GET", url, true);
+        xhr.send();
+      }
+
+      function showProduk(produk) {
+        const produkList = document.querySelector("#produk-list");
+        produkList.innerHTML = "";
+
+        produk.forEach((item) => {
+          const produkTemplate = `
+            <div class="produk">
+              <img src="${item.image}" alt="${item.title}"/>
+              <div>
+                <h3>${item.title}</h3>
+                <p class="price">${formatUSD(item.price)}</p>
+                <p>${item.description}</p>
+              </div>
+            </div>
+          `;
+          produkList.innerHTML += produkTemplate;
+        });
+      }
+
+      function formatUSD(number) {
+        return number.toLocaleString("us", {
+          style: "currency",
+          currency: "USD",
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadProduk();
+      });
+    </script>
+  </body>
+</html>

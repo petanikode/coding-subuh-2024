@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload File</title>
+</head>
+
+<body>
+  <h2>Upload File dengan AJAX</h2>
+  <input type="file" id="fileInput" name="file" />
+  <button onclick="uploadFile()">Upload</button>
+  <progress id="progressBar" value="0" max="100"></progress>
+  <span id="percentProgress"></span>
+
+  <script>
+    function uploadFile() {
+      const UPLOAD_URL = 'https://33zfhf-3000.csb.app/upload';
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0]; // Mengambil file
+      const formData = new FormData();
+      formData.append('file', file); // Sesuaikan dengan key yang diterima di server
+
+      // membuat object xhr
+      const xhr = new XMLHttpRequest();
+
+      // Tambahkan event listener untuk progress
+      xhr.upload.addEventListener('progress', function (event) {
+        if (event.lengthComputable) {
+          var percentComplete = (event.loaded / event.total * 100).toFixed();
+          console.log(percentComplete + '% uploaded');
+          // Update UI di sini untuk menampilkan progress
+          // Misal, update width dari sebuah progress bar
+          const progressBar = document.getElementById('progressBar');
+          const percentProgress = document.querySelector("#percentProgress");
+          progressBar.value = percentComplete;
+          progressBar.textContent = percentComplete + '%'; // Untuk browser yang tidak mendukung <progress>
+          percentProgress.textContent = percentComplete + "%";
+        }
+      });
+      
+      xhr.open('POST', UPLOAD_URL, true);
+      
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          alert('File berhasil diupload');
+          // Reset atau sembunyikan progress bar
+          var progressBar = document.getElementById('progressBar');
+          progressBar.value = 0; // Reset progress bar
+        } else {
+          alert('Terjadi kesalahan dalam mengupload file');
+        }
+      };
+      
+      xhr.send(formData);
+    }
+  </script>
+</body>
+
+</html>
