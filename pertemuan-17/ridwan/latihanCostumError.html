@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Latihan costum error</title>
 </head>
 <body>
 
   <script>
     class balanceError extends Error {
-      construtor(message){
+      constructor(message){
         super(message);
         this.name = "balanceError";
       }
@@ -29,10 +29,25 @@
       }
 
       withdraw(amount){
-        if{amount < 0 || isNaN(amount) || amount > this.balance){
+        if(amount < 0 || isNaN(amount) || amount > this.balance){
           throw new balanceError("Ups, Jumlah saldo yang mau ditarik salah");
         }
            this.balance -= amount;
+      }
+    }
+
+    // membuat objek wallet 
+    const dompet = new wallet(10000);
+
+    //heandel error
+    try{
+      dompet.topUp("abc");
+      
+    } catch (error) {
+      if(error instanceof balanceError) {
+        alert("wahh, ini error karena saldo salah");
+      } else {
+        console.log("error:", error.message);
       }
     }
   </script>

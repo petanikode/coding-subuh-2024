@@ -40,6 +40,10 @@
   margin-bottom: 1em;
 }
 
+#product-list-in-cart .product img {
+  max-height: 80px;
+}
+
 button {
   padding: 8px 16px;
   border-radius: 8px;

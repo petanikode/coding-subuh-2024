@@ -10,3 +10,5 @@ Product.prototype.getPriceIDR = function(){
     currency: 'IDR'
   });
 }
+
+

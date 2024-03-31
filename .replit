@@ -2,7 +2,7 @@ hidden=[".config"]
 modules = ["nodejs-20:v8-20230920-bd784b9", "web:v2-20230623-0b7a606"]
 
 [deployment]
-publicDir = "/"
+publicDir = "."
 deploymentTarget = "static"
 
 [rules]
@@ -12,4 +12,12 @@ deploymentTarget = "static"
 [rules.formatter.fileExtensions]
 
 [rules.formatter.fileExtensions.".html"]
-id = "module:web:v7-20240209-9e3a339/languageServer:html"
+id = "module:web:v9-20240319-38caddd/languageServer:html"
+
+[[ports]]
+localPort = 4173
+externalPort = 80
+
+[[ports]]
+localPort = 5173
+externalPort = 3000

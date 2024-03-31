@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boking kursi </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dian nested loop</title>
+    <style>
+        #outputSeat button{
+             width: 3em;
+             height: 3em;
+             margin: 0.2em;
+             border-radius: 0.5em;
+        }
+        /* gunakan class .invisible pada <button> buat sembunyikan */
+    .invisible {
+        visibility: hidden;
+      }
+
+    </style>
 </head>
 <body>
-  <div class="ouputSeat"></div>
-  <h1>Kursi yang di Pilih</h1>
+    <!-- element buat nampilkan kursi  -->
+    <div id="outputSeat" class="seat"></div>
 
-  <script>
-    const ouputSeat = document.getElementById("ouputSeat")
-    for(let kolom = 7; kolom >=1; kolom--){
-      for(let baris = 12; baris >=1; baris--){
-        document.write("X <br>")
-      }
-      document.write("X <br>")
-    }
-      
-  </script>
+    <script>
+        const outputSeat = document.getElementById("outputSeat");
+        const columsNameChar = "_ABCDEFG";
+
+        // pengulangan baris 
+        for(let kolom = 7; kolom >= 1; kolom--){
+            // pengulangan kolom
+            for(let baris = 12; baris >=1 ; baris--){
+               
+                let seatTohide
+                if(((baris == 6 || baris == 5) && kolom !=1 || (baris == 1 && kolom >4))){
+                    outputSeat.innerHTML += `<button disabled class="invisible">X</button>`
+
+                }else{
+                    // tampilkan kursi
+                    const columName = columsNameChar.charAt(kolom);
+                    outputSeat.innerHTML += `<button>${columName} ${baris} </button>`
+                }
+
+            }
+            outputSeat.innerHTML += "<br>";
+        }
+    </script>
 </body>
 </html>

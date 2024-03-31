@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List App</title>
+</head>
+
+<body>
+  <h1>Todo list Apps</h1>
+  <div id="outputTask"></div>
+
+  <script>
+    // array untuk menyimpan daftar tugas
+    var task = [];
+
+    // elemt untuk output
+    const outputTask = document.getElementById("outputTask");
+
+    //memanggil fungsi show task
+    showTask();
+
+    //fungsi untuk tampilkan task nya
+    function showTask() {
+      // membuat kan percabangan jk belom ada isi nya
+      if (task.length <= 0) {
+        outputTask.innerHTML = `
+                <p>Belom ada Tugas</p>
+                <button onclick="addTask()">Tambah tugas</button>
+                `
+      } else {
+        //tampilkan list task
+        const ul = document.createElement("ul");
+        for (let id = 0; id < task.length; id++) {
+          const li = document.createElement("li");
+
+          // membuat tombol untuk edit dan hapus berdasarkan id nya 
+          const btnEditDelet =
+            `
+                    <button onclick="editTask(${id})"> Edit</button>
+                    <button onclick="deletTask(${id})"> Dellet</button>
+                    `
+          //mengganti textconten menjadi innerhtml
+          // li.textContent = task[id];
+          li.innerHTML = `${task[id]} - ${btnEditDelet}`;
+          // untuk menambhakn ul dan li
+          ul.appendChild(li);
+        }
+        // menampilkan list task
+        outputTask.replaceChildren(ul);
+        outputTask.innerHTML += `
+                <button onclick="addTask()"> + Tambah tugas</button>
+                <button onclick="clearTask()">Bersihkan</button>
+                `
+      }
+    }
+
+    // membuatkan fungsi untuk menambahkan task
+    function addTask() {
+      const newTask = prompt("tambahkan tugas baru");
+
+      // melakukan pengecekan apakah sudah di tambahkan apa belom
+      if (newTask) {
+        // push untuk menambahkan data ke dalam aray
+        task.push(newTask);
+
+        // menampilkan tugas nya
+        showTask();
+      }
+
+    }
+
+    // membuat fungsi untuk menghapus task nya
+    function clearTask() {
+      task = [];
+
+      showTask();
+    }
+
+    // mengambil id nya 
+    function editTask(id) {
+      // alert(id)
+
+      const oldtask = task[id];
+      const newTask = prompt("edit task", oldtask);
+
+      // melakukan pengecekan apakah di edit atau di cancel
+      if (newTask) {
+        task[id] = newTask;
+        showTask();
+      }
+
+    }
+
+    // membuat fungsi untuk menghapus task nya
+    function deletTask(id) {
+      const confirmtable = confirm("apakah anda ingin menghapus nya ?")
+      if (confirmtable) {
+        task.splice(id, 1); // hanya menghapus satu data pad data yg di pilih
+        showTask();
+
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

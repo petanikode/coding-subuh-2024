@@ -30,7 +30,7 @@
         width: 100%;
         justify-content: space-between;
         align-items: center;
-        padding: 0.5em;
+        padding: 0.5em 2em;
         background-color: rgb(131, 196, 218);
       }
 
@@ -130,7 +130,7 @@
         ></textarea>
 
         <div class="footer">
-          <button onclick="postTweet()" id="btnPost" class="btn btn-success" style="background-color: ;">
+          <button onclick="postTweet()" id="btnPost" class="btn btn-success" style="background-color: rgb(131, 196, 218);">
             Post
           </button>
           <span id="charCountRemaining"></span>
@@ -164,7 +164,7 @@
         const MAX_CHAR_ALLOWED = 140;
         const charRamaining = document.getElementById("charCountRemaining");
         const remaining = MAX_CHAR_ALLOWED - textarea.value.length;
-        charRamaining.textContent = remaining;
+        charRamaining.textContent = `Sisa huruf : ${remaining}`;
 
         if (remaining < 10) {
           charRamaining.style.color = "tomato";

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dian nested loop</title>
+    <style>
+        #outputSeat button{
+             width: 3em;
+             height: 3em;
+             margin: 0.2em;
+             border-radius: 0.5em;
+        }
+        /* gunakan class .invisible pada <button> buat sembunyikan */
+    .invisible {
+        visibility: hidden;
+      }
+      .selected{
+        background-color: #ff8822 ;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- element buat nampilkan kursi  -->
+    <div id="outputSeat" class="seat"></div>
+    <h1>Kursi yang di pilih : <span id="outputSelectedSeat"></span></h1>
+    <h1>Total Harga : <span id="outputPrice"></span></h1>
+
+    <script>
+        const outputSeat = document.getElementById("outputSeat");
+        const outputSelectedSeat = document.getElementById("outputSelectedSeat")
+        const outputPrice = document.getElementById("outputPrice")
+        const columsNameChar = "_ABCDEFG";
+
+        // data yg menampung jika btn kursi di klik
+        var selectedSeat = [];
+
+
+        // pengulangan baris 
+        for(let kolom = 7; kolom >= 1; kolom--){
+            // pengulangan kolom
+            for(let baris = 12; baris >=1 ; baris--){
+
+                let seatTohide
+                if(((baris == 6 || baris == 5) && kolom !=1 || (baris == 1 && kolom >4))){
+                    outputSeat.innerHTML += `<button disabled class="invisible">X</button>`
+
+                }else{
+                    // tampilkan kursi
+                    const columName = columsNameChar.charAt(kolom);
+                    outputSeat.innerHTML += `<button onclick="onSelectedSeat(event)" >${columName} ${baris} </button>`
+                }
+
+            }
+            outputSeat.innerHTML += "<br>";
+        }
+
+        function onSelectedSeat($event){
+            //variable nyimpan kursi
+            let seatName = event.target.textContent;
+            // mewakili tombol yang sedang di klik
+            event.target.classList.toggle("selected");
+            if(selectedSeat.includes(seatName)){
+                // melakuan filter jika dia batal
+                selectedSeat = selectedSeat.filter((seat)=>seat !== seatName);
+            }else{
+                // let seatSelected = event.target.textContent;
+                // jika di klik akan menyimpan data nya
+                selectedSeat.push(seatName);
+            }
+            outputSelectedSeat.textContent = selectedSeat;
+            hitungHarga();  
+        }
+
+        function hitungHarga(){
+            let tiket = 50000; 
+            outputPrice.textContent = selectedSeat.length * tiket; 
+        }
+    </script>
+</body>
+</html>

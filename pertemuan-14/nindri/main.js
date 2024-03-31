@@ -4,7 +4,7 @@ const keranjang = new Cart();
 // buat object wallet dengan saldo awal 100000
 const goPay = new Wallet(100000);
 
-// buat object product
+// buat object producAt
 const iPhone = new Product(
   "iPhone 15 Pro Max", 
   33000000, 

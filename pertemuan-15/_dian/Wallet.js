@@ -21,7 +21,7 @@ class Wallet {
     this.balance -= amount;
   }
 
-  pay(amount, callback) {
+  pay(amount) {
     const pin = Number(prompt("Inputkan PIN"));
     // amount: harus angka dan lebih besar dari 0 dan lebih kecil dari saldo
     const validAmount = !isNaN(amount) && amount < this.balance && amount > 0;
@@ -38,7 +38,7 @@ class Wallet {
     }
 
     this.balance -= amount;
-    callback();
+    document.dispatchEvent(new Event("payment-success"));
   }
 
   getCurrentBalance() {

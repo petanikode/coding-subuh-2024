@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Erorr Handling</title>
+  </head>
+  <body>
+    <label for="nilaiA">Nilai A</label>
+    <input type="number" id="nilaiA" />
+    <br />
+    <label for="nilaiB">Nilai B</label>
+    <input type="number" id="nilaiB" />
+    <br />
+    <label for="hasilBagi">Hasil</label>
+    <input type="number" id="hasilBagi" readonly />
+    <br />
+    <button id="btnHitungBagi">Hitung Bagi</button>
+
+    <script>
+      const btnHitungBagi = document.querySelector("#btnHitungBagi");
+      btnHitungBagi.addEventListener("click", handleHitungBagi);
+
+      // buat fungsi untuk pembagian
+      function hitungBagi(a, b) {
+        if (isNaN(a) || isNaN(b)) {
+          throw new Error("Tipe data harus berupa angka");
+        }
+
+        if (b == 0) {
+          throw new Error("Woy, nggak bisa dibagi dengan nol");
+        }
+
+        return a / b;
+      }
+
+      function handleHitungBagi() {
+        const nilaiA = document.querySelector("#nilaiA").value;
+        const nilaiB = document.querySelector("#nilaiB").value;
+
+        try {
+          const hasil = hitungBagi(nilaiA, nilaiB);
+          document.querySelector("#hasilBagi").value = hasil;
+        } catch (error) {
+          console.log(error.message);
+          alert("Ow terjadi Error", error.message);
+        }
+      }
+    </script>
+  </body>
+</html>

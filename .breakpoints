@@ -16,6 +16,80 @@
         "index": 0
       }
     ],
+    "pertemuan-14/ridwan/Wallet.js": [
+      {
+        "id": "3d232688-78a1-489c-85f8-67fec1156863",
+        "line": 1,
+        "version": 915,
+        "index": 0
+      }
+    ],
+    "pertemuan-15/_dian/index.html": [
+      {
+        "id": "d0b2c98d-f684-4752-bbf6-f6f1c69e00e3",
+        "line": 3,
+        "version": 608,
+        "index": 33
+      }
+    ],
+    "pertemuan-15/_dian/main.js": [
+      {
+        "id": "154141d1-658f-40ae-9501-d8c3a76b935d",
+        "line": 29,
+        "version": 2086,
+        "index": 653
+      }
+    ],
+    "pertemuan-15/ridwan/Style.css": [
+      {
+        "id": "700e32a5-287a-4cd8-bfff-adc8dbbb82d5",
+        "line": 1,
+        "version": 216,
+        "index": 0
+      }
+    ],
+    "pertemuan-16/ridwan/latihanEvent.html": [
+      {
+        "id": "ab69b00b-f5cb-47d1-bb63-c75a7e1dc149",
+        "line": 1,
+        "version": 1981,
+        "index": 0
+      }
+    ],
+    "pertemuan-18/ridwan/latihanJson.html": [
+      {
+        "id": "faa75cf7-6972-49ba-bf36-79a8b61aa559",
+        "line": 1,
+        "version": 1812,
+        "index": 2
+      },
+      {
+        "id": "64792272-5501-4aea-aa0b-8f3b9a496629",
+        "line": 1,
+        "version": 1812,
+        "index": 2
+      },
+      {
+        "id": "cd5c02a9-34f5-438a-97d9-9db5cbc64f41",
+        "line": 1,
+        "version": 1812,
+        "index": 2
+      },
+      {
+        "id": "dc58e07e-3809-4327-bb68-70f413e0b4b6",
+        "line": 1,
+        "version": 1812,
+        "index": 2
+      }
+    ],
+    "pertemuan-19/_dian/latihan-ajax.html": [
+      {
+        "id": "9a774c81-e995-4d60-9e1e-32d791b72800",
+        "line": 131,
+        "version": 1702,
+        "index": 2808
+      }
+    ],
     "pertemuan-6/_dian/latihan-permission.html": [
       {
         "id": "a348d565-30dc-4ece-8608-4011aba64841",

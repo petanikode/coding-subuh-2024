@@ -1,19 +1,25 @@
-const cart = new Cart();
+// coba buat object product dan cart
+const keranjang = new Cart();
 
-const product1 = new Product(
-  "Asus ROG Phone ZS600KL",
-  15000000,
-  "https://fdn2.gsmarena.com/vv/bigpic/asus-rog-phone.jpg",
+// buat object Wallet dengan saldo awal 10000
+const goPay = new Wallet(10000);
+
+// buat object product
+const iPhone = new Product(
+  "iPhone 15 Pro Max",
+  33000000,
+  "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg",
 );
-const product2 = new Product(
-  "Xiaomi Black Shark 4",
-  18000000,
-  "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-black-shark-4.jpg",
+const samsung = new Product(
+  "Samsung Galaxy A55",
+  6000000,
+  "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a55.jpg",
 );
 
-cart.addItem(product1);
-cart.addItem(product2);
+// tambahkan iPhone ke keranjang
+keranjang.addItem(iPhone);
 
-console.log("Cart Total Price:", cart.getTotalPrice());
-console.log("Cart Total Price (IDR):", cart.getTotalPriceIDR());
-console.log("Total items in cart:", cart.count());
+// topup 5jt
+goPay.topUp(5000000);
+
+console.log(goPay.getCurrentBalanceIDR());

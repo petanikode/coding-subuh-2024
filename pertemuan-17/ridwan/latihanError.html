@@ -8,20 +8,20 @@
   </head>
   <body>
     <label for="nilaiA">Nilai A</label>
-    <input type="number" id="nilaiA" />
+    <input type="number" id="nilaiA" /><br>
 
     <label for="nilaiB">Nilai B</label>
-    <input type="number" id="nilaiB" />
+    <input type="number" id="nilaiB" /><br>
 
     <label for="hasilBagi">Hasil</label>
-    <input type="number" id="hasilBagi" readonly />
-
+    <input type="number" id="hasilBagi" readonly /><br>
+ 
     <button id="buttonHitungBagi">Hitung Bagi</button>
 
     <script>
       //fungsi untuk pembagian
-      const buttonHitungBagi = document.querySelecttor("#buttonHitungBagi");
-        buttonHitungBagi.addEvenListener("click", handleHitungBagi);
+      const buttonHitungBagi = document.querySelector("#buttonHitungBagi");
+        buttonHitungBagi.addEventListener("click", handleHitungBagi);
 
       function hitungBagi(a, b) {
         if (isNaN(a) || isNaN(b)) {

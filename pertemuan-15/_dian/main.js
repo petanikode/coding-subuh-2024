@@ -2,7 +2,7 @@
 const cart = new Cart();
 
 // buat object Wallet dengan saldo awal 10000
-const wallet = new Wallet(10000);
+const wallet = new Wallet(10000000);
 
 // buat object product
 const iPhone = new Product(
@@ -46,13 +46,15 @@ function handleCheckout(){
   const totalToPay = cart.getTotalPrice();
 
   // bayar dengan object wallet
-  wallet.pay(totalToPay, function() {
-    updateCartCountDisplay();
-    updateWalletBalanceDisplay();
-    closeCart();
-  });
-
+  wallet.pay(totalToPay);
 }
+
+document.addEventListener("payment-success", function(){
+  cart.clear();
+  updateCartCountDisplay();
+  updateWalletBalanceDisplay();
+  closeCart();
+});
 
 function topUpWallet(){
   const topUpAmount = Number(prompt("Jumlah toptup"));
@@ -73,7 +75,7 @@ function showAllProduct() {
 
   let index = 0;
   for (product of products) {
-    productListElement.innerHTML = `
+    productListElement.innerHTML += `
       <div class="product">
         <img src="${product.image}" />
         <h3>${product.name}</h3>

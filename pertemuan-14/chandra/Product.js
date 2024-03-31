@@ -5,5 +5,8 @@ function Product(name, price, image){
 }
 
 Product.prototype.getPriceIDR = function(){
-  return this.price.toLocaleString('id-ID',{style})
+  return this.price.toLocaleString("id", {
+    style: 'currency',
+    currency: 'IDR'
+  });
 }

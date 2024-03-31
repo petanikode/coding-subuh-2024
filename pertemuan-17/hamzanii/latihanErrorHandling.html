@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Custom Error</title>
+</head>
+<body>
+
+  <script>
+    // membuat custom class yang diturunkan dari class Error
+    class BalanceError extends Error {
+      constructor(message){
+        super(message);
+        this.name = "BalanceError";
+      }
+    }
+
+    // membuat class wallet yang akan menggunakan custom class error
+    class Wallet {//kelas dompet
+      constructor(initialBalance){//fungsi inisial dompet
+        this.balance = initialBalance;//variable dompet
+      }
+
+      topUp(amount){// mengisi jumlah
+        if(amount < 0 || isNaN(amount)){// jika jumlah isi dompet kurang dari 0 dan jika bukan angka
+          throw new BalanceError("Ups! Jumlah topup salah.");//lempar objek kustom error
+        }//jika tidak
+        this.balance += amount;//isi dompet
+      }
+
+      withdraw(amount){// mengambil jumlah
+        if(amount < 0 || isNaN(amount) || amount > this.balance){//jika jumlah isi dompet kurang dari 0 atau bukan angka atau jumlah  melebihi dompet
+          throw new BalanceError("Ups, jumlah saldo yang mau ditarik salah.");//lempar objek kustom error
+        }
+        this.balance -= amount;//isi dompet
+      }
+    }
+
+    // membuat object wallet
+    const dompet = new Wallet(10000);//isi dompet = 10000
+
+    // handle error
+    try {
+      dompet.topUp("abc");//isi dompet = "abc"(string)
+    } catch (error) {
+      if(error instanceof BalanceError){
+        alert("Waduh, ini error karena saldo salah");
+      } else {
+        console.log("ERORR: ", error.message);
+      }
+    }
+  </script>
+</body>
+</html>
