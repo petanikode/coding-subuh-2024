@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  text-align: center;
+  padding: 1em;
+}
+
+header h1 {
+  text-align: center;
+}
+
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.product {
+  display: flex;
+  gap: 1em;
+  max-width: 680px;
+  border: 1px solid silver;
+  border-radius: 16px;
+  padding: 1em;
+}
+
+.product .price {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: green;
+}
+
+.product img {
+  max-height: 260px;
+  max-width: 260px;
+}

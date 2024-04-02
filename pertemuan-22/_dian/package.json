@@ -1,0 +1,20 @@
+{
+  "name": "latihan-nodejs",
+  "version": "1.0.0",
+  "description": "Source code untuk latihan saja",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dian",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "vite": "^5.2.7",
+    "vitest": "^1.4.0"
+  }
+}

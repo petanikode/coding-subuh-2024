@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan AJAX</title>
+
+  <link href="style.css" rel="stylesheet" />
+  <script src="API.js"></script>
+  <script src="WishListStorage.js"></script>
+</head>
+
+<body>
+
+  <nav>
+    <span>Hello <b id="user-name">User</b> </span>
+    <a href="index.html">Back to Home</a>
+  </nav>
+
+  <header>
+    <h1>Your Wish Lists (<span id="wishlist-count">0</span>)</h1>
+  </header>
+
+  <div id="product-list">
+    <progress></progress>
+  </div>
+
+  <script>
+
+    const wishListStorage = new WishListStorage();
+
+    function loadProducts() {
+      // ambil data product dari localstorage
+      const products = wishListStorage.getAll();
+      // tampilkan data product
+      showProducts(products);
+    }
+
+    function showProducts(products) {
+      const productList = document.querySelector("#product-list");
+      // hapus loading
+      productList.innerHTML = products.length <= 0 ? "Kosong" : "";
+
+      // mengisi product-list dengan data product
+      products.forEach(product => {
+        const isInWishList = wishListStorage.isInWishlist(product.id);
+        const btnText = isInWishList ? "❌ Remove from WishList" : "❤️ Add to Wishlist";
+
+        const productTemplate = `
+          <div class="product">
+            <img src="${product.image}" />
+            <div>
+              <h3>${product.title}</h3>
+              <p class="price">${formatUSD(product.price)}</p>
+              <p>${product.description}</p>
+              <button onclick="handleToggleWishlist(event)"
+                data-id="${product.id}"
+                data-title="${product.title}"
+                data-image="${product.image}"
+                data-price="${product.price}"
+                data-description="${product.description}"
+              >${btnText}</button>
+            </div>
+          </div>
+        `;
+        productList.innerHTML += productTemplate;
+      });
+
+    }
+
+    function handleToggleWishlist(event) {
+      // ambil data product dari attribut event target
+      const product = {...event.target.dataset};
+
+      // cek apakah product udah ada di wishlist
+      const isInWishList = wishListStorage.isInWishlist(product.id);
+
+      if (isInWishList) {
+        wishListStorage.remove(product.id);
+        event.target.textContent = "❤️ Add to Wishlist";
+      } else {
+        wishListStorage.add(product);
+        event.target.textContent = "❌ Remove from WishList";
+      }
+
+      updateWishlistCountDisplay();
+      loadProducts();
+    }
+
+    function updateWishlistCountDisplay() {
+      document.querySelector("#wishlist-count").textContent = wishListStorage.count();
+    }
+
+    function formatUSD(number) {
+      return Number(number).toLocaleString("us", {
+        style: "currency",
+        currency: "USD"
+      })
+    }
+
+    function setUserCookie() {
+      const isCookieEmpty = document.cookie == "";
+      const isKeyExist = document.cookie.split("=")[0] == "name";
+
+      if (isCookieEmpty || !isKeyExist) {
+        // input nama user
+        const name = prompt("Inputkan nama");
+
+        // simpan nama ke dalam cookie
+        document.cookie = `name=${name};path=/`;
+
+        console.log("COOKIE TERSIMPAN:", document.cookie);
+      }
+    }
+
+    function showUserNameFromCookie() {
+      const name = document.cookie.split("=")[1];
+      document.querySelector("#user-name").textContent = name;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setUserCookie();
+      showUserNameFromCookie();
+      loadProducts();
+      updateWishlistCountDisplay();
+    })
+  </script>
+
+</body>
+
+</html>
