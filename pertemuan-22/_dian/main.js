@@ -1,6 +1,5 @@
-import bootstrap from "bootstrap";
+//import bootstrap from "bootstrap";
 import Wallet from "./Wallet.js";
-
 
 const dompet = new Wallet(1000);
 
