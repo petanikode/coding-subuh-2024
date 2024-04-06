@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Perulangan While</title>
+
+    <script>
+        let counter = 1;
+
+        while(counter <= 10){
+            document.write(`<div>Perulangan ke-${counter}</div>`);
+            counter++; // update nilai counter biar tidak terjadi infinity loop
+        }
+
+        let ulangi = confirm("Apakah anda mau ngulang?");
+        let hitungan = 0;
+        while(ulangi){
+            hitungan++;
+            // update nilai ulangi
+            ulangi = confirm("Mau ngulang lagi?");
+        }
+
+        document.write(`<h1>Total Pengulangan: ${hitungan}</h1>`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

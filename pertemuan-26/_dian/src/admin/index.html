@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aplikasi Toko</title>
+    <script type="module" src="../js/admin/main.js"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">Admin App Toko</a>
+
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item hstack gap-2">
+
+            <div id="loginRegisterButtons">
+              <a href="login.html" class="btn btn-outline-primary">Login</a>
+              <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+
+            
+
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="container mt-4 p-5 bg-light text-dark rounded-4 mx-auto">
+      <h1>Kelola data Produk</h1>
+      <p class="lead">Buat, edit, dan hapus data produk</p>
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">Tambah Produk</button>
+    </header>
+
+
+    <!-- List Products -->
+    <section class="container mt-5">
+      <div class="row" id="product-list">
+        
+      </div>
+    </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Produk Baru</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-add-product" method="post">
+
+              <div class="mb-3">
+                <label for="name">Nama produk</label>
+                <input class="form-control" type="text" name="name" placeholder="Nama produk" />
+              </div>
+
+              <div class="mb-3">
+                <label for="price">Harga</label>
+                <input class="form-control" type="number" name="price" placeholder="Harga" />
+              </div>
+
+              <div class="mb-3">
+                <label for="stock">Stock</label>
+                <input class="form-control" type="number" name="stock" placeholder="Stok" />
+              </div>
+              
+              <div class="mb-3">
+                <label for="image">Image</label>
+                <input class="form-control" type="file" name="image" placeholder="Image" />
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button id="btn-save-product" type="button" class="btn btn-primary">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

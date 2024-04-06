@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>latihan-for-of</title>
+</head>
+<body>
+
+  <script>
+    var playlist = [
+        "Blank Space - Taylor Swift",
+        "Love Story - Taylor Swift",
+        "Shake It Off - Taylor Swift",
+        "You Belong with Me - Taylor Swift",
+        "Bad Blood - Taylor Swift",
+        "1989 - Taylor Swift",
+        "Wildest Dreams - Taylor Swift"
+    ];;
+
+    var album = {
+        title: "1989",
+        artist: "Taylor Swift",
+        releasedate: "October 27, 2014",
+        genre: "Pop",
+        cover: "https://i.scdn.co/image/ab67616d0000b27352b2a3824413eefe9e33817a"
+    };
+  </script>
+
+  <h1>Playlist:</h1>
+  <ol id="outputPlaylist"></ol>
+
+  <h2>Related Album</h2>
+  <div id="outputAlbum"></div>
+
+
+  <script>
+    const outputPlaylist = document.getElementById('outputPlaylist');
+    const outputAlbum = document.getElementById('outputAlbum');
+
+    for (music of playlist) {
+      outputPlaylist.innerHTML += `<li>${music}</li>`;
+    }
+
+    for (key in album) {
+      if (key === "cover") {
+        outputAlbum.innerHTML += `<img src="${album[key]}" />`
+      } else {
+        outputAlbum.innerHTML += `${key}: ${album[key]} <br>`;
+      }
+    }
+  </script>
+</body>
+</html>

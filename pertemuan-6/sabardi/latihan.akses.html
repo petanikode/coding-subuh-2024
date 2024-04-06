@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea readonly id="inputMesege" cols="30" rows="5">Tulis idemu</textarea>
+    <br>
+    <button disabled id="postButton" >Post in idea</button>
+    <button disabled id="editButton">edit</button>
+    <button disabled id="deletButton">Delet</button>
+    <script>
+        const WRITE = 1; //0001
+        const EDIT = 2; //0010
+        const POST = 4; // 0100
+        const DELET = 8; //1000
+
+        //set izin defult
+        var izinUser = 0; //0000
+            
+        //tambahkan hak akses untuk edit end write
+        izinUser = WRITE | EDIT | EDIT | DELET
+        
+        //cek izin user
+        const bolehNulis = (izinUser & WRITE) === WRITE;
+        const bolehPosting = (izinUser & POST) === POST;
+        const bolehEdit = (izinUser & EDIT) === EDIT;
+        const bolehHapus = (izinUser & DELET) === DELET;
+
+        //aply izin
+        document.getElementById("inputMesege").readOnly = !bolehNulis;
+        document.getElementById("postButton").disabled = !bolehPosting;
+        document.getElementById("editButton").disabled = !bolehEdit;
+        document.getElementById("deletButton").disabled = !bolehHapus;
+
+    </script>
+</body>
+</html>

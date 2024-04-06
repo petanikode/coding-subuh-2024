@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengisian</title>
+  </head>
+
+  <body>
+    <div style="display: flex; justify-content: center">
+      <h1>Latihan Pengisian</h1>
+    </div>
+    <hr />
+
+    <h3>Saldoku : <b id="saldo">0</b></h3>
+    <button onclick="topUp()">💰 Tambah Saldo (+)</button>
+    <button onclick="withdraw()">💸 Tarik Saldo (-)</button>
+
+    <script>
+      var saldoku = Number(document.getElementById("saldo").textContent);
+
+      function topUp() {
+        const tambah = Number(
+          prompt("Masukkan Nominal Yang ingin di Tambahkan"),
+        );
+        if (tambah >= 0) {
+          saldoku = saldoku + tambah;
+          saldo.textContent = saldoku;
+        } else {
+          alert("Inputan salah!!!");
+        }
+      }
+
+      function withdraw() {
+        const kurang = Number(prompt("Masukkan Nominal Yang ingin di Tarik"));
+        if (kurang >= 0) {
+          saldoku -= kurang;
+          saldo.textContent = saldoku;
+        } else {
+          alert("Saldo Anda Kurang!!!");
+        }
+      }
+    </script>
+  </body>
+</html>

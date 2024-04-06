@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch Case</title>
+</head>
+
+<body>
+  <p>Pilih bahasa</p>
+
+  <select id="languageOption" onchange="changeLanguage()">
+    <option value="id">Indonesia</option>
+    <option value="us">Inggris</option>
+    <option value="jp">Japan</option>
+  </select>
+
+  <div>
+    <p id="outputSelectedLang"></p>
+    <img id="flagImage" src="https://flagcdn.com/id.svg" width="230" />
+  </div>
+
+  <script>
+    function changeLanguage() {
+      let selectElement = document.getElementById("languageOption");
+      let outputElement = document.getElementById("outputSelectedLang");
+      let flagImageElement = document.getElementById("flagImage");
+
+      let selectedValue = selectElement.value;
+      let languageName;
+      let flagImageUrl;
+
+      switch (selectedValue) {
+        case "id":
+          languageName = "Bahasa Indonesia";
+          flagImageUrl = "https://flagcdn.com/id.svg";
+          break;
+        case "us":
+          languageName = "English";
+          flagImageUrl = "https://flagcdn.com/us.svg";
+          break;
+        case "jp":
+          languageName = "Japanese";
+          flagImageUrl = "https://flagcdn.com/jp.svg";
+          break;
+        default:
+          languageName = "Unknown";
+          flagImageUrl = "";
+      }
+
+      outputElement.textContent = "Bahasa yang dipilih: " + languageName;
+      flagImageElement.src = flagImageUrl;
+    }
+  </script>
+</body>
+
+</html>

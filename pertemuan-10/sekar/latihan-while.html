@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 10 : Coding Subuh 2024</title>
+  <script>
+    // Perulangan While
+    // Case 1
+    document.write(`<h1>Latihan Perulangan While</h1>`);
+
+    let i = 1;
+    while (i <= 10) {
+      document.write(`<div>Angka- ${i}<br></div>`);
+      i++;
+    }
+
+    // Case 2
+    let ulangi = confirm("Apakah ingin diulang");
+    let hitungan = 0;
+
+    while (ulangi) {
+      hitungan++;
+      ulangi = confirm("Ingin ulang lagi");
+    }
+
+    document.write(`<p>Total Pengulangan : ${hitungan} kali</p>`)
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

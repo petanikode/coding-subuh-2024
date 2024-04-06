@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Latihan Variabel</title>
+    <script>
+
+        let nama = "Rizal";
+        let saldo = 100000;
+        let isMember = false;
+
+
+        nama = prompt("Masukkan nama Anda:", nama);
+        saldo = parseInt(prompt("Masukkan saldo Anda:", saldo));
+        isMember = confirm("Apakah Anda seorang member?");
+
+      if (isMember) {
+          isMember = " Ya,  Seorang Member";
+      }else{
+          isMember = "Tidak, Bukan Seorang Member ";
+      }
+
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("outputNama").textContent = nama;
+            document.getElementById("outputSaldo").textContent = saldo;
+            document.getElementById("outputMember").textContent = isMember;
+          
+        });
+    </script>
+</head>
+<body>
+
+    <h1>Status Akun Anda</h1>
+    <p>Nama: <b id="outputNama"></b></p>
+    <p>Saldo: <b id="outputSaldo" style="color: green"></b></p>
+    <p>Member: <b id="outputMember"></b></p>
+
+</body>
+</html>

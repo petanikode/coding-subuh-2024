@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Latihan Variabel</title>
+  <script>
+    // deklarasi variabel
+    let nama = "Andi";
+    var saldo = 100000;
+    let isMember = false;
+  </script>
+</head>
+
+<body>
+
+  <h1>Status Akun Anda</h1>
+  <p>Nama: <b id="outputNama"></b></p>
+  <p>Saldo: <b id="outputSaldo" style="color: green"></b></p>
+  <p>Member: <b id="outputMember"></b></p>
+
+  <script>
+    // CHALLENGE: isi ulang variabel dengan input prompt dan confirm
+    nama = prompt("inputkan nama", nama);
+    saldo = prompt("inputkan saldo", saldo);
+    member = confirm("apakah anda yakin menjadi member");
+    // menampilkan isi variabel ke elemen HTML
+    outputNama.textContent = nama;
+    outputSaldo.textContent = saldo;
+    outputMember.textContent = isMember;
+  </script>
+</body>
+
+</html>

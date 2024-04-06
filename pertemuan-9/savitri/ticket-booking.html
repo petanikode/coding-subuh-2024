@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Nested Loop</title>
+  <style>
+    .seat button {
+      height: 3em;
+      width: 3em;
+      margin: 0.2em;
+      border-radius: 0.5em;
+      background-color: #3498db; /* warna kursi tersedia */
+      color: white;
+      font-weight: bold;
+    }
+
+    .seat button.selected {
+      background-color: #e74c3c; /* warna kursi yang dipilih */
+    }
+
+    .seat button.disabled {
+      background-color: #bdc3c7; /* warna kursi yang sudah dipesan */
+      pointer-events: none; /* kursi yang sudah dipesan nggabisa diklik */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Element buat nampilin kursi -->
+  <div id="outputSeat" class="seat"></div>
+  <br>
+  <button onclick="pesanTiket()">Pesan Tiket</button>
+  <br>
+  <div id="totalHarga">Total Harga: Rp.0</div>
+
+  <script>
+    // object elemen outputSeat
+    const outputSeat = document.getElementById('outputSeat');
+    // mapping karakter untuk nama kolom, diisi _ di awal karena perulangan sampai 1 bukan sampai 0
+    var char = "_ABCDEFG";
+    var totalHarga = 0;
+    var kursiTerpesan = [];
+
+    // Nested loop untuk menampilkan layout kursi
+    for (let kolom = 7; kolom >= 1; kolom--) {
+      for (let baris = 12; baris >= 1; baris--) {
+        outputSeat.innerHTML += `
+          <button id="${char.charAt(kolom)}${baris}" onclick="togglePesan('${char.charAt(kolom)}${baris}')">${char.charAt(kolom)}${baris}</button>
+        `;
+      }
+      outputSeat.innerHTML += `<br>`;
+    }
+
+    function togglePesan(id) {
+      const button = document.getElementById(id);
+      if (button.classList.contains('disabled')) {
+        return; // Jika kursi sudah dipesan, tidak bisa diubah statusnya
+      }
+      if (button.classList.contains('selected')) {
+        button.classList.remove('selected');
+        kursiTerpesan = kursiTerpesan.filter(item => item !== id);
+        totalHarga -= 50000; // Harga kursi
+      } else {
+        button.classList.add('selected');
+        kursiTerpesan.push(id);
+        totalHarga += 50000; // Harga kursi
+      }
+      document.getElementById('totalHarga').innerText = `Total Harga: Rp.${totalHarga}`;
+    }
+
+    function pesanTiket() {
+      if (kursiTerpesan.length > 0) {
+        kursiTerpesan.forEach(id => {
+          const button = document.getElementById(id);
+          button.classList.add('disabled');
+        });
+        alert(`Anda telah memesan kursi: ${kursiTerpesan.join(', ')} dengan total harga: Rp.${totalHarga}`);
+        kursiTerpesan = []; // Reset kursi yang dipilih
+        totalHarga = 0; // Reset total harga
+        document.getElementById('totalHarga').innerText = `Total Harga: Rp.${totalHarga}`;
+      } else {
+        alert('Silakan pilih kursi terlebih dahulu');
+      }
+    }
+  </script>
+</body>
+
+</html>

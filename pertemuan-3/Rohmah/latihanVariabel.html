@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Latihan Variabel</title>
+  <script>
+    var nama = "Rohmah";
+    var saldo = 100000;
+    let isMember = false;
+
+  </script>
+</head>
+
+<body>
+  <h1>Status akun anda</h1>
+  <p>Nama : <b id="outputNama"></b> </p>
+  <p>Saldo : <b id="outputSaldo"></b></p>
+  <p>Member : <b id="outputMember"></b></p>
+  <script>
+    outputNama.textContent = nama;
+    outputSaldo.textContent = saldo;
+    outputMember.textContent = isMember;
+
+    nama = prompt("Masukkan nama anda", nama);
+    saldo = parseInt(prompt("Masukkan saldo anda", saldo));
+    isMember = confirm("Apakah anda member?", isMember);    
+  </script>
+
+
+</body>

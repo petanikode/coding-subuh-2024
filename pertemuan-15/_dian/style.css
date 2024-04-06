@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: fuchsia;
+}
+
+.wallet, .cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 1em;
+}
+
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 1em;
+}
+
+#cart-dialog {
+  margin: 10% auto;
+  padding: 1em;
+  border-radius: 16px;
+  max-height: 480px;
+}
+
+#product-list-in-cart .product {
+  display: flex;
+  gap: 1em;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+#product-list-in-cart .product img {
+  max-height: 80px;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 8px;
+}

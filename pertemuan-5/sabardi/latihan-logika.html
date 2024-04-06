@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const username = prompt("username", "petanikode");
+        const password = prompt("masukan password");
+        const usernameBener = username === "tester";
+        const passwordBener = password === "1234";
+        const loginSucces = usernameBener && passwordBener
+        const dashboardTemplet = `
+        <h1>Hello ${username} </h1>
+        <p>Selamat datang</p>
+        `;
+
+        const loginFiledTemplet = `
+        <p>login gagal, silahkan coba lagi</p>
+        <button onclick="location.reload()">login</button>
+        `;
+
+        const app = document.getElementById("app");
+        app.innerHTML = loginSucces ? dashboardTemplet: loginFiledTemplet;
+
+    </script>
+</body>
+</html>

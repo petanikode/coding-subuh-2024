@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <textarea readonly rows="5" cols="50" id="inputMessage" onkeyup="countTextLength()">Tulis Tweet</textarea>
+  <br />
+  <button disabled id="postButton">Post an Idea</button>
+  <button disabled id="editButton">Edit</button>
+  <button disabled id="deleteButton">Delete</button>
+
+  <span id="textCounter"></span>
+
+  <script>
+    // Definisikan hak akses sebagai konstanta
+    const WRITE = 1; // 0b0001
+    const EDIT = 2; // 0b0010
+    const POST = 4; // 0b0100
+    const DELETE = 8; // 0b1000
+
+    var izinAksesUser = 0;
+
+    // tambah izin akses baca dan tulis
+    izinAksesUser = WRITE | EDIT;
+
+    // cek izin akses
+    const bolehNulis = (izinAksesUser & WRITE) === WRITE;
+    const bolehPosting = (izinAksesUser & POST) === POST;
+    const bolehEdit = (izinAksesUser & EDIT) === EDIT;
+    const bolehDelete = (izinAksesUser & DELETE) === DELETE;
+
+    // apply akses
+    document.getElementById("inputMessage").readOnly = !bolehNulis;
+    document.getElementById("postButton").disabled = !bolehPosting;
+    document.getElementById("editButton").disabled = !bolehEdit;
+    document.getElementById("deleteButton").disabled = !bolehDelete;
+
+    // count text length
+    function countTextLength() {
+      let textLength = document.getElementById("inputMessage").value.length;
+      document.getElementById("textCounter").textContent = textLength;
+
+      if (textLength > 140) {
+        document.getElementById("textCounter").style.color = "red";
+      } else {
+        document.getElementById("textCounter").style.color = "black";
+      }
+    }
+  </script>
+</body>
+
+</html>

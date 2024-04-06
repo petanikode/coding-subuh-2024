@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Penjumlahan Buah</title>
+</head>
+<body>
+    <h2>Input Jumlah Buah</h2>
+
+    <form id="formPenjumlahan">
+        <label for="apel">Apel: </label><br>
+        <input type="number" id="apel" name="apel"><br>
+        <label for="jeruk">Masukkan angka kedua:</label><br>
+        <input type="number" id="jeruk" name="jeruk"><br><br>
+        <button type="button" onclick="hitungJumlah()">Hitung</button>
+    </form>
+
+<p id="result">Total</p>
+
+<script>
+    function hitungJumlah() {
+        var apel = parseInt(document.getElementById("apel").value);
+        var jeruk = parseInt(document.getElementById("jeruk").value);
+        var resultElement = document.getElementById("result");
+
+        // Memeriksa apakah kedua input merupakan angka
+        if (!isNaN(apel) && !isNaN(jeruk)) {
+            var total = apel + jeruk;
+            resultElement.innerHTML = "Total: " + total;
+        } else {
+            resultElement.innerHTML = "Mohon masukkan angka";
+        }
+    }
+</script>
+</body>
+</html>

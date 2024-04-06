@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Operator Pengisian</title>
+
+  <script>
+    var balance = 0;
+
+    function topUp() {
+      const jumlahTopUp = Number(prompt("Masukan jumlah topup:"));
+
+      if (jumlahTopUp === 0) {
+
+        return;
+
+      }
+
+      if (jumlahTopUp > 0) {
+        // operasi pengisian
+        balance += jumlahTopUp;
+        outputBalance.textContent = balance.toLocaleString("ID", {
+          style: "currency",
+          currency: "IDR",
+        });
+      } else {
+        alert("Inputan salah");
+      }
+    }
+
+    function withdraw() {
+      const jumlahWithdraw = Number(
+        prompt("Masukan jumlah yang mau ditarik:"),
+      );
+
+      if (jumlahWithdraw == 0) {
+        return;
+      }
+
+      if (jumlahWithdraw < balance && jumlahWithdraw > 0) {
+        // operasi pengisian
+        balance -= jumlahWithdraw;
+
+        // tampilkan current balance ke elemen HTML
+        outputBalance.textContent = balance.toLocaleString("ID", {
+          style: "currency",
+          currency: "IDR",
+        });
+      } else {
+        alert("Saldo tidak mencukupi");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <p>Saldo:</p>
+  <h1 id="outputBalance">0</h1>
+
+  <button onclick="topUp()">💰 Top up (+)</button>
+  <button onclick="withdraw()">💸 Withdraw (-)</button>
+</body>
+
+</html>

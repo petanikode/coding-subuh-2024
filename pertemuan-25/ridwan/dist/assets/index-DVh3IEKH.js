@@ -1,0 +1,1 @@
+import{_ as e}from"./register-B1JstNQ6.js";import"./bootstrap.esm-BouezZmv.js";async function _(a,t=!0){const{HeartDrawer:r}=await e(()=>import("./HeartDrawer-CArOYbE8.js"),[]);await a.addShape("heart",new r,t)}export{_ as loadHeartShape};

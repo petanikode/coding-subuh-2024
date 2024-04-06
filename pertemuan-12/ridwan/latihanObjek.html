@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Objek</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+
+    var chargingInterval;
+    var dischargingInterval;
+
+    // Membuat objek phone
+    var phone = {
+      nama: "Redmi",
+      wifiOn: false,
+      cellularDataOn: false,
+      battrey: 10,
+      toggleWifi: function(){
+        this.wifiOn = !this.wifiOn;
+      },
+      toggleCellularData: function(){
+        this.cellularDataOn = !this.cellularDataOn;
+      },
+      charging: function(){
+        if(this.battrey >= 100){
+          alert(`${this.battrey}% Sudah Terisi Penuh`);
+          // menghentikan interval setelah baterai penuh
+          clearInterval(chargingInterval);
+          return;
+        }
+        this.battrey++;
+      },
+      discharging: function(){
+        if(this.battrey < 1){
+            alert("Baterai kosong, HP akan mati!!");
+            clearInterval(dischargingInterval);
+            return;
+        }
+        this.battrey--;
+      }
+    }
+
+    // Mengubah nama phone
+    phone.nama = "Iphone";
+
+    // Menyalakan wifi dengan fungsi toggle dari objek phone
+    phone.toggleWifi();
+
+    // Menampilkan hp 
+    showPhone();
+
+    function showPhone(){
+      //destructuring objek
+      let {nama, wifiOn, cellularDataOn, battrey} = phone;
+      const displayTemplate = ` 
+      <h1>${nama}</h1>
+      <p>
+      Baterai: <progress min="0" max="100" value="${battrey}"></progress> ${battrey}%
+      </p>
+      <p>Wifi: ${wifiOn ? "Hidup": "Mati"}</p>
+      <p>Data: ${cellularDataOn ? "Hidup": "Mati"}</p>
+
+      <hr>
+      <button onclick="toggleWifi()">Toggle Wifi 🤓</button>
+      <button onclick="toggleData()">Toggle Data</button>
+      <button onclick="startCharging()"> ⚡️Mengisi Baterai</button>
+      <button onclick="startDischarging()"> 🔋Mengosongkan Baterai </button>
+      `;
+      document.getElementById('app').innerHTML= displayTemplate;
+    }
+
+    function toggleWifi(){
+      phone.toggleWifi();
+      showPhone();
+    }
+
+    function toggleData(){
+      phone.toggleCellularData();
+      showPhone();
+    }
+
+    function startCharging(){
+        chargingInterval = setInterval(function(){
+            phone.charging();
+            showPhone();
+        }, 500);
+    }
+
+    function startDischarging(){
+        dischargingInterval = setInterval(function(){
+            phone.discharging();
+            showPhone();
+        }, 1000);
+    }
+    
+  </script>
+  
+</body>
+</html>

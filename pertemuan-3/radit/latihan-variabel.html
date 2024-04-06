@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 3 : Variabel</title>
+  <script>
+    // deklarasi variabel
+    let nama = "Radit";
+    var saldo = 100000;
+    let isMember = false;
+
+  </script>
+</head>
+<body>
+  <h1>Status Akun Anda</h1>
+  <p>Nama: <b id="outputNama"></b></p>
+  <p>Saldo: <b id="outputSaldo" style="color: red"></b></p>
+  <p>Member: <b id=outputMember></b></p>
+
+  <script>
+    // challenge isi ulang variabel
+    nama = prompt("Masukan Nama Anda");
+    saldo = prompt("Mau nabung berapa?");
+    isMember = confirm("Apakah anda akan masuk grup");
+    
+    outputNama.textContent = nama;
+    outputSaldo.textContent = saldo;
+    outputMember.textContent = isMember;
+  </script>
+</body>
+</html>

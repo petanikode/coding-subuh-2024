@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+<meta charset="UTF-8">
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operator Diskon</title>
+
+<body>
+  <script>
+    const totalbelanja = parseInt(prompt("inputkan total belanja"));
+    alert("hore kamu mendapatkan diskon 25% ")
+    // let discountPersentage = 25 / 100; //bisa menggunakan 0.25
+    let discountPersentage = 0.25; //bisa menggunakan 25/100 karna hasil bagi nya 0.25
+
+    let discountAmmount = totalbelanja * discountPersentage
+    let total_bayar = totalbelanja - discountAmmount
+
+    let hasilTemplet = `
+    <h1>Ringkasan Belanja anda </h1>
+    <p>Total Belanja : ${totalbelanja.toLocaleString("ID", {style: "currency", currency: "IDR"})} </p>
+    <p>Diskon : <span style="color: blue;">- ${discountAmmount} (${discountPersentage} %) </span> </p>
+    <p>Total bayar : <b>${total_bayar.toLocaleString("ID", {style: "currency", currency: "IDR"})}</b></p>
+    `
+    document.write(hasilTemplet)
+  </script>
+</body>
+
+</html>

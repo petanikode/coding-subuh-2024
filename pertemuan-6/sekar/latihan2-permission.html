@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 2 : Coding Subuh 2024</title>
+  </head>
+  <body>
+    <textarea
+      readonly
+      rows="5"
+      cols="50"
+      id="inputPesan"
+      onkeyup="countTextLength()"
+    >
+Tulis Idemu</textarea
+    >
+    <br />
+    <button disabled id="postButton">Post an Idea</button>
+    <button disabled id="editButton">Edit</button>
+    <button disabled id="deleteButton">Delete</button>
+
+    <span id="textCounter"></span>
+
+    <script>
+      // mendefinisikan hak akses dengan konstanta
+      const write = 1; //0001
+      const edit = 2; // 0010
+      const post = 4; // 0100
+      const hapus = 8; //0111
+
+      // set default izin user ke 0 (belum dikasih izin apapun)
+      var izinUser = 6; // 0000
+
+      // tambahkan izin untuk menulis dan mengedit
+      izinUser = write | edit | post | hapus;
+
+      // cek izin akses
+      const bolehNulis = (izinUser & write) === write;
+      const bolehPosting = (izinUser & post) === post;
+      const bolehEdit = (izinUser & edit) === edit;
+      const bolehHapus = (izinUser & hapus) === hapus;
+
+      // apply izin
+      document.getElementById("inputPesan").readOnly = !bolehNulis;
+      document.getElementById("postButton").disabled = !bolehPosting;
+      document.getElementById("editButton").disabled = !bolehEdit;
+      document.getElementById("deleteButton").disabled = !bolehHapus;
+
+      function countTextLength() {
+        let textLength = document.getElementById("inputPesan").value.length;
+        document.getElementById("textCounter").textContent = textLength;
+      }
+    </script>
+  </body>
+</html>

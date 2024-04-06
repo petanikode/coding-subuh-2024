@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challange Diskon</title>
+</head>
+
+<body>
+  <script>
+    const totalBelanja = prompt("Input total belanja");
+    alert("Selamat Anda Mendapatkan Diskon 25%");
+
+
+    const discountPercentage = 25;
+
+    const discountAmount = totalBelanja * discountPercentage / 100;
+
+    const totalBayar = totalBelanja - discountAmount;
+
+    const outputTemplate = `
+            <h1>Ringkasan Transaksi Belanja anda</h1>
+            <p>Total Belanja: ${totalBelanja}</p>
+            <p>Diskon yg didapat: ${discountAmount} (${discountPercentage}%)</p>
+            <p>Total bayar: <b>${totalBayar}</b></p>
+        `;
+
+    document.write(outputTemplate);
+  </script>
+</body>
+
+</html>

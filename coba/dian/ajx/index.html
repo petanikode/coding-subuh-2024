@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan AJAX</title>
+
+  <style>
+    #product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .product {
+      max-width: 260px;
+      border: 1px solid silver;
+      border-radius: 16px;
+      padding: 1em;
+    }
+
+    .product img {
+      max-width: 120px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header">
+
+  </header>
+
+  <button onclick="loadHeader()">Load Header</button>
+
+  <div id="product-list">
+    <progress></progress>
+  </div>
+
+  <script>
+    function loadHeader() {
+      const xhr = new XMLHttpRequest();
+
+      xhr.onload = function () {
+        console.log(xhr);
+        document.getElementById("header").innerHTML = xhr.responseText;
+      }
+
+      xhr.open("GET", "header-content.html", true);
+      xhr.send();
+    }
+
+
+    function loadProducts() {
+      const URL = "https://fakestoreapi.com/products";
+
+      // membuat object xhr
+      const xhr = new XMLHttpRequest();
+
+      // fungsi callback saat request selesai
+      xhr.onload = function () {
+        const products = JSON.parse(xhr.responseText);
+        console.log("PRODUCT", products);
+        showProducts(products);
+      }
+
+      // membuka koneksi dengan metode GET
+      xhr.open("GET", URL, true);
+
+      // mengirim Data
+      xhr.send();
+    }
+
+    function showProducts(products) {
+      document.querySelector("#product-list").innerHTML = "";
+      products.forEach(product => {
+        const productTemplate = `
+          <div class='product'>
+            <img src="${product.image}" />
+            <h3>${product.title}</h3>
+            <p>${formatUSD(product.price)}</p>
+          </div>
+        `;
+
+        document.querySelector("#product-list").innerHTML += productTemplate;
+      });
+    }
+
+    function formatUSD(number) {
+      return number.toLocaleString("us", {
+        style: "currency",
+        currency: "USD"
+      })
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadProducts();
+    })
+  </script>
+
+</body>
+
+</html>

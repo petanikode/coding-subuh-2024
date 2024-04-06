@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bitwise untuk izin akses</title>
+  <style>
+    textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    }
+    textarea:focus {
+      border-color: deeppink;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+    button {
+      padding: 8px;
+      border-radius: 10px;
+      background-color: pink;
+      color: maroon;
+      border: none;
+    }
+    button:hover {
+      background-color: hotpink;
+      color: ghostwhite;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <textarea readonly id="inputMessage" cols="50" rows="10" placeholder="Tulis idemu disini.."></textarea>
+  <br>
+  <button disabled id="postButton">Post your Idea</button>
+  <button disabled id="editButton">Edit</button>
+  <button disabled id="deleteButton">Delete</button>
+
+  <script>
+    const WRITE = 1;
+    const EDIT = 2; 
+    const POST = 4;
+    const DELETE = 8;
+    
+    var izinUser = 0;
+
+    izinUser = WRITE | EDIT | DELETE;
+
+    // untuk cek izin akses
+    const bolehNulis = (izinUser & WRITE) === WRITE;
+    const bolehPosting = (izinUser & POST) === POST;
+    const bolehEdit = (izinUser & EDIT) === EDIT;
+    const bolehHapus = (izinUser & DELETE) === DELETE;
+
+    // untuk izin
+    document.getElementById("inputMessage").readOnly = !bolehNulis;
+    document.getElementById("postButton").disabled = !bolehPosting;
+    document.getElementById("editButton").disabled = !bolehEdit;
+    document.getElementById("deleteButton").disabled = !bolehHapus;
+  </script>
+</body>
+</html>

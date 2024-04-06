@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>latihan-object</title>
+</head>
+<body>
+  <div id="app"></div>
+  <!-- <h1>Samsoeng Note</h1> -->
+  
+  <script>
+    // variabel interval
+    var chargingInterval;
+    var dischargingInterval;
+    
+    // membuat object phone
+    var phone ={
+      name: "Samsoeng young 2",
+      wifiOn: false,
+      cellularDataOn: false,
+      battery: 73,
+      toggleWifi: function(){
+        this.wifiOn = !this.wifiOn;
+      },
+      toggleCellularData: function(){
+        this.cellularDataOn = !this.cellularDataOn;
+      },
+      charge: function(){
+        if(this.battery >= 100){
+          alert(`${this.battery}% Fully Charged`);
+          clearInterval(chargingInterval);
+          startDischarging();
+          return;
+        }
+        this.battery++;
+      },
+      discharging: function() {
+        if(this.battery < 1){
+          alert("Battery habis, HP akan mati!");
+          // stop interval discharging
+          clearInterval(dischargingInterval);
+          return;
+        }
+        this.battery--;
+      }
+    };
+    
+    phone.name = "Samsoeng J5 Pro";  
+
+    phone.toggleWifi();
+
+    showPhone();
+    startCharging();
+
+    function showPhone() {
+      let {name, wifiOn, cellularDataOn, battery} = phone;
+
+      const displayTemplate = `
+        <h1>${name}</h1> 
+        <p>Wifi: ${wifiOn ? "On" : "Off"}</p>
+        <p>Cellular Data: ${cellularDataOn ? "On" : "Off"}</p>
+        <p>
+        Battery: <progress min="0" max="100" value="${battery}"></progress> ${battery}%
+        </p>
+
+
+        <hr>
+            <button onclick="toggleWifi()">Toggle WIFI</button>
+            <button onclick="toggleData()">Toggle Data</button>
+            <button onclick="startCharging()">⚡️ Charging</button>
+          `;
+
+          document.getElementById('app').innerHTML = displayTemplate;
+        }
+
+
+        function toggleWifi(){
+          phone.toggleWifi();
+          showPhone();
+        }
+
+        function toggleData(){
+          phone.toggleCellularData();
+          showPhone();
+        }
+
+        function startCharging() {
+          clearInterval(dischargingInterval);
+          chargingInterval = setInterval(function () {
+            phone.charge();
+            showPhone();
+          }, 100);
+        }
+
+        function startDischarging() {
+          clearInterval(chargingInterval);
+          dischargingInterval = setInterval(function () {
+            phone.discharging();
+            showPhone();
+          }, 500);
+        }
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perulangan</title>
+</head>
+<body>
+
+  <script>
+    document.write("<h1>Perulangan 1 sampai 10</h1>");
+    for (let i = 1; i <= 10; i++) {
+    document.write(`Perulangan ke - ${i}<br>`);
+    };
+    document.write("<br>");
+    document.write("<h1>Perulangan 1 sampai 10 dengan langkah 2</h1>");
+    for (let i = 1; i <= 10; i += 2) {
+      document.write(`Perulangan ke - ${i}<br>`);
+    }
+
+    document.write("<h1>Perulangan 1 sampai 10</h1>");
+    for (let i = 1; i <= 10; i++) {
+      if (i % 2 === 0) {
+        document.write(`<span style="color:salmon;">Perulangan ke - ${i}</span><br>`);
+      } else {
+        document.write(`<span style="color:magenta;">Perulangan ke - ${i}</span><br>`);
+      }
+    }
+    document.write("<br>");
+
+    document.write("<h1>Perulangan 1 sampai 10</h1>");
+    for (let i = 1; i <= 10; i++) {
+      if (i === 9) {
+        break; 
+      }
+      document.write(`Perulangan ke - ${i}<br>`);
+    }
+    document.write("<br>");
+    document.write("<h1>Perulangan 1 sampai 10</h1>");
+    for (let i = 1; i <= 10; i++) {
+      if (i === 6) {
+        continue;
+      }
+      document.write(`Perulangan ke - ${i}<br>`);
+    }
+
+    document.write("<br>");
+    for (var h=0; h<2; h++) {
+        for (var j=0; j<3; j++) {
+            document.write(`Nested Loop`);
+        }
+    }
+
+  </script>
+</body>
+</html>

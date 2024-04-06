@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan : Coding Subuh 2024</title>
+  <style>
+    #outputSeat button {
+      margin: 0.5em;
+      width: 3em;
+      height: 3em;
+
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outputSeat"></div>
+  <script>
+    const outputSeat = document.getElementById("outputSeat");
+    document.getElementById("outputSelectedSeat");
+    const columnsNameChar = "_ABCDEFG";
+    var selectedSeat = [];
+
+    for (let kolom = 7; kolom >= 1; kolom--) {
+
+      for (let baris = 12; baris >= 1; baris--) {
+        let seatToHide = ((baris == 6 || baris == 5) && kolom != 1 || (baris == 1 && kolom > 4));
+        if (seatToHide) {
+          outputSeat.innerHTML += `<button disabled class="hidden">${columnName}${baris}</button>`;
+        } else {
+          const columnName = columnsNameChar.charAt(kolom);
+          outputSeat.innerHTML += `<button onclick="onSelectedSeat(event)">${columnName}${baris}</button>`;
+        }
+      }
+
+      outputSeat.innerHTML += "<br>";
+
+    }
+
+    function onSelectedSeat(event){
+      let seatName = event.target.textContent;
+
+      event.targer.classList.toggle("selected");
+
+      if(selectedSeat.includes(seatName)){
+        selectedSeats = 
+      }
+    }
+  </script>
+</body>
+
+</html>

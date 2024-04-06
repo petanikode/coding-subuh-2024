@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 node_modules/
+=======
+.local/
+node_modules/
+>>>>>>> 810eb504516244c337240905f97708665400a683

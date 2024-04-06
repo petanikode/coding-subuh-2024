@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aplikasi Toko</title>
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-light" style="background-color: #FF5733;">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">App Toko</a>
+
+        <ul class="navbar-nav me-auto mb-2 mb-ig-0">
+          <li class="nav-item">
+            <div id="btnLoginRegister">
+              <a href="index.html" class="btn btn-outline-primary">Login</a>
+              <a href="register.html" class="btn btn-outline-primary">Register</a>
+              
+            </div>
+            <a href="card.html" class="btn btn-outline-primary position-relative">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M8 15h8v-2H8v2zM20.6 7H5.4l-.58-2.32A1.993 1.993 0 0 0 3.4 3H2v2h1.4l.48 1.92L5.14 9h13.72l1.26-2.08.48-1.92H22V3h-1.4c-.53 0-1.04.32-1.22.68L20.6 7zM5.76 13l-.48 2h13.44l-.48-2H5.76z"/>
+              </svg>
+
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <span id="cart-count">99+</span>
+                <span class="visually-hidden">Items</span>
+              </span>
+
+            </a>
+            
+          </li>
+        </ul>
+        
+      </div>
+    </nav>
+    <!-- Header -->
+    <header class="container mt-4 p-5 bg-primary text-light rounded-4 mx-auto">
+      <h1>Disokn 50% untuk pengguna baru!</h1>
+      <p class="lead">Dapatkan potongan harga max 50.000 untuk pengguna baru, daftar sekarang!</p>
+    </header>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge Diskon</title>
+
+  <script>
+    const totalBelanja = Number(prompt("Input total belanja"));
+    alert("Hore, Anda mendapatkan diskon 25% 😍");
+
+    // Challenge!
+    // persentase diskon
+    const discountPercentage = 25;
+
+    // Total diskon yang didapatkan
+    const discountAmount = (discountPercentage / 100) * totalBelanja;
+
+    // Total yang harus dibayar setelah diskon
+    const totalBayar = totalBelanja - discountAmount;
+
+    // Function untuk merubah menjadi nominal rupiah
+    function rupiah(number) {
+      return number.toLocaleString("id-ID", {
+        style: "currency",
+        currency: "IDR",
+      });
+    }
+
+    const outputTemplate = `
+            <h1>Ringkasan Transaksi Belanja anda</h1>
+            <p>Total Belanja: ${rupiah(totalBelanja)} </p>
+            <p>Diskon: <span style="color:green">${rupiah(discountAmount)} (${discountPercentage}%)</span></p>
+            <p>Total bayar: <b>${rupiah(totalBayar)}</b></p>
+        `;
+
+    document.write(outputTemplate);
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

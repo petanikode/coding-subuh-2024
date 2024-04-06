@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan AJAX</title>
+
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav>
+      <span>Hello <b id="user-name">User</b> Check your: </span>
+      <a href="wishlist.html">Wishlist (<span id="wishlist-count">0</span>)</a>
+    </nav>
+
+    <header>
+      <h1>Available Products</h1>
+    </header>
+
+    <div id="product-list">
+      <progress></progress>
+    </div>
+
+    <script>
+      function loadProducts() {
+        const URL = "https://fakestoreapi.com/products";
+
+        const xhr = new XMLHttpRequest();
+
+        // mendeteksi event load (request sukes dan selesai)
+        xhr.addEventListener("load", function () {
+          // ubah JSON ke Object Javascript
+          const products = JSON.parse(xhr.responseText);
+
+          console.log(products);
+
+          // show product ke HTML
+          showProducts(products);
+        });
+
+        // membuka koneksi AJAX
+        xhr.open("GET", URL, true);
+        xhr.send();
+      }
+
+      function showProducts(products) {
+        const productList = document.querySelector("#product-list");
+
+        productList.innerHTML = "";
+
+        products.forEach((product) => {
+          const productTemplate = `
+          <div class="product">
+            <img src="${product.image}" />
+            <div>
+              <h3>${product.title}</h3>
+              <p class="price">${formatUSD(product.price)}</p>
+              <p>${product.description}</p>
+              <button onclick="handleToggleWishlist(event)">Add to Wishlist</button>
+            </div>
+          </div>
+        `;
+          productList.innerHTML += productTemplate;
+        });
+      }
+
+      function formatUSD(number) {
+        return number.toLocaleString("us", {
+          style: "currency",
+          currency: "USD",
+        });
+      }
+
+      function setUserCookie() {
+        const isCookieEmpty = document.cookie == "";
+
+        if (isCookieEmpty) {
+          const name = prompt("Inputkan nama");
+
+          document.cookie = `name=${name};path=/`;
+
+          console.log("COOKIE TERSIMPAN:", document.cookie);
+        }
+      }
+
+      function showUserNameFromCookie() {
+        const name = document.cookie.split("=")[1];
+        document.querySelector("#user-name").textContent = name;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        setUserCookie();
+        showUserNameFromCookie();
+        loadProducts();
+      });
+    </script>
+  </body>
+</html>

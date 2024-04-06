@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Coding Subuh 2024</title>
+</head>
+
+<body>
+  <h1>Menghitung Total Belanja</h1>
+  <label>Total belanja</label>
+  <input type="text" id="totalBelanja" placeholder="Masukan total harga belanja" />
+  <br /><br />
+  <fieldset>
+    <legend>Metode Pembayaran</legend>
+    <input type="radio" name="metodeBayar" value="transferBank" id="transferBank" />Transfer Bank
+    <input type="radio" name="metodeBayar" value="eWallet" id="eWallet" />E-Wallet
+    <input type="radio" name="metodeBayar" value="payLater" id="payLater" />Paylater (Cashback 10% maks. Rp 50.000,00)
+    <input type="radio" name="metodeBayar" value="outlet" id="outlet" />Outlet
+    (Alfamart/Indomaret)
+  </fieldset>
+
+  <p>Masukan kode voucher di bawah ini (jika punya)</p>
+  <input type="text" id="kodeVoucher" placeholder="Input Kode Voucher" />
+  <p id="message"></p>
+  <br /><br />
+  <button onclick="hitungTransaksi()">Proses Transaksi</button>
+
+  <script>
+    function hitungTransaksi() {
+      // Menginput total belanja
+      const hargaTotalBelanja = Number(
+        document.getElementById("totalBelanja").value
+      );
+
+      // menginput pilihah metode pembayaran
+      var pilihan = document.querySelector(
+        'input[name="metodeBayar"]:checked'
+      ).value;
+
+      // Menginisialisasi variabel cashback
+      var hasilCashback = 0;
+
+      if (pilihan === "payLater") {
+        const cashback = 10;
+        const maxCashback = 50000;
+        const hitungCashback = (cashback / 100) * hargaTotalBelanja;
+        if (hitungCashback > maxCashback) {
+          hasilCashback = maxCashback;
+        } else {
+          hasilCashback = hitungCashback;
+        }
+      }
+
+      // menghitung diskon
+      var kodeVoucher = document.getElementById("kodeVoucher").value;
+      const valid_code = "codingsubuh2024";
+      const diskon = 30;
+      var diskonAmount = 0;
+
+      if (kodeVoucher === valid_code) {
+        diskonAmount = (diskon / 100) * hargaTotalBelanja;
+      } else if (kodeVoucher !== "") {
+        alert("Kode voucher tidak valid!");
+        return;
+      }
+
+      // Menghitung total bayar setelah diskon dan cashback
+      var hargaSetelahDiskon = hargaTotalBelanja - diskonAmount;
+      var totalBayar = hargaSetelahDiskon - hasilCashback;
+
+      // Menampilkan hasil inputan
+      var outputTemplate = `
+        <h1>Ringkasan Transaksi Belanja Anda</h1>
+        <p>Total Belanja: <b>${formatCurrency(hargaTotalBelanja)}</b></p>
+        <p>Cashback: <b>${formatCurrency(hasilCashback)}</b></p>
+        <p>Diskon: <b>${formatCurrency(diskonAmount)}</b></p>
+        <p style="color:green;">Total Bayar: <b>${formatCurrency(
+        hargaSetelahDiskon
+      )}</b></p>
+        `;
+
+      document.write(outputTemplate);
+    }
+
+    //   fungsi format currency
+    function formatCurrency(number) {
+      return number.toLocaleString("id-ID", {
+        style: "currency",
+        currency: "IDR",
+      });
+    }
+  </script>
+</body>
+
+</html>

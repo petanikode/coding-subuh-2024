@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+
+    <script>
+    let artikel = [
+        "Belajar javascript untuk pemula",
+        "Pengalaman pertama coding javascript",
+        "javascript tidak sama dengan java",
+        "javascript adalah bahasa favoritku",
+        "semua bisa di coding di javascript",
+        "Contoh aplikasi yang dibuat dengan javascript"
+        ];
+
+        const tags = ["coding", "programing", "javascript"];
+
+        // menambahkan data array ke artikel 
+        artikel[4] = "code editor menggunkana visual stdufio code";
+
+        console.log(artikel[4]);
+
+        // menampilkan data aray dengan perulangan 
+        artikel.forEach(artikel => {
+            document.write(`<h1>${artikel} </h1> <br/>`);
+            for(tag of tags){
+                document.write(`<i>${tag}</i>`);
+            }
+        });
+
+        // menambahkan data aray di tengah tengah atau yang kita inginkan
+        tags.splice(0,1, "sofware dev");
+        console.log(tags);
+
+        // produk.includes("😍")
+        document.write(artikel.includes(" "))
+        for(p of artikel){
+            // document.write("emote"+ produk)
+        }
+    </script>
+</body>
+</html>

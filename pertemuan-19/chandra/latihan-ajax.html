@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan AJAX</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #product-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .product {
+      display: flex;
+      gap: 1em;
+      max-width: 680px;
+      border: 1px solid silver;
+      border-radius: 16px;
+      padding: 1em;
+    }
+
+    .product .price {
+      font-weight: bold;
+      font-size: 1.5em;
+      color: green;
+    }
+
+    .product img {
+      max-height: 260px;
+      max-width: 260px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header id="header"></header>
+  <button onclick="loadHeader()">Load Header</button>
+
+  <div id="product-list">
+    <progress></progress>
+  </div>
+
+  <script>
+    function loadHeader() {
+      // membuat object xhr
+      const xhr = new XMLHttpRequest();
+
+      // mendeteksi event load (request sukes dan selesai)
+      xhr.addEventListener("load", function () {
+        console.log(xhr);
+        document.querySelector("#header").innerHTML = xhr.responseText;
+      });
+
+      // membuka koneksi AJAX
+      xhr.open("GET", "header-content.html", true);
+      xhr.send();
+
+    }
+
+    function loadProducts() {
+      const URL = "https://fakestoreapi.com/products";
+
+      const xhr = new XMLHttpRequest();
+
+      // mendeteksi event load (request sukes dan selesai)
+      xhr.addEventListener("load", function () {
+
+        // ubah JSON ke Object Javascript
+        const products = JSON.parse(xhr.responseText);
+
+        console.log(products);
+
+        // show product ke HTML
+        showProducts(products);
+      });
+
+      // membuka koneksi AJAX
+      xhr.open("GET", URL, true);
+      xhr.send();
+    }
+
+    function showProducts(products) {
+      const productList = document.querySelector("#product-list");
+      // hapus loading
+      productList.innerHTML = "";
+
+      // mengisi product-list dengan data product
+      products.forEach(product => {
+        const productTemplate = `
+          <div class="product">
+            <img src="${product.image}" />
+            <div>
+              <h3>${product.title}</h3>
+              <p class="price">${formatUSD(product.price)}</p>
+              <p>${product.description}</p>
+            </div>
+          </div>
+        `;
+        productList.innerHTML += productTemplate;
+      });
+
+    }
+
+    function formatUSD(number) {
+      return number.toLocaleString("us", {
+        style: "currency",
+        currency: "USD"
+      })
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadProducts();
+    })
+  </script>
+
+</body>
+
+</html>

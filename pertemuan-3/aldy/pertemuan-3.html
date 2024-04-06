@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 3</title>
+</head>
+<body>
+    <h1>Status Akun Anda</h1>
+    <p>Nama Anda : <span id="outputName"></span></p>
+    <p>Saldo Anda : <span id="outputSaldo" style="font-weight: bold;"></span></p>
+    <p>status : <span id="outputStatus"></span></p>
+
+    <script>
+        //deklarasi variabel
+        var name = prompt("Mohon untuk mengisi nama Anda");
+
+        if(name == "Luffy"){
+          let saldo = "100000";
+          const isMember = "true";
+
+          outputName.textContent = name;
+          outputSaldo.textContent = saldo;
+          outputStatus.textContent = isMember;
+        }else{
+          let saldo = "0";
+          const isMember = "false";
+
+          outputName.textContent = name;
+          outputSaldo.textContent = null;
+          outputStatus.textContent = isMember;
+        }
+    </script>
+</body>
+</html>

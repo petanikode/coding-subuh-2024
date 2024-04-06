@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const username = prompt("username");
+        const password = prompt("masukan password");
+        const usernameBener = username === "tester";
+        const passwordBener = password === "1234";
+        const loginSucces = usernameBener && passwordBener
+
+        // jika menggunakan if 
+        if(loginSucces == usernameBener && passwordBener){
+            window.location = "perbandingan.html";
+        }else{
+            document.write( `
+        <p>login gagal, silahkan coba lagi</p>
+        <button onclick="location.reload()">login</button>
+        `)
+        }
+    </script>
+</body>
+</html>

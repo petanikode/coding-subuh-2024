@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Perulangan For</title>
+
+  <script>
+    document.write("<h1>Latihan Perulangan For</h1>");
+    // lakukan perulangan 1 sampai 10
+    for(let hitungan = 1; hitungan <= 10; hitungan++) {
+      document.write(`perulangan ke ${hitungan}<br>`);
+    }
+
+    document.write("<hr>");
+    document.write("<h1>perulangan dari 1 samapai 10 (hitungan skip 2 langkah</h1>");
+    for(let hitungan = 1; hitungan <= 10; hitungan+=2){
+      document.write(`perulangan ke-${hitungan}<br>`);
+    }
+
+    document.write("<hr>");
+    document.write("<h1>perulangan dari 1 samapai 10 (ganji/genap</h1>");
+    for(let hitungan = 10; hitungan >= 1; hitungan--){
+      document.write(`perulangan ke-${hitungan}<br>`);
+    }
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

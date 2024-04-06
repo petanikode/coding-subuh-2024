@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan perulangan for</title>
+
+  <script>
+    document.write("<h1>Perulangan 1 sampai 10</h1>");
+    // lakukan perulangan 1 sampai 10
+    for (let hitungan = 1; hitungan <= 10; hitungan++) {
+      document.write(`Perulangan ke-${hitungan}<br>`);
+    }
+
+    document.write("<hr>");
+    document.write("<h1>Perulangan dari 10 sampai 1</h1>");
+    for (let hitungan = 10; hitungan >= 1; hitungan--) {
+      document.write(`Perulangan ke-${hitungan}<br>`);
+    }
+
+    document.write("<hr>");
+    document.write("<h1>Perulangan dari 1 sampai 10 (hitungan skip 2 langkah)</h1>");
+    for (let hitungan = 1; hitungan <= 10; hitungan += 2) {
+      document.write(`Perulangan ke-${hitungan}<br>`);
+    }
+
+    document.write("<hr>");
+    document.write("<h1>Perulangan dari 1 sampai 10 (ganjil/genap)</h1>");
+    for (let hitungan = 1; hitungan <= 10; hitungan++) {
+      if (hitungan % 2 === 0) {
+        document.write(`<b style="color:green">Perulangan ke-${hitungan}</b><br>`);
+      } else {
+        document.write(`<i style="color:blue">Perulangan ke-${hitungan}</i><br>`);
+      }
+    }
+
+    document.write("<hr>");
+    document.write("<h1>Perulangan dari 1 sampai 10 (break di 5)</h1>");
+    for (let hitungan = 1; hitungan <= 10; hitungan++) {
+      document.write(`Perulangan ke-${hitungan}<br>`);
+
+      if (hitungan === 5) {
+        break;
+      }
+    }
+
+    document.write("<hr>");
+    document.write("<h1>Perulangan dari 1 sampai 10 (Continue di 5)</h1>");
+    for (let hitungan = 1; hitungan <= 10; hitungan++) {
+      if (hitungan === 5) {
+        continue;
+      }
+      document.write(`Perulangan ke-${hitungan}<br>`);
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

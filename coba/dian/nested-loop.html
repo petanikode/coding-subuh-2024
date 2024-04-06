@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Nested Loop</title>
+    <style>
+        .seat button {
+            height: 4em;
+            width: 4em;
+            /* background-color: blue;
+            color: white;
+            border: none; */
+            margin: 0.2em;
+            border-radius: 0.5em;
+        }
+
+        button.invisible {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="outputSeat" class="seat">
+
+    </div>
+
+
+    <script>
+        var char = "_ABCDEFG";
+
+        for (let kolom = 7; kolom >= 1; kolom--) {
+            for (let baris = 12; baris >= 1; baris--) {
+                let seatToHide = ((baris == 6 || baris == 5) && kolom != 1) || (baris == 1 && kolom > 4 );
+                if (seatToHide) {
+                    outputSeat.innerHTML += `
+                        <button class="invisible">X</button>
+                    `;
+                } else {   
+                    outputSeat.innerHTML += `
+                        <button onclick="seatClick(${kolom},${baris})">${char.charAt(kolom)}${baris}</button>
+                    `;
+                }
+            }
+            outputSeat.innerHTML += `<br>`;
+        }
+
+
+        function seatClick(kolom, baris){
+            console.log(kolom, baris);
+            alert("Anda memilih kusi: "+ char.charAt(kolom) + baris);
+        }
+    </script>
+</body>
+
+</html>

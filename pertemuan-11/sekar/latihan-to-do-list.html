@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 11.2 : Coding Subuh 2024</title>
+</head>
+<body>
+  <h1>To Do List</h1>
+
+  <div id="outputTask"></div>
+
+  <script>
+    var tasks = [];
+
+     const task = document.getElementById("outputTask");
+
+    showTask();
+
+    function showTask(){
+      if (tasks.length <= 0){
+        outputTask.innerHTML =  `
+        <p>Belum ada tugas</p>
+        <button onclick="addTask()">Tambah Tugas</button>`;
+      }else{
+        const ul = document.createElement("ul");
+        for(let id = 0; id < tasks.length; id++){
+          const li = document.createElement("li");
+          const btnEditDelete = `
+          <button onclick="editTask(${id})">Edit</button>
+          <button onclick="deleteTask(${id})">Delete</button>
+          `;
+          li.innerHTML = `${tasks[id]} - ${btnEditDelete}`;
+          ul.appendChild(li);
+        }
+
+        outputTask.replaceChildren(ul);
+        outputTask.innerHTML += `<button onclick="addTask()">Tambah Tugas</button>
+        <button onclick="clearTask()">Clear Tugas</button>`
+        
+      }
+    }
+
+    function addTask() {
+      const newTask = prompt("Tambahkan tugas baru");
+      if(newTask){
+        tasks.push(newTask);
+        showTask();
+      }
+    }
+
+    function clearTask() {
+      tasks = [];
+      showTask();
+    }
+
+    function editTask(id){
+      const oldTask = tasks[id];
+      const newTask = prompt("Edit Tugas ", oldTask);
+      if(newTask){
+        tasks[id] = newTask;
+        showTask();
+      }
+    }
+
+    function deleteTask(id){
+      const confirmToDelete = confirm("Apakah anda yakin ingin menghapus");
+      if(confirmToDelete){
+        tasks.splice(id, 1);
+        showTask();
+      }
+    }
+  </script>
+</body>
+</html>

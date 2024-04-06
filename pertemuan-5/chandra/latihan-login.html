@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Login</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const username = prompt("Masukan Username: ");
+      const password = prompt("Masukan Password: ");
+      const app = document.getElementById("app");
+
+      if (username === "chandra" && password === "123") {
+        app.innerHTML = `
+        <h1>Hello ${username}</h1>
+        <button onclick="location.reload()">Login</button>
+        `;
+      } else {
+        app.innerHTML = `
+        <p>Login Gagal, Silahkan Coba Lagi</p>
+        <button onclick="location.reload()">Login</button>
+        `;
+      }
+    </script>
+  </body>
+</html>

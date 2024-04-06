@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Login</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const username = prompt("Masukkan username", "xrey");
+        const password = prompt("Masukkan password");
+
+        const usernameBenar = username === "xrey";
+        const passwordBenar = password === "123";
+
+        const loginSuccess = usernameBenar && passwordBenar;
+
+        const dashboardTemplate = `
+            <h1>Hello, ${username}</h1>
+            <p>Selamat datang di dashboard</p>
+        `;
+
+        const loginFailedTemplate = `
+            <p>Login gagal, silahkan coba lagi</p>
+            <button onclick="location.reload()">Login</button>
+        `;
+
+        const app = document.getElementById("app");
+        app.innerHTML = loginSuccess ? dashboardTemplate : loginFailedTemplate;
+
+        // if(loginSuccess){
+        //     window.location = "latihan-perbandingan.html"
+        // }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Array</title>
+</head>
+<body>
+
+  <script>
+    const articles = [
+      "Belajar JavaScript struktur data array",
+      "22 Maret 2024",
+      "JavaScript adalah bahasa pemrograman yang digunakan untuk membuat halaman web interaktif",
+      "📦📦📦",
+      "JavaScript adalah bahasa pemrograman favotitku"
+    ];
+
+    const emojis = [
+      "😀",
+      "✨",
+      "😊",
+      "🧐",
+      "🤓",
+      "😎",
+      "🤩"
+    ];
+
+    console.log(articles);
+    console.table(emojis);
+
+    emojis.splice(2,1);
+    emojis.push("🧜🏼‍♀️");
+    console.log(emojis[4]);
+    console.log(emojis);
+    console.log("Jumlah emoji di array emojis adalah " + emojis.length + ".");
+
+    articles.splice(3,0, 'takdung');
+    delete articles[4];
+    console.log(articles);
+
+    articles.forEach(article => {
+      document.write(`<h1>${article}</h1>`);
+      for(emoji of emojis){
+        document.write(`<p>${emoji}</p>`);
+      }
+    })
+    
+
+    
+  </script>
+</body>
+</html>

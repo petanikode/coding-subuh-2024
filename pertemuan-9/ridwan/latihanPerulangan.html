@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Perulangan for</title>
+</head>
+<body>
+  <button onclick="perulangan1Ke10()"> 1 ke 10</button>
+  <button onclick="perulangan10Ke1()"> 10 ke 1</button>
+  <button onclick="perulangan2Step()"> 1 ke 10 2 step</button>
+  <button onclick="ganjilGenap()"> 1 ke 10 Ganjil Genap</button>
+  <script>
+    // perulangan 1-10
+    function perulangan1Ke10(){
+      for(let hitung = 1; hitung < 10; hitung++){
+         document.write(`<p>perulangan ke-${hitung}</p>`);
+      }
+    }
+    function perulangan10Ke1(){
+      for(let Hitung = 10; Hitung > 1; Hitung--){
+        document.write(`<p>perulangan ke${Hitung}</p>`);
+      }
+    }
+    function perulangan2Step(){
+      for(let hitungs = 1; hitungs <= 10; hitungs += 2){
+        document.write(`<p>perulangan ke${hitungs}</p>`);
+      }
+    }
+    function ganjilGenap(){
+      for(let itung = 1; itung <= 10; itung ++){
+        if(itung % 2 === 0){
+          document.write(`<b style="color:green">Perulangan ke-${itung}<br>`);
+        } else {
+          document.write(`<b style="color:blue">Perulangan ke-${itung}<br>`);
+        }
+      }
+    }
+
+    document.write("<hr>");
+    document.write("<h3>Perulangan dari 1 sampai 10 (break di 5)</h3>");
+    for (let hitungan = 1; hitungan <= 10; hitungan++) {
+      document.write(`Perulangan ke-${hitungan}<br>`);
+
+      if (hitungan === 5) {
+        break;
+      }
+    }
+    
+
+    document.write("<hr>");
+    document.write("<h3>Perulangan 1 sampai 10 (Countinue di 5)</h3>");
+    for(let hitungan = 1 ; hitungan <= 10; hitungan++){
+      if(hitungan === 5){
+        continue;
+      }
+      document.write(`Perulangan ke-${hitungan}<br>`);
+    }
+    
+   
+   
+    
+    
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Variable</title>
+  <script>
+    // deklarasi variabel
+    const nama = "Bas";
+    var saldo = 100000000000;
+    let isMember = false;
+  </script>
+  
+<body>
+  <h1>Status Akun Anda</h1>
+  <p>Nama: <b id="outputNama"></b> </p>
+  <p>Saldo: <b id="outputSaldo"></b> </p>
+  <p>Member: <b id="outputMember"></b> </p>
+
+  <script>
+    // isi ulang variable
+    prompt("Inputkan Nama");
+    confirm("Anda akan dijadikan member");
+    
+    outputNama.textContent = nama;
+    outputSaldo.textContent = saldo;
+    outputMember.textContent = isMember;
+  </script>
+</body>
+</html>

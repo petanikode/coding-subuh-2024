@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Looping</title>
+</head>
+
+<body>
+  <script>
+    document.write("<h2>Looping Maju 1 - 10</h2>");
+
+    for (let count = 1; count <= 10; count++) {
+      document.write(`Looping ke - ${count} <br>`)
+    }
+
+    document.write("<h2>Looping Mundur 10 - 1</h2>");
+
+    for (let count = 10; count >= 1; count--) {
+      document.write(`Looping ke - ${count} <br>`)
+    }
+
+    document.write("<h2>Looping Mundur 10 - 1 (Skip 2 langkah)</h2>");
+
+    for (let count = 1; count <= 10; count += 2) {
+      document.write(`Looping ke - ${count} <br>`);
+    }
+
+    document.write("<h2>Looping Mundur 10 - 1 (Ganjil Genap)</h2>");
+
+    for (let count = 1; count <= 10; count++) {
+      if (count % 2 == 0) {
+        document.write(`Looping ke - ${count} (Genap) <br>`);
+      } else {
+        document.write(`Looping ke - ${count} (Ganjil) <br>`);
+      }
+    }
+
+    document.write("<h2>Looping Mundur 10 - 1 (Break Countinue)</h2>");
+
+    for (let count = 1; count <= 10; count++) {
+      if (count === 3 || count === 5) {
+        continue;
+      } if (count === 8) {
+        break;
+      }
+      document.write(`Looping ke - ${count} (Ganjil) <br>`);
+    }
+
+
+  </script>
+</body>
+
+</html>

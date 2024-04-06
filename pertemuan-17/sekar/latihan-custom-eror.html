@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class BalanceError extends Error {
+      constructor(message){
+        super(message);
+        this.name = "BalanceError";
+      }
+    }
+
+    class Wallet {
+      constructor(initialBalance){
+        this.balance = initialBalance;
+      }
+
+      topUp(amount){
+        if(amount < 0 || isNaN(amount)){
+          throw new BalanceError("Ups, jumlah top up saldo salah!");
+        }
+        this.balance += amount;
+      }
+
+      withDraw(amount){
+        if(amount < 0 || isNaN(amount) || amount > this.balance){
+          throw new BalanceError("Ups, jumlah saldo yang mau ditarik salah!");
+        }
+
+        this.balance -= amount;
+      }
+    }
+
+    const dompet = new Wallet(10000);
+
+    try{
+      dompet.topUp(-8888);
+    } catch(error){
+      if(error instanceof BalanceError){
+        alert("Waduh, ini eror karena saldo salah");
+      }else{
+        console.log("Error : ", error.message);
+      }
+    }
+  </script>
+</body>
+</html>

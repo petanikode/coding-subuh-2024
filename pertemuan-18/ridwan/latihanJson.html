@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>profil ku | latihan JSON</title>
+  <!-- import bostrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card mt-5 mx-auto" style="max-width: 360px">
+      <img src="" class="card-img-top" alt="user avatar" id="userAvatar" />
+      <div class="card-body">
+        <h5 class="card-title" id="userName">Card Title</h5>
+        <p class="card-text">
+          <span class="badge bg-secondary" id="userAge">22 Tahun</span>
+
+
+          <span class="badge bg-secondary" id="userHeight">160</span>
+          <span class="badge bg-secondary" id="userGender">Laki-laki</span>
+        </p>
+        <p class="card-text" id="userHoby"></p>
+
+        <!-- Sip sudah aman sepertinya-->
+        
+
+        <button class="btn btn-success w-100" id="btnUserStatus">
+          Single
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // buat biodata dngn json
+    var JSONData = ` {
+    "nama": "ridwan satriadi",
+    "lokasi": "Lombok, Indonesia",
+    "foto":"https://i.pravatar.cc/",
+    "usia": "22",
+    "tinggi": "190",
+    "jenisKelamin": "Laki-laki",
+    "udahNikah": false,
+    "hoby": [
+    "mancing"
+    ]
+    }`;
+
+    const data = JSON.parse(JSONData);
+
+    console.log("JS Objek: ", data);
+
+    const dataString = JSON.stringify(data);
+
+    console.log("JSON String: ", dataString);
+    //menampilkan data ke HTMl
+    document.querySelector("#userAvatar").src = data.foto;
+    document.querySelector("#userName").textContent = data.nama;
+    document.querySelector("#userAge").textContent = data.usia + "tahun";
+    document.querySelector("#userHeight").textContent = data.tinggi + "cm";
+    document.querySelector("#userGender").textContent = data.jenisKelamin;
+    document.querySelector("#userHoby").textContent = data.hoby;
+
+    const userStatus = data.udahNikah ? "Married" : "Single";
+
+    const btnStatus = document.querySelector("#btnUserStatus");
+    btnStatus.textContent = userStatus;
+    btnStatus.disabled = data.udahNikah;
+
+    if (data.udahNikah) {
+      btnStatus.classList.remove("btn-success");
+      btnStatus.classList.add("btn-secondary");
+    }
+  </script>
+</body>
+
+</html>

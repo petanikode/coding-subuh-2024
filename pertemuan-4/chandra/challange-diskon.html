@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge Diskon</title>
+
+    <script>
+      const totalBelanja = prompt("Input total belanja");
+      alert("Hore, Anda mendapatkan diskon 25% 😍");
+
+      // Challenge!
+      // persentase diskon
+      const discount = 0.25; ///25%
+      const discountPercentage = "25";
+
+      // Total diskon yang didapatkan
+      const discountAmount = totalBelanja * discount;
+
+      // Total yang harus dibayar setelah diskon
+      const totalBayar = totalBelanja - discountAmount;
+
+      const stringFormat = (nominal) => {
+        return parseFloat(nominal).toLocaleString("id-ID", {
+          style: "currency",
+          currency: "IDR",
+        });
+      };
+
+      const outputTemplate = `
+            <h1>Ringkasan Transaksi Belanja anda</h1>
+            <p>Total Belanja: ${stringFormat(totalBelanja)}</p>
+            <p>Diskon: <span style="color:green">${stringFormat(
+              discountAmount
+            )} (${discountPercentage}%)</span></p>
+            <p>Total bayar: <b>${stringFormat(totalBayar)}</b></p>
+        `;
+
+      document.write(outputTemplate);
+    </script>
+  </head>
+
+  <body></body>
+</html>

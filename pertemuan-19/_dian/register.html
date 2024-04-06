@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Event</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <!-- import confettijs -->
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <form id="formRegister">
+          <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" id="inputName" placeholder="Nama lengkap" />
+          </div>
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Alamat email" />
+            <div class="form-text">
+              We'll never share your email with anyone else
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
+              <button class="btn btn-outline-secondary" type="button" id="btnShowPassword">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-eye-fill" viewBox="0 0 16 16">
+                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input type="checkbox" name="agreeTerms" class="form-check-input" id="inputAcceptTerms" />
+            <label for="inputAcceptTerms">Setuju dengan Syarat dan Ketentuan</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100" id="btnSubmit" disabled>
+            Daftar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const formRegister = document.querySelector("#formRegister");
+    const inputAcceptTerm = document.querySelector("#inputAcceptTerms");
+    const btnShowPassword = document.querySelector("#btnShowPassword");
+    const btnSubmit = document.querySelector("#btnSubmit");
+
+    // membuat custom event
+    const congratulationEvent = new Event("congratulation");
+
+    // deteksi event pada object/elemen HTML
+    inputAcceptTerm.addEventListener("click", handleTermsChecked);
+    btnShowPassword.addEventListener("click", handleShowHidePassword);
+    formRegister.addEventListener("submit", handleSubmit);
+    document.addEventListener("congratulation", handleCongratulation);
+
+    function handleTermsChecked(event) {
+      console.log(event.target.checked);
+      btnSubmit.disabled = !event.target.checked;
+    }
+
+    function handleShowHidePassword(event) {
+      const inputPassword = document.querySelector("#inputPassword");
+
+      if (inputPassword.type === "password") {
+        inputPassword.type = "text";
+        event.target.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+  <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z"/>
+  <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z"/>
+</svg>`;
+      } else {
+        inputPassword.type = "password";
+        event.target.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                </svg>`;
+      }
+    }
+
+    async function handleSubmit(event) {
+      // cegah defaul aksi yang dilakukan di browser
+      event.preventDefault();
+
+      // object Form data aka
+      const formData = new FormData(formRegister);
+
+      const newUser = Object.fromEntries(formData);
+
+      // object newUser bisa kita kirim ke server/backend API
+      console.log(newUser);
+
+      // URL Backend untuk register
+      const URL = "https://33zfhf-3000.csb.app/register";
+
+      // Disble button submit sebelum melakukan request
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = "Mendaftar...";
+
+      // kirim data ke backend URL
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = data.message ?? "Berhasil Mendaftar!";
+        btnSubmit.classList.replace("btn-primary", "btn-success");
+
+        // trigger custom event
+        document.dispatchEvent(congratulationEvent);
+      }
+    }
+
+    // handle custom event
+    function handleCongratulation() {
+      console.log("Selamat, anda sudah berhasil menjadi user");
+
+      // jalankan efek confetti
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: {y: 0.6},
+      });
+    }
+  </script>
+</body>
+
+</html>

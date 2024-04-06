@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Pembayaran</title>
+</head>
+<body>    
+
+    <label for="totalBelanja">Total Belanja</label>
+    <input type="number" name="totalBelanja" id="inputTotalBelanja" />
+    <br>
+    <br>
+    
+    <fieldset>
+        <legend>Pilih metode Pembayaran *</legend>
+        <label>
+            <input type="radio" name="paymentMethod" id="bank" value="bank"> Transfer Bank
+        </label>
+        <label>
+            <input type="radio" name="paymentMethod" id="wallet" value="wallet"> E-Wallet
+        </label>
+        <label>
+            <input type="radio" name="paymentMethod" id="paylater" value="paylater"> Paylater (cashback: 10%)
+        </label>
+        <label>
+            <input type="radio" name="paymentMethod" id="outlet" value="outlet"> Outlet (Alfamart, Indomart)
+        </label>
+    </fieldset>
+
+    <pre id="outputKodeVoucher"></pre>
+
+    <a href="#" onclick="inputVoucher()">Punya kode Voucher</a>
+
+    <br>
+    <br>
+
+    <button onclick="prosesTransaksi()">Proses Transaksi</button>
+
+    <!-- Output ringkasan transaksi -->
+    <div id="outputTransaksi"></div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

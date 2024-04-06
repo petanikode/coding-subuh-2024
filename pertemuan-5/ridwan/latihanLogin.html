@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>latihan Login</title>
+  
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    const username = prompt("Masukkan username", "ridwan");
+    const password = prompt("Masukkan password");
+
+    const usernameBenar = "ridwan";
+    const passwordBenar = "321";
+
+    const loginSuccess = usernameBenar && passwordBenar;
+
+    const dashboardTemplate = `<h1>Hello, ${username}</h1>
+    <p>Selamat datang di dashboard</p>`;
+
+    const login_failedTemplate = `<p>Login gagal, silahkan coba lagi</p>
+    <button onclick="location.reload()">Login</button>`;
+    
+    const app = document.getElementById("app");
+    app.innerHTML = loginSuccess ? dashboardTemplate : login_failedTemplate;
+  </script>
+</body>
+</html>

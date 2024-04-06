@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <h3>Input Jumlah Buah</h3>
+</head>
+<body>
+    <p>Apel : <input type="text" name="apel" id="idApel"></p>
+    <p>Jeruk : <input type="text" name="jeruk" id="idJeruk"></p>
+    <p><button id="idHitung">Hitung</button></p>
+    <p>Total : <b id="idTotal"></b></p>
+
+    <script>
+        idHitung.addEventListener('click', function() {
+            var total = 0;
+            var apel = parseInt(idApel.value);
+            var jeruk = parseInt(idJeruk.value);
+            total = apel + jeruk;
+            idTotal.innerText = total;
+        });
+    </script>
+</body>
+</html>

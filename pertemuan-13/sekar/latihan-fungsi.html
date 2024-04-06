@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+      }
+
+      .app {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 1em;
+      }
+
+      .navbar {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5em;
+        background-color: lightblue;
+      }
+
+      .profile {
+        display: inline-flex;
+        align-items: center;
+        gap: 1em;
+      }
+
+      .profile img {
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+      }
+
+      .tweetCompose {
+        margin-bottom: 2em;
+      }
+
+      .tweetCompose textarea {
+        width: 100%;
+        padding: 0.5em;
+      }
+
+      .tweetCompose .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .tweet {
+        margin-bottom: 1em;
+        padding: 0.5em;
+        border-top: 1px solid silver;
+      }
+
+      .tweet header {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        margin-bottom: 0.5em;
+      }
+
+      .tweet header img {
+        border-radius: 50%;
+        width: 3em;
+        height: 3em;
+      }
+
+      .tweet .message {
+        padding-left: 4em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <nav class="navbar">
+        <a href="#">app Logo</a>
+
+        <div class="profile">
+          <span id="userName">User Name</span>
+          <img
+            src="https://ui-avatars.com/api/?background=random"
+            id="userAvatar"
+          />
+        </div>
+      </nav>
+
+      <div class="tweetCompose">
+        <textarea
+          id="inputTweetMessage"
+          placeholder="What Happening?"
+          cols="30"
+          rows="5"
+          onkeyup="calculateCharCount(this)"
+        ></textarea>
+
+        <div class="footer">
+          <button onclick="postTweet()" id="btnPost">Post</button>
+          <span id="charCountRemaining"></span>
+        </div>
+      </div>
+
+      <h1>Feeds</h1>
+      <div id="feed" class="feed"></div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+      var posts = [];
+
+      var user = {
+        name: "Sekar",
+        username: "@sekarayuw",
+        getAvatar: function () {
+          return `https://ui-avatars.com/api/?name=${this.name}&background=random`;
+        },
+      };
+
+      function showUserProfile() {
+        document.getElementById("userName").textContent = user.name;
+        document.getElementById("userAvatar").src = user.getAvatar();
+      }
+
+      function calculateCharCount(textarea) {
+        const MAX_CHAR_ALLOWED = 140;
+        const charRamaining = document.getElementById("charCountRemaining");
+        const remaining = MAX_CHAR_ALLOWED - textarea.value.length;
+        charRamaining.textContent = remaining;
+
+        if (remaining < 10) {
+          charRamaining.style.color = "tomato";
+        } else if (remaining < 30) {
+          charRamaining.style.color = "orange";
+        } else {
+          charRamaining.style.color = "black";
+        }
+
+        const disabled = remaining < 10 ? true : false;
+        document.getElementById("btnPost").disabled = disabled;
+      }
+
+      function postTweet() {
+        const messageInput = document.getElementById("inputTweetMessage").value;
+
+        if (messageInput.length <= 0 && messageInput === "") {
+          alert("Pesan tidak boleh kosong");
+          return;
+        }
+
+        const tweet = {
+          message: messageInput,
+          author: { ...user },
+          date: new Date(),
+        };
+
+        posts.unshift(tweet);
+
+        document.getElementById("inputTweetMessage").value = "";
+
+        showTweets();
+      }
+
+      function showTweets() {
+        document.getElementById("feed").innerHTML = "";
+
+        posts.forEach((tweet) => {
+          const tweetTemplate = `
+        <div class="tweet">
+        <header>
+        <img src="${tweet.author.getAvatar()}"/>
+        ${tweet.author.name}
+        (${tweet.author.username})
+        &middot;
+        ${tweet.date} 
+        </header>
+        <p class"message">
+        ${tweet.message}
+        </p>
+        </div>
+        `;
+
+          document.getElementById("feed").innerHTML += tweetTemplate;
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        showUserProfile();
+      });
+    </script>
+  </body>
+</html>

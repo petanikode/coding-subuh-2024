@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="rifki.js"></script>
+
+  <script>
+    // deklarasi Variabel
+      var NAMA = "Rifki";
+      let umur = 20;
+      let isMember = false;
+  </script>
+  
+</head>
+<body>
+  <h1>Info Akun</h1>
+  <h3>Nama : <b id="outputNama"></b></h3>
+  <h3>Umur : <b id="outputUmur"></b></h3>
+  <h3>Member : <b id="outputMember"></b></h3>
+
+  <script>
+    // isi ulang variabel
+      NAMA = prompt("Inputkan nama");
+      umur = prompt("Inputkan umur");
+      isMember = confirm("Apakah Ingin Join Member?");
+
+    
+    // mengambil nilai dari variabel
+      outputNama.textContent = NAMA;
+      outputUmur.textContent = umur;
+      outputMember.textContent = isMember;
+    </script>
+
+  </body>
+</html>

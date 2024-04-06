@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyTweet app</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .app {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1em;
+    }
+
+    .navbar {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5em;
+      background-color: lightblue;
+    }
+
+    .profile {
+      display: inline-flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .profile img {
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+    <nav class="navbar">
+      <a href="3">App logo</a>  
+
+      <div class="profile">
+        <span id="userName"></span>
+        <img src="https://ui-avatars.com/api/?background=random" id="userAvatar" />
+    </nav>
+  </div>
+
+  <div class="tweetCompose">
+    <textarea
+      id="inputTweetMessage"
+      placeholder="What happening?"
+      cols="30"
+      rows="5"
+      ></textarea>
+    <button onclick="postTweet()">Post</button>
+    <span id="charCountRemaining"></span>
+    
+    <!-- Element Output  -->
+    <h1>Feed</h1>
+    <div id="feed" class="feed"></div>
+  </div>
+
+  <script>
+    //berisi objek dari tweets message
+    var post =[];
+
+    //objek user yang lagi login
+    var user = {
+      nama: "ridwan",
+      username: "@ridok",
+      getAvatar: function (){
+        return `https://ui-avatars.com/api/?name=${this.name}&background=random`;
+      },
+    };
+
+    function showUserProfile(){
+      //tampilkan objek
+      document.getElementById("userName").textContent = user.name;
+      document.getElementById("userAvatar").src = user.getAvatar();
+    }
+    
+    function calculateCharCount(textarea){
+      const MAX_CHAR_ALLOWED = 140;
+      const charRemaining = document.getElementById("charCountRemainig");
+      const remaining = MAX_CHAR_ALLOWED - textarea.value.lenght;
+      charRemaining.textContent = remaining;
+
+      if(remaining < 10){
+        charRemaining.style.color = "tomato";
+      } else if (remaining < 30){
+        charRemaining.style.color = "orange";
+      } else {
+        charRemaining.style.color = "black";
+      }
+
+      const disabled = remaining < 0 ? true : false;
+      document.getElementById("btnPost").disabled = disabled;
+    }
+
+    function postTweet(){
+
+      const messageInput = document.getElementById('inputTweetMessage').value;
+
+      // cek apakah input kosong
+
+      if(messageInput.lenght <= 0 && messageInput === ""){
+        alert("pesan tidak boleh kosong");
+        return;
+      }
+      //buat objek tweet
+      const tweet = {
+        message: messageInput,
+        author: {...user},
+        date: new Date()
+      };
+      //tambahkan objek ke dalam array post
+      post.unshift(tweet);
+
+      document.getElementById('inputTweetMessage').value = "";
+      //tampilkan tweet
+      showTweet();
+      
+    }
+
+    function.showTweet(){
+      // clear tweet yang ada
+      document.getElementById("feed").innerHTML = "";
+
+
+      post.forEch(tweet => {
+        const tweetTemplate = `<div class="tweet">
+        <header>
+        <img src="${tweet.author.getAvatar()}" />
+          ${tweet.author.nama}
+          (${tweet.author.username})
+          &middot; 
+          ${tweet.date}
+          </header>
+          <p class="message">
+          ${tweet.message}
+          <p>
+          </div>
+          `;
+          document.getElementById("feed").innerHTML += tweetTemplate;        
+      });
+    }
+
+    //event setelah dokumnetasi html selesai di load
+    document.addEventListener("DOMContentLoaded", function (){
+      // panggil fungsi show user profile
+      showUserProfile();
+    });
+  </script>
+
+  
+  
+
+</body>
+
+</html>

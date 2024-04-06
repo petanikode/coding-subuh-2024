@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input dari Field</title>
+</head>
+<body>
+    <input type="text" name="nama" id="inputNama">
+    <input type="email" name="email" id="inputEmail">
+
+    <p>Nama: <b id="outputNama"></b></p>
+    <p>email: <b id="outputEmail"></b></p>
+
+    <script>
+        inputNama.addEventListener("change", function(event) {
+            outputNama.textContent = inputNama.value;
+        });
+
+        inputEmail.addEventListener("change", function(event) {
+            outputEmail.textContent = inputEmail.value;
+        });
+    </script>
+</body>
+</html>

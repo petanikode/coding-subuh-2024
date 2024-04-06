@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan Percabangan Js Wallet-app</title>
+  </head>
+  <body>
+    <h1>Js-Pay</h1>
+    <p>Javascript Wallet</p>
+
+    <!-- Element buat input -->
+    <input type="number" id="input-wallet" placeholder="Masukkan PIN anda" />
+    <button onclick="cekPin()">Enter</button>
+
+    <!-- Element inputan Salah -->
+    <p id="message"></p>
+
+    <script>
+      // buat variabel PIN benar
+      const VALID_PIN = 123456;
+
+      function cekPin() {
+        // ambil Inputan PIN
+        const userInputPin = Number(
+          document.getElementById("input-wallet").value
+        );
+
+        // Cek apakah PIN benar atau salah
+        // Kalau benar buka halaman salah
+        // Kalau salah , tampilkan pesan salah
+        if (userInputPin === VALID_PIN) {
+          console.log("PIN anda benar");
+          window.location = "./saldo.html";
+        } else {
+          const passwordSalah = "PIN yang anda masukan Salah";
+          document.getElementById("message").textContent = passwordSalah;
+        }
+      }
+    </script>
+  </body>
+</html>

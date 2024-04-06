@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan pengisian</title>
+</head>
+<body>
+    <script>
+        var balance = 0;
+
+        function topUp(){
+            const jumlahTopUp = Number(prompt("Mau Top Up berapa ?", 1000));
+            balance += jumlahTopUp;
+            outputBalance.textContent = balance.toLocaleString("ID", {style: "currency", currency: "IDR"});
+        }
+
+        function withDraw(){
+            const jumlahWithDraw = Number(prompt("Mau Tarik berapa ?", 1000));
+            if (jumlahWithDraw > balance) {
+                alert("Saldo tidak mencukupi untuk penarikan ini.");
+            } else {
+                balance -= jumlahWithDraw;
+                outputBalance.textContent = balance.toLocaleString("ID", {style: "currency", currency: "IDR"});
+            }
+        }
+    </script>
+
+    <p>Saldo</p>
+    <p id="outputBalance">0</p>
+
+    <button onclick="topUp()">💰 Top up (+)</button>  
+    <button onclick="withDraw()">💸 Withdraw (-)</button>
+</body>
+</html>

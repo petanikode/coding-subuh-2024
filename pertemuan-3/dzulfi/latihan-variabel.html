@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Latihan variabel</title>
+    <script>
+      // deklarasi variabel
+      let nama = "Dzulfiqar";
+      let saldo = 12000;
+      let isMember = false;
+    </script>
+  </head>
+  <body>
+    <h1>Status Akun Anda</h1>
+    <p>Nama: <b id="outputNama"></b></p>
+    <p>Saldo: <b id="outputSaldo"></b></p>
+    <p>Member: <b id="outputMember"></b></p>
+
+    <script>
+    // isiulang
+      nama = prompt("inputkan nama", nama);
+      saldo = prompt("inputkan saldo", saldo);
+      isMember = confirm("apakah anda yakin menjadi member");
+      
+      outputNama.textContent = nama;
+      outputSaldo.textContent = saldo;
+      outputMember.textContent = isMember;
+    </script>
+  </body>
+</html>

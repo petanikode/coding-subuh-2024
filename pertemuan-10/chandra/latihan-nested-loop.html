@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Nested Loop</title>
+
+  <style>
+    #outputSeat button {
+      width: 3em;
+      height: 3em;
+      margin: 0.5em;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    .selected {
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="outputSeat"></div>
+
+  <h3>Kursi yang dipilih: <span id="outputSelectedSeat"></span></h3>
+  <h3>Total Harga: <span id="outputPrice"></span></h3>
+
+  <script>
+    // element untuk output
+    const outputSeat = document.getElementById("outputSeat");
+    const outputSelectedSeat = document.getElementById("outputSelectedSeat");
+    const outputPrice = document.getElementById("outputPrice");
+
+    // karakter untuk nama kolom
+    const columnNameChar = "_ABCDEFG";
+
+    // list kursi yang dipilih
+    var selectedSeats = [];
+
+    // list kursi yang udah di-booking orang lain
+    var bookedSeats = ['B8', 'B7'];
+
+    // pengulangan kolom kursi
+    for (let kolom = 7; kolom >= 1; kolom--) {
+
+      // pengulangan baris kursi
+      for (let baris = 12; baris >= 1; baris--) {
+        let seatToHide = ((baris == 6 || baris == 5) && kolom != 1) || (baris == 1 && kolom > 4);
+        if (seatToHide) {
+          // sembunyikan kursi
+          outputSeat.innerHTML += `<button disabled class="hidden">X</button>`;
+        } else {
+          // buat nama kursi
+          const columnName = columnNameChar.charAt(kolom);
+          const seatName = columnName + baris.toString();
+
+          // disable kursi yang udah dibooking orang lain
+          const disabled = bookedSeats.includes(seatName) ? "disabled" : "";
+
+          // tampilkan kursi
+          outputSeat.innerHTML += `<button onclick="onSelectedSeat(event)" ${disabled}>${seatName}</button>`;
+        }
+
+      }
+
+      outputSeat.innerHTML += "<br>";
+    }
+
+    function onSelectedSeat(event) {
+      let seatName = event.target.textContent;
+
+      // toggle class button kursi
+      event.target.classList.toggle("selected");
+
+      if (selectedSeats.includes(seatName)) {
+        // hapus kursi kalau udah ada di dalam selectedSeats
+        selectedSeats = selectedSeats.filter((seat) => seat !== seatName);
+      } else {
+        // tambahkan kursi ke dalam array selectedSeats
+        selectedSeats.push(seatName);
+      }
+      outputSelectedSeat.textContent = selectedSeats;
+      calculateTicketPrice();
+    }
+
+    function calculateTicketPrice() {
+      let ticketPrice = 50000;
+      outputPrice.textContent = formatIDR(selectedSeats.length * ticketPrice);
+    }
+
+    function formatIDR(number) {
+      return number.toLocaleString("ID", {
+        style: "currency",
+        currency: "IDR"
+      });
+    }
+
+  </script>
+</body>
+
+</html>

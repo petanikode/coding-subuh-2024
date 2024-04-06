@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #5C4032;
+    }
+    button {
+      padding: 0.8em;
+      background-color: #52443D;
+      color: #EDE0DB;
+      border-radius: 15px;
+      border: none;
+      /* border: #EDE0DB; */
+    }
+  </style>
+</head>
+<body>  
+  <h1>Todo List App</h1>
+  
+  <div id="outputTask"></div>
+
+  <!-- <input type="text" id="inputTask" placeholder="Input Your To Do List 📃"> -->
+
+  <script>
+    let tasks = [];
+
+    const outputTask = document.getElementById("outputTask");
+
+    showTask();
+
+    function showTask(){
+      if(tasks.length <= 0){
+        outputTask.innerHTML = `
+          <p>Belum ada tugas</p>
+          <button onclick="addTask()">Tambah Tugas</button>
+        `;
+      } else {
+          const ul = document.createElement("ul");
+          for(let id = 0; id < tasks.length; id++){
+            const li = document.createElement("li");
+            const btnEditDelte = `
+              <button onclick="editTask(${id})">Edit</button>
+              <button onclick="deleteTask(${id})">Delete</button>
+            `;
+            li.innerHTML = `${tasks[id]} - ${btnEditDelte}`;
+            ul.appendChild(li);
+          }
+
+          // tampilkan list task
+          outputTask.replaceChildren(ul);
+          outputTask.innerHTML += `
+            <button onclick="addTask()"> Tambah Tugas</button>
+            <button onclick="clearTask()">Bersihkan</button>
+          `
+        }
+      }
+
+      function addTask(){
+        const newTask = prompt("Tambahkan data baru");
+        if(newTask){
+          // tambahkan data baru ke array
+          tasks.push(newTask);
+          showTask();
+        }
+      }
+
+      function clearTask(){
+        tasks = [];
+        showTask();
+      }
+
+      function editTask(id){
+        const oldTask = tasks[id];
+        const newTask = prompt("Edit tugas", oldTask);
+        if(newTask){
+          tasks[id] = newTask;
+          showTask();
+        }
+      }
+
+      function deleteTask(id) {
+        const confirmToDelete = confirm("Apakah yakin akan menghapus?");
+        if(confirmToDelete){
+          tasks.splice(id, 1); // cuma hapus 1 data pada id yang dipilih
+          showTask();
+        }
+      }
+  </script>
+</body>
+</html>

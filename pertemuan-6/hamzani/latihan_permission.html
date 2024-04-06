@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test_permision</title>
+  </head>
+  <body>
+    <textarea readonly rows="5" cols="30" id="inputMessage">
+Tulis Pesan</textarea
+    >
+    <br />
+    <button disabled id="postBtn">Post Pesan</button>
+    <button disabled id="editBtn">Edit Pesan</button>
+    <button disabled id="hapusBtn">Hapus Pesan</button>
+    <br />
+
+    <script>
+      const tulis = 1;
+      const post = 2;
+      const edit = 4;
+      const hapus = 8;
+
+      var izinUser = 0;
+
+      izinUser = tulis | post | edit;
+
+      const bolehTulis = (izinUser & tulis) === tulis;
+      const bolehPost = (izinUser & post) === post;
+      const bolehEdit = (izinUser & edit) === edit;
+      const bolehHapus = (izinUser & hapus) === hapus;
+
+      document.getElementById('inputMessage').readOnly = !bolehTulis;
+      document.getElementById("postBtn").disabled = !bolehPost;
+      document.getElementById('editBtn').disabled = !bolehEdit;
+      document.getElementById('hapusBtn').disabled = !bolehHapus;
+    </script>
+  </body>
+</html>

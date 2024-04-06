@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pembelajaran Variabel</title>
+  </head>
+  <body>
+    <h1>Input Jumlah Buah</h1>
+
+    <label for="">Apel: </label><input type="text" name="apel" id="inputApel" />
+    <br />
+
+    <label for="">Jeruk: </label>
+    <input type="text" name="jeruk" id="inputJeruk" />
+    <br />
+    <button onclick="calc()">Hitung</button>
+    <br />
+    Total :
+    <input type="text" id="total" />
+
+    <script>
+      function calc() {
+        let n1 = parseInt(document.getElementById("inputApel").value);
+        let n2 = parseInt(document.getElementById("inputJeruk").value);
+
+        jajan = document.getElementById("total").value = n1 + n2;
+      }
+    </script>
+  </body>
+</html>
