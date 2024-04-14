@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <script type="module" src="./js/register.js"></script>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <h1>Buat Akun Baru</h1>
+
+        <p>
+          Sudah punya akun? <a href="login.html">Login di sini</a>
+        </p>
+
+        <!-- error message -->
+        <div class="alert alert-danger d-none" role="alert" id="error-alert">
+          Pendaftaran gagal, silahkan coba lagi!
+        </div>
+        
+        <form id="formRegister">
+          <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" id="inputName" placeholder="Nama lengkap" />
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber">Phone</label>
+            <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone Number" />
+          </div>
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Alamat email" />
+          </div>
+          <div class="mb-3">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" />
+              <button class="btn btn-outline-secondary" type="button" id="btnShowPassword">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-eye-fill" viewBox="0 0 16 16">
+                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input type="checkbox" name="agreeTerms" class="form-check-input" id="inputAcceptTerms" />
+            <label for="inputAcceptTerms">Setuju dengan Syarat dan Ketentuan</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100" id="btnSubmit" disabled>
+            Daftar
+          </button>
+        </form>
+
+        <p class="mt-5">
+          Kembali ke <a href="index.html">Home</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
