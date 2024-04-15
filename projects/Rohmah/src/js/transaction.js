@@ -1,34 +1,32 @@
-import { API } from "../API";
+import { API, BASE_URL } from "./API";
+import { formatRP } from "./utils/formatRP";
+
+// import Swal from 'sweetalert2';
 
 // Import our custom CSS
-import "../../scss/styles.scss";
+import "../scss/styles.scss";
 
 // Import all of Bootstrap's JS
 import * as bootstrap from "bootstrap";
 
 // DOM Elements
+const cartCountElement = document.querySelector("#cart-count");
+const cartLink = document.querySelector("#cart-link");
 const loginRegisterButtons = document.querySelector("#loginRegisterButtons");
-const formAddProduct = document.querySelector("#form-add-product");
-const btnFormSaveProduct = document.querySelector("#btn-save-product");
 
 
-// deteksi events
-btnFormSaveProduct.addEventListener("click", handleSubmitNewProduct);
-
-async function handleSubmitNewProduct(event){
-  //event.preventDefault();
-
-  const productData = new FormData(formAddProduct);
-
+async function showCartCount() {
   try {
-    const response = await API.admin.postProduct(productData);
-    if(!response.ok){
-      throw new Error("Gagal mengirim data ke server");
+    const response = await API.getCartCount();
+
+    if (!response.ok) {
+      throw new Error("Invalid token");
     }
 
-    console.log(await response.json());
+    cartCountElement.textContent = await response.json();
+    cartLink.href = "cart.html";
   } catch (err) {
-
+    cartLink.href = "login.html";
   }
 }
 
@@ -47,18 +45,20 @@ async function showCurrentUser() {
             </button>
             <ul class="dropdown-menu dropdown-menu-light">
               <li>
-                <a class="dropdown-item" href="../logout.html">Logout</a>
+                <a class="dropdown-item" href="transaction.html">Transaksi</a>
+                <a class="dropdown-item" href="logout.html">Logout</a>
               </li>
             </ul>
           </li>
         </ul>
       `;
     }
-  } catch (err) {
-
-  }
+  } catch (err) {}
 }
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   showCurrentUser();
+  showCartCount();
 });

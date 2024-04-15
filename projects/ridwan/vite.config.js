@@ -15,7 +15,7 @@ export default {
     outDir: join(__dirname, "dist")
   },
   server: {
-    port: 8080,
+    port: 6020,
     hmr: true,
     host: "0.0.0.0"
   },

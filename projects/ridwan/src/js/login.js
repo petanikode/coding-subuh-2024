@@ -54,23 +54,24 @@ function handleSubmit(event) {
   `;
 
   //request login ke serve rbackend
-  try {
+try {
     const response = await API.login(email, password);
     if(!response.ok){
       throw new Error("Login gagal");
-      
     }
-    const {token} = await response.json();
 
+    const { token, redirectURL } = await response.json();
+
+    // simpan token ke localstorage
     localStorage.setItem("token", token);
 
-    window.Location.href = "index.html";
-  }catch(error){
-    <div class="alert alert-danger d-none" role="alert" id="error-alert">
-      Login gagal, silahkan coba lagi!
-    </div>
+    window.location.href = redirectURL;
+  } catch (err) {
+    errorAlert.classList.remove("d-none");
+  } finally 
+
+    // reset button
+    btnSubmit.disabled = false;
+    btnSubmit.innerHTML = 'Login';
   }
-
-
 }
-

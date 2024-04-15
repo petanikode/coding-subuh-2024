@@ -17,8 +17,8 @@
           <li class="nav-item hstack gap-2">
 
             <div id="loginRegisterButtons">
-              <a href="login.html" class="btn btn-outline-primary">Login</a>
-              <a href="register.html" class="btn btn-primary">Register</a>
+              <a href="/login.html" class="btn btn-outline-primary">Login</a>
+              <a href="/register.html" class="btn btn-primary">Register</a>
             </div>
 
             
@@ -37,7 +37,7 @@
 
 
     <!-- List Products -->
-    <section class="container">
+    <section class="container mt-5">
       <div class="row" id="product-list">
         
       </div>
@@ -57,17 +57,17 @@
 
               <div class="mb-3">
                 <label for="name">Nama produk</label>
-                <input class="form-control" type="text" name="name" placeholder="Nama produk" />
+                <input class="form-control" type="text" name="name" placeholder="Nama produk"  required/>
               </div>
 
               <div class="mb-3">
                 <label for="price">Harga</label>
-                <input class="form-control" type="number" name="price" placeholder="Harga" />
+                <input class="form-control" type="number" name="price" placeholder="Harga" required/>
               </div>
 
               <div class="mb-3">
                 <label for="stock">Stock</label>
-                <input class="form-control" type="number" name="stock" placeholder="Stok" />
+                <input class="form-control" type="number" name="stock" placeholder="Stok" required/>
               </div>
               
               <div class="mb-3">
@@ -80,6 +80,50 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
             <button id="btn-save-product" type="button" class="btn btn-primary">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Modal Edit Data -->
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Produk Baru</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-edit-product" method="post">
+
+              <input type="hidden" name="id" id="edit-input-id" value="" />
+
+              <div class="mb-3">
+                <label for="name">Nama produk</label>
+                <input id="edit-input-name" class="form-control" type="text" name="name" placeholder="Nama produk" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="price">Harga</label>
+                <input id="edit-input-price" class="form-control" type="number" name="price" placeholder="Harga"  required/>
+              </div>
+
+              <div class="mb-3">
+                <label for="stock">Stock</label>
+                <input id="edit-input-stock" class="form-control" type="number" name="stock" placeholder="Stok" required/>
+              </div>
+
+              <div class="mb-3">
+                <label for="image">Image</label>
+                <input class="form-control" type="file" name="image" placeholder="Image" />
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button id="btn-save-update-product" type="button" class="btn btn-primary">Simpan</button>
           </div>
         </div>
       </div>

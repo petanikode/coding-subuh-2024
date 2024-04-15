@@ -1,16 +1,18 @@
-const BASE_URL = "https://b27b4550-1313-4bb1-afb8-d82e1be332aa-00-6woy1h5xti2b.sisko.replit.dev";
+export const BASE_URL =
+  "https://b27b4550-1313-4bb1-afb8-d82e1be332aa-00-6woy1h5xti2b.sisko.replit.dev";
 // const BASE_URL = "https://3tj59h-3000.csb.app";
  const TOKEN = localStorage.getItem("token");
 
-async function sendPostRequest(URL, data){
+function sendPostRequest(URL, data) {
   return fetch(URL, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${TOKEN}`,
     },
-    body: JSON.stringify(data)
-  })
+    body: JSON.stringify(data),
+  });
 }
 
 function fetchWithToken(URL){
@@ -20,8 +22,7 @@ function fetchWithToken(URL){
       "Content-Type": "application/json",
       Authorization: `Bearer ${TOKEN}`
     },
-    body: data
-  })
+  });
 }
 
 function postUpload(URL, data){
@@ -33,15 +34,46 @@ function postUpload(URL, data){
   })
 }
 
+function updateRequest(URL, data){
+  return fetch(URL, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+    body: data
+  });
+}
+
+function deleteRequest(URL) {
+  return fetch(URL, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+    },
+  });
+}
+
 
 export const API = {
   signUp:  (newUser) => sendPostRequest(`${BASE_URL}/register`, newUser),
   login:  (email, password) =>  sendPostRequest(`${BASE_URL}/auth`, {email, password}),
   getCurrentUser:_ => fetchWithToken(`${BASE_URL}/me`),
   getCartCount: _ => fetchWithToken(`${BASE_URL}/cart/count`),
+  getCartTotalPrice: (_) => fetchWithToken(`${BASE_URL}/cart/total-price`),
+  getProducts: (_) => fetchWithToken(`${BASE_URL}/products`),
+  addToCart: (productId) => sendPostRequest(`${BASE_URL}/cart`, { productId}),
+  getProductsFromCart: _ => fetchWithToken(`${BASE_URL}/cart`),
+  removeFromCart: itemId => deleteRequest(`${BASE_URL}/cart/${itemId}`),
+  updateCartItemQty: item => updateRequest(`${BASE_URL}/cart/update-qty/${item.get('id')}`, item),
+  checkout: items _=> sendPostRequest(`${BASE_URL}/checkout`, { items}),
+  getTtransactions: _=> fetchWithToken(`${BASE_URL}/transactions`),
 
   admin : {
     getProduct: _=> fetchWithToken(`${BASE_URL}/admin/products`),
-    postProduct: (product) => postUpload(`${BASE_URL}/admin/products`, product);
-  }
-}
+    postProduct: (product) => postUpload(`${BASE_URL}/admin/products`, product),
+     deleteProduct: (idProduct) =>
+
+       deleteRequest(`${BASE_URL}/admin/products/${idProdut}`),
+  updateProduct: (product) => updateRequest(`${BASE_URL}/admin/products/${product.get("id")}`, product)
+  },
+};
