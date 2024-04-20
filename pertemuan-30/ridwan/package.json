@@ -1,0 +1,25 @@
+{
+  "name": "ridwan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.72.0",
+    "vite": "^5.2.7"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@tsparticles/confetti": "^3.3.0",
+    "bootstrap": "^5.3.3",
+    "sweetalert": "^2.1.2"
+  }
+}
